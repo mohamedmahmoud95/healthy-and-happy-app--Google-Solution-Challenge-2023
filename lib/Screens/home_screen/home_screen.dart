@@ -1,123 +1,98 @@
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
+import 'package:mental_health_app/Reusable%20Widgets/card_widget.dart';
+import 'package:reviews_slider/reviews_slider.dart';
 
 import '../../Constants/project_colors.dart';
-
-
+import 'components/mood_rating_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  @override
+  State<HomeScreen> createState() => _HomeScreen();
+
+  }
+
+class _HomeScreen extends State<HomeScreen> {
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+
+    return Scaffold(
+        body: Container(
+          color: mainWhite,
+            child: Center(
+
+              child: Column(
+                children: [
+
+                  const SizedBox(height:12),
+                  Image.asset('assets/images/home_image.jpg'),
+                  const SizedBox(height:12),
+
+
+
+                  const Text(
+                      'How are you feeling today?',
+                    style: TextStyle(
+                      color: navyBlue,
+                      fontSize: 24
+                    ),
+                  ),
+
+                  const SizedBox(height:12),
+
+                  ReviewSlider(
+                      onChange: (int value){
+                        if (kDebugMode) {
+                          print('Current Mood: $value');
+                        }
+                      }),
+
+                 //MoodRatingBar(),
+                  const SizedBox(height:12),
+                  const SizedBox(height:12),
+
+                  Wrap(
+                    spacing: 12.0, // gap between adjacent chips
+                    runSpacing: 12.0, // gap between lines
+                    children: [
+
+                         CardWidget(text: "Pedometer", image: 'assets/images/pedometer4.png', onClicked: (){}),
+
+                         CardWidget(text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
+
+
+                          CardWidget(text: "Sleep tracking", image: 'assets/images/sleep.png', onClicked: (){}),
+
+                          CardWidget(text: "Wearables", image: 'assets/images/watch.png', onClicked: (){}),
+
+
+
+                  ],
+
+                  ),
+                ],
+              )
+            ),
+        )
+    );
+  }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
-  final items = <Widget>[
-    const Icon(
-      Icons.home_outlined,
-      size: 30,
-      color: lightLavender,
-    ),
-
-    const Icon(
-      Icons.newspaper_outlined,
-      size: 30,
-      color: lightLavender,
-    ),
-    const Icon(
-      Icons.video_camera_front_outlined,
-      size: 30,
-      color: lightLavender,
-    ),
-
-    const Icon(
-      Icons.chat_bubble_outline,
-      color: lightLavender,
-      size: 30,
-    ),
-
-  ];
-
-  Widget returnSelectedScreen(int x ) {
-    switch (x) {
-      case 0:
-        //news feed
-        return  NewsFeedScreen();
-      case 1:
-        //self-care
-        return  NewsFeedScreen();
-
-      case 2:
-        //chat
-      return  NewsFeedScreen();
-
-      case 3:
-       // schedule a session
-        return  NewsFeedScreen();
-    }
-    //--------------------------------------------------------------------//
-    throw Exception();
-  }
-
-  final List<String> titles = <String>[
-    "Home",
-    "News feed",
-    "Sessions",
-    "Chats",
-  ];
 
 
 
-  @override
-  void initState() {
-    super.initState();
-  }
+final cards = <Widget>[
 
-  @override
-  Widget build(BuildContext ctx) {
-          return Scaffold(
-            appBar: AppBar(
-                iconTheme: const IconThemeData(color: primaryColor, size: 30),
-                backgroundColor: mainWhite,
-                elevation: 0,
-                title: Text(titles[index],
-                    style: const TextStyle(color: Colors.black))),
-            // appBar: AppBar(
-            //     backgroundColor: mainWhite,
-            //     title: Text(
-            //       titles[index],
-            //       style: const TextStyle(color: Colors.black),
-            //     ),
-            //     leading: IconButton(
-            //       onPressed: () => Scaffold.of(ctx).openDrawer(),
-            //       icon: SvgPicture.asset("assets/icons/menu.svg"),
-            //     )),
-         //   drawer: CustomDrawer(appUser: (state).appUser),
-            body: returnSelectedScreen(index),
+  CardWidget(text: "Pedometer", image: 'assets/images/pedometer2.png', onClicked: (){}),
 
+  CardWidget(text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
 
+  CardWidget(text: "Sleep tracker", image: 'assets/images/sleep.png', onClicked: (){}),
 
+  CardWidget(text: "connect to watch", image: 'assets/images/watch.png', onClicked: (){}),
 
-
-            bottomNavigationBar:
-            CurvedNavigationBar(
-              color: lavender,
-              backgroundColor: mainWhite,
-              height: 55,
-              index: index,
-              items: items,
-              onTap: (index) {
-                setState(() {
-                  this.index = index;
-                });
-              },
-            ),
-          );
-        }
-
-  }
-
+];

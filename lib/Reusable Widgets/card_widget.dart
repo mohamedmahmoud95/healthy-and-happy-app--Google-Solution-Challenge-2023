@@ -15,6 +15,7 @@ class CardWidget extends StatelessWidget {
     required this.image,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) => Card(
 
@@ -23,7 +24,10 @@ class CardWidget extends StatelessWidget {
 
     clipBehavior: Clip.hardEdge,
 
-shape: const RoundedRectangleBorder(),
+shape:  RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(16),
+  ),
+
     child: InkWell(
       onTap: () {
         onClicked();
@@ -76,3 +80,39 @@ shape: const RoundedRectangleBorder(),
 
   );
 }
+
+  /*
+@override
+Widget build(BuildContext context) =>
+
+Container(
+height: 200.0,
+child: ListView.builder(
+scrollDirection: Axis.horizontal,
+itemCount: 6,
+itemBuilder: (context, index) {
+  return Container(
+    width: 100.0,
+    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(8.0),
+      image: const DecorationImage(
+        image:
+        AssetImage('assets/audio_playlist_thumbnail.png'),
+        fit: BoxFit.cover,
+      ),
+    ),
+    child: Center(
+      child: Text(
+        'Playlist ${index + 1}',
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
+  );
+}),
+  );
+  }
+*/

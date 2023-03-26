@@ -4,8 +4,10 @@ const kPrimaryColor = Color(0xFF2D5D70);
 const kSecondaryColor = Color(0xFF265DAB);
 
 const primaryColor = Color(0xFF2D5D70);
-const mainWhite = Colors.white;
 const secondary = Color(0xFF2D5D70);
+
+const mainWhite = Color.fromARGB(255,251,251, 251);
+
 
 const mainPurple = Color.fromARGB(255,49,8, 122);
 const lavender = Color(0xFF5e5fca);

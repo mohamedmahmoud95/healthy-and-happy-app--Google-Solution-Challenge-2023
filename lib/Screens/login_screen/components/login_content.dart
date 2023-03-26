@@ -3,7 +3,7 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
-import '../../home_screen/home_screen.dart';
+import '../../screens_wrapper/screens_wrapper.dart';
 import '../animations/change_screen_animation.dart';
 import 'bottom_text.dart';
 import 'top_text.dart';
@@ -65,7 +65,7 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
           },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
