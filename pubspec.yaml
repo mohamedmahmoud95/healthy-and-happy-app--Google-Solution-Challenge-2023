@@ -40,8 +40,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
-  flutter_webview_plugin: ^0.4.0
+
   curved_navigation_bar: ^1.0.3
+  flutter_rating_bar: ^4.0.1
+  reviews_slider: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -116,3 +118,18 @@ flutter:
   assets:
     - assets/images/facebook.png
     - assets/images/google.png
+    - assets/images/workout.png
+    - assets/images/workout2.png
+    - assets/images/workout3.png
+    - assets/images/workout4.png
+    - assets/images/watch.png
+    - assets/images/watch2.png
+    - assets/images/sleep.png
+    - assets/images/sleep2.png
+    - assets/images/pedometer.png
+    - assets/images/pedometer2.png
+    - assets/images/pedometer3.png
+    - assets/images/pedometer4.png
+    - assets/images/home_image.jpg
+
+

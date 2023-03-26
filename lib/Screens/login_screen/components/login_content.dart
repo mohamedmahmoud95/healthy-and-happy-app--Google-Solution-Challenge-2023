@@ -47,7 +47,7 @@ class _LoginContentState extends State<LoginContent>
                 borderSide: BorderSide.none,
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: mainWhite,
               hintText: hint,
 
               prefixIcon: Icon(iconData),

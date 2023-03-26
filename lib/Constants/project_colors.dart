@@ -20,7 +20,8 @@ const lightBlue = Color(0xFFe0e4e8);
 
 
 const mainOrange = Color.fromARGB (255, 255, 153, 81);
-const darkerOrange = Color(0xFFF67952);
+const lightOrange = Color.fromARGB(255,244,243,242);
+const darkOrange = Color(0xFFF67952);
 
 
 const calmGreen = Color.fromARGB(55, 8, 12, 44);
