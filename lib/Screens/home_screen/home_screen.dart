@@ -64,7 +64,6 @@ class _HomeScreen extends State<HomeScreen> {
 
                          CardWidget(text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
 
-
                           CardWidget(text: "Sleep tracking", image: 'assets/images/sleep.png', onClicked: (){}),
 
                           CardWidget(text: "Wearables", image: 'assets/images/watch.png', onClicked: (){}),

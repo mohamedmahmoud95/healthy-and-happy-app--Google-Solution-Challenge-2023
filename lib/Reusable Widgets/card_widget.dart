@@ -70,7 +70,7 @@ shape:  RoundedRectangleBorder(
 
                Text(
                 text,
-                style: const TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.normal),
+                style: const TextStyle(fontSize: 15, color: navyBlue, fontWeight: FontWeight.normal),
               ),
             ],
           ),
@@ -80,39 +80,3 @@ shape:  RoundedRectangleBorder(
 
   );
 }
-
-  /*
-@override
-Widget build(BuildContext context) =>
-
-Container(
-height: 200.0,
-child: ListView.builder(
-scrollDirection: Axis.horizontal,
-itemCount: 6,
-itemBuilder: (context, index) {
-  return Container(
-    width: 100.0,
-    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(8.0),
-      image: const DecorationImage(
-        image:
-        AssetImage('assets/audio_playlist_thumbnail.png'),
-        fit: BoxFit.cover,
-      ),
-    ),
-    child: Center(
-      child: Text(
-        'Playlist ${index + 1}',
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-    ),
-  );
-}),
-  );
-  }
-*/

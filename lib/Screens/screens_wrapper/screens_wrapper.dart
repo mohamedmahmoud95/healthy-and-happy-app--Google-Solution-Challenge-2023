@@ -1,6 +1,7 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 
 
 import '../../Constants/project_colors.dart';
@@ -50,7 +51,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
         return  HomeScreen();
       case 1:
         //self-care
-        return  HomeScreen();
+        return  NewsFeedScreen();
 
       case 2:
         //chat
@@ -66,7 +67,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
 
   final List<String> titles = <String>[
     "Home",
-    "News feed",
+    "Community",
     "Sessions",
     "Chats",
   ];

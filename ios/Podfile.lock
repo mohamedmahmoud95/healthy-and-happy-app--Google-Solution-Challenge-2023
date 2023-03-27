@@ -1,7 +1,5 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_webview_plugin (0.0.1):
-    - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
   - webview_flutter_wkwebview (0.0.1):
@@ -9,15 +7,12 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_webview_plugin:
-    :path: ".symlinks/plugins/flutter_webview_plugin/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
   webview_flutter_wkwebview:
@@ -25,7 +20,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
   webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a
 
