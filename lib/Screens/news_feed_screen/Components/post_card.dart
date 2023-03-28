@@ -13,11 +13,12 @@ class PostCard extends StatefulWidget {
 
 class _PostCardState extends State<PostCard> {
   Color likeIconColor = Colors.black;
-  int numOfTimeslikeButtonTapped = 0;
+  int numOfTimesLikeButtonTapped = 0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: lightLavender,
       margin: const EdgeInsets.all(2),
       child: Card(
         child: Column(
@@ -78,13 +79,13 @@ class _PostCardState extends State<PostCard> {
                           ),
                           onPressed: () {
                             setState(() {
-                              numOfTimeslikeButtonTapped++;
-                              if (numOfTimeslikeButtonTapped <=1)
+                              numOfTimesLikeButtonTapped++;
+                              if (numOfTimesLikeButtonTapped <=1)
                                    widget.post.numOfLikes++;
-                              else if (numOfTimeslikeButtonTapped > 1 &&  widget.post.numOfLikes > 0) {
+                              else if (numOfTimesLikeButtonTapped > 1 &&  widget.post.numOfLikes > 0) {
                                 {
                                   widget.post.numOfLikes--;
-                                  numOfTimeslikeButtonTapped = 0;
+                                  numOfTimesLikeButtonTapped = 0;
                                 }
                               }
                             });
