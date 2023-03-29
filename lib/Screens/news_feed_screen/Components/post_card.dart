@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Screens/news_feed_screen/Components/share_post_widget.dart';
+import 'package:mental_health_app/Screens/news_feed_screen/Components/write_comment_widget.dart';
 
 import '../../../Models/post.dart';
 
@@ -98,12 +100,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.comment,
-                        color: widget.post.numOfComments > 0
-                            ? mainBlue
-                            : Colors.black,
-                      ),
+                      WriteCommentWidget(numOfComments:widget.post.numOfComments),
                       const SizedBox(width: 4),
                       Text("${widget.post.numOfComments ?? 0} comment",
                           style: const TextStyle(color: navyBlue)),
@@ -111,12 +108,8 @@ class _PostCardState extends State<PostCard> {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.share,
-                        color: widget.post.numOfShares > 0
-                            ? mainBlue
-                            : Colors.black,
-                      ),
+                      SharePostWidget(numOfShares: widget.post.numOfShares),
+
                       const SizedBox(width: 4),
                       Text("${widget.post.numOfShares ?? 0} share",
                           style: const TextStyle(color: navyBlue)),

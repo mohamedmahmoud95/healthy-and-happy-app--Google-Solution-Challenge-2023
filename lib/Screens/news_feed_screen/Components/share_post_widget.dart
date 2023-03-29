@@ -3,20 +3,21 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 
 import '../../../Models/post.dart';
 
-class NewPostWidget extends StatefulWidget {
-  const NewPostWidget({super.key});
+class SharePostWidget extends StatefulWidget {
+  int numOfShares;
+  SharePostWidget( {required this.numOfShares,super.key});
 
   @override
-  State<NewPostWidget> createState() => _NewPostWidgetState();
+  State<SharePostWidget> createState() => _SharePostWidgetState();
 }
 
-class _NewPostWidgetState extends State<NewPostWidget> {
+class _SharePostWidgetState extends State<SharePostWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
+    return IconButton(
 
-      backgroundColor: mainBlue,
+
       onPressed: () {
 
         showModalBottomSheet<void>(
@@ -42,7 +43,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
 
-                        hintText: "What's on your mind?",
+                        hintText: "You may add a caption here...",
                         hintStyle: TextStyle(
                           color: mainBlue,
                         ),
@@ -56,37 +57,10 @@ class _NewPostWidgetState extends State<NewPostWidget> {
 // ),
                     const SizedBox(height: 8,),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.image_outlined,
-                              color: mainBlue,
-                            ),
-                            SizedBox(width: 4),
-                            Text(" Image",
-                                style: TextStyle(color: navyBlue)),
-                          ],
-                        ),
 
                         const SizedBox(width: 30,),
 
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.video_camera_back_outlined,
-                              color: mainBlue,
 
-                            ),
-                            SizedBox(width: 4),
-                            Text(" Video",
-                                style: TextStyle(color: navyBlue)),
-                          ],
-                        ),
-                      ],
-                    ),
 
                     const SizedBox(height: 8,),
 
@@ -97,7 +71,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                         shape: const StadiumBorder(),
                       ),
                       child: const Text(
-                        'Publish',
+                        'Share',
                         style: TextStyle(
                           color: mainWhite,
 
@@ -109,18 +83,22 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                     ),
                     const SizedBox(height: 8,),
 
-                  ],
+
+
+],
                 ),
-              ),
+                ),
+
             );
 //    );
           },
         );
-      },
-
-      child: const Icon(
-        Icons.edit,
-      ),
+      }, icon: Icon(
+      Icons.share,
+      color: widget.numOfShares > 0
+          ? mainBlue
+          : Colors.black,
+    ),
     );
   }
 }

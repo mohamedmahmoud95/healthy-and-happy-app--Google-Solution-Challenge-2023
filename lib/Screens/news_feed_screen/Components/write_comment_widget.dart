@@ -3,20 +3,21 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 
 import '../../../Models/post.dart';
 
-class NewPostWidget extends StatefulWidget {
-  const NewPostWidget({super.key});
+class WriteCommentWidget extends StatefulWidget {
+  int numOfComments;
+   WriteCommentWidget( {required this.numOfComments,super.key});
 
   @override
-  State<NewPostWidget> createState() => _NewPostWidgetState();
+  State<WriteCommentWidget> createState() => _WriteCommentWidgetState();
 }
 
-class _NewPostWidgetState extends State<NewPostWidget> {
+class _WriteCommentWidgetState extends State<WriteCommentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
+    return IconButton(
 
-      backgroundColor: mainBlue,
+
       onPressed: () {
 
         showModalBottomSheet<void>(
@@ -42,7 +43,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
 
-                        hintText: "What's on your mind?",
+                        hintText: "Write your comment here...",
                         hintStyle: TextStyle(
                           color: mainBlue,
                         ),
@@ -73,18 +74,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
 
                         const SizedBox(width: 30,),
 
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.video_camera_back_outlined,
-                              color: mainBlue,
 
-                            ),
-                            SizedBox(width: 4),
-                            Text(" Video",
-                                style: TextStyle(color: navyBlue)),
-                          ],
-                        ),
                       ],
                     ),
 
@@ -97,7 +87,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                         shape: const StadiumBorder(),
                       ),
                       child: const Text(
-                        'Publish',
+                        'Comment',
                         style: TextStyle(
                           color: mainWhite,
 
@@ -116,11 +106,12 @@ class _NewPostWidgetState extends State<NewPostWidget> {
 //    );
           },
         );
-      },
-
-      child: const Icon(
-        Icons.edit,
-      ),
+      }, icon:  Icon(
+      Icons.comment_rounded,
+        color: widget.numOfComments > 0
+          ? mainBlue
+          : Colors.black,
+    ),
     );
   }
 }
