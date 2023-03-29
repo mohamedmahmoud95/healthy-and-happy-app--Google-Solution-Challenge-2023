@@ -43,7 +43,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                   CategoryCard(text: 'Self-care'),
                 ],
               ),
-
+            //  for (Post post in samplePosts) if (post.category == selectedCategory)  PostCard(post: post),
               PostCard(post: samplePost1),
               PostCard(post: samplePost2),
               PostCard(post: samplePost3),

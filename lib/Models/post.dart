@@ -5,7 +5,7 @@ class Post
   String? id;
   String? text;
   String? imageURL;
-  AppUser? postAuthor;
+  AppUser postAuthor;
   int numOfLikes;
   int numOfComments;
   int numOfShares;
@@ -14,7 +14,7 @@ class Post
     this.id,
     this.text,
     this.imageURL,
-    this.postAuthor,
+    required this.postAuthor,
     required this.numOfLikes ,
     required this.numOfComments,
     required this.numOfShares
@@ -28,3 +28,4 @@ Post samplePost2 = Post(postAuthor: sampleAppUser2, numOfLikes: 35, numOfComment
 Post samplePost3 = Post(postAuthor: sampleAppUser3, numOfLikes: 17, numOfComments: 1, numOfShares: 5, text: "You don't have to control your thoughts. \nYou just have to stop letting them control you.\n - Dan Millman" ,imageURL: "https://blogimage.vantagefit.io/vfitimages/2022/08/21-Men-s-Mental-Health-Quotes-to-Mark-Men-s-Mental-Health-Week-.png");
 
 Post samplePost4 = Post(postAuthor: sampleAppUser4, numOfLikes: 23, numOfComments: 0, numOfShares: 7, text: "" ,imageURL: "https://everydaypower.com/wp-content/uploads/2022/12/mental-health-quotes-2.png");
+

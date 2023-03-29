@@ -60,7 +60,7 @@ class _HomeScreen extends State<HomeScreen> {
                     runSpacing: 12.0, // gap between lines
                     children: [
 
-                         CardWidget(text: "Pedometer", image: 'assets/images/pedometer4.png', onClicked: (){}),
+                         CardWidget(optionalNumber: 237, text: "Pedometer", image: 'assets/images/pedometer4.png', onClicked: (){}),
 
                          CardWidget(text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
 
@@ -86,12 +86,12 @@ class _HomeScreen extends State<HomeScreen> {
 
 final cards = <Widget>[
 
-  CardWidget(text: "Pedometer", image: 'assets/images/pedometer2.png', onClicked: (){}),
+  CardWidget(optionalNumber: 237, text: "Pedometer", image: 'assets/images/pedometer2.png', onClicked: (){}),
 
-  CardWidget(text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
+  CardWidget(optionalNumber: -1, text: "Workout", image: 'assets/images/workout2.png', onClicked: (){}),
 
-  CardWidget(text: "Sleep tracker", image: 'assets/images/sleep.png', onClicked: (){}),
+  CardWidget(optionalNumber: -1, text: "Sleep tracker", image: 'assets/images/sleep.png', onClicked: (){}),
 
-  CardWidget(text: "connect to watch", image: 'assets/images/watch.png', onClicked: (){}),
+  CardWidget(optionalNumber: -1, text: "connect to watch", image: 'assets/images/watch.png', onClicked: (){}),
 
 ];

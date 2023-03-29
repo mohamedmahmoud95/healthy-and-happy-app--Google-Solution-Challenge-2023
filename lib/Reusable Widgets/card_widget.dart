@@ -7,19 +7,19 @@ class CardWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
   final String image;
+  int? optionalNumber;
 
-  const CardWidget({
+   CardWidget({
     Key? key,
     required this.text,
     required this.onClicked,
     required this.image,
+    this.optionalNumber,
   }) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) => Card(
-
-
     color: lightOrange,
 
     clipBehavior: Clip.hardEdge,
@@ -38,7 +38,7 @@ shape:  RoundedRectangleBorder(
 
       child:  SizedBox(
         width: 150,
-        height: 100,
+        height: 120,
 
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -48,8 +48,6 @@ shape:  RoundedRectangleBorder(
              crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
-
-
               //circular border
               CircleAvatar(
             backgroundColor: mainOrange,
@@ -66,12 +64,31 @@ shape:  RoundedRectangleBorder(
            //CircleAvatar
        //Center
 
-              SizedBox(height: 16,),
+              const SizedBox(height: 5,),
 
-               Text(
-                text,
-                style: const TextStyle(fontSize: 15, color: navyBlue, fontWeight: FontWeight.normal),
-              ),
+               optionalNumber == null?
+                   Text(
+                    text,
+                    style: const TextStyle(fontSize: 15, color: navyBlue, fontWeight: FontWeight.normal),
+                  )
+                   :
+                   Column(
+                     children:[
+                       Text(
+                         "$optionalNumber",
+                         style: const TextStyle(fontSize: 15, color: mainBlue, fontWeight: FontWeight.bold),
+                       ),
+
+                       const SizedBox(height: 3,),
+
+                       Text(
+                         text,
+                         style: const TextStyle(fontSize: 15, color: navyBlue, fontWeight: FontWeight.normal),
+                       )
+            ],
+                   )
+
+
             ],
           ),
         ),
