@@ -8,9 +8,12 @@ class CategoryCard extends StatefulWidget {
   final String text;
   static int numOfTappedCards = 0;
   static Color colorOfOtherCards = lightOrange;
-   const CategoryCard({
+  bool CategoryCardSelected = false;
+
+   CategoryCard({
     Key? key,
     required this.text,
+    required this.CategoryCardSelected,
   }) : super(key: key);
 
   @override
@@ -18,7 +21,6 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  bool cardTapped = false;
   Color defaultCardColor = lightOrange;
   Color tappedCardColor = mainOrange;
   Color cardColor = lightOrange;
@@ -29,7 +31,7 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) => Card(
 
-    color: cardTapped? tappedCardColor:defaultCardColor,
+    color: widget.CategoryCardSelected? tappedCardColor:defaultCardColor,
 
     clipBehavior: Clip.hardEdge,
 
@@ -40,12 +42,13 @@ class _CategoryCardState extends State<CategoryCard> {
     child: InkWell(
       onTap: () {
         setState(() {
-          cardTapped = ! cardTapped;
-          if (cardTapped) {
+          widget.CategoryCardSelected = ! widget.CategoryCardSelected;
+          if (widget.CategoryCardSelected) {
             CategoryCard.numOfTappedCards +=1;
           }
-          else
+          else {
             cardColor = CategoryCard.colorOfOtherCards;
+          }
 
           if (CategoryCard.numOfTappedCards <= 1) {
             cardColor == defaultCardColor ? cardColor = mainOrange : cardColor =
@@ -73,7 +76,7 @@ class _CategoryCardState extends State<CategoryCard> {
                   widget.text,
                   style:  TextStyle(
                       fontSize: 15,
-                      color: cardTapped? tappedCardTextColor:defaultCardTextColor,
+                      color: widget.CategoryCardSelected? tappedCardTextColor:defaultCardTextColor,
                       fontWeight: FontWeight.w600),
                 ),
           ),

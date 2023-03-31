@@ -32,7 +32,7 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   CircleAvatar(
                     backgroundImage: NetworkImage(
-                        "${widget.post.postAuthor?.profilePicUrl != null ? widget.post.postAuthor?.profilePicUrl! : 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859'}"),
+                        "${widget.post.postAuthor.profilePicUrl != null ? widget.post.postAuthor.profilePicUrl! : 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859'}"),
                   ),
                   const SizedBox(width: 8.0),
                   Column(
@@ -59,11 +59,23 @@ class _PostCardState extends State<PostCard> {
               ),
             ),
             Center(
-              child: SizedBox(
-                height: 200,
-                child: Image.network('${widget.post.imageURL}'),
-              ),
-            ),
+              child: Expanded(
+
+                // Center(
+                //   child: Expanded(
+
+                    child: Image.network('${widget.post.imageURL}'),
+
+                    //    Image.network('${widget.post.imageURL}'),
+                  ),
+                ),
+                // child: SizedBox(
+                //
+                //   height: 200,
+                //   child: Image.network('${widget.post.imageURL}'),
+                // ),
+           //   ),
+          //  ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

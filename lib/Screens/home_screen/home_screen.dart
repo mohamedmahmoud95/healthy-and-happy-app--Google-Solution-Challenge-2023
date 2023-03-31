@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
   }
 
 class _HomeScreen extends State<HomeScreen> {
+static int? currentMood;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class _HomeScreen extends State<HomeScreen> {
                   ReviewSlider(
                       onChange: (int value){
                         if (kDebugMode) {
+                          currentMood = value;
                           print('Current Mood: $value');
                         }
                       }),

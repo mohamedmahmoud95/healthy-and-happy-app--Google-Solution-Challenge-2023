@@ -1,11 +1,14 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 
 
 import '../../Constants/project_colors.dart';
+
 import '../home_screen/home_screen.dart';
+import '../sessions_screen/sessions_screen.dart';
 
 
 
@@ -51,15 +54,18 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
         return  HomeScreen();
       case 1:
         //self-care
-        return  NewsFeedScreen();
+        return  const NewsFeedScreen();
 
       case 2:
         //chat
-      return  HomeScreen();
+      return  TherapistListPage();
+    //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
 
       case 3:
        // schedule a session
-        return  HomeScreen();
+        return  HomeScreen();//
+    // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
+        //ChatsWidget(appUser: sampleAppUser1,);
     }
     //--------------------------------------------------------------------//
     throw Exception();

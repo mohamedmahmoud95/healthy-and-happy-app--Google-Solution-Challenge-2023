@@ -130,8 +130,8 @@ class _LoginContentState extends State<LoginContent>
           ),
           const SizedBox(width: 30),
           SizedBox(
-              width: 33,
-              height: 33,
+              width: 33.5,
+              height: 33.5,
               child: Image.asset(
                 'assets/images/google.png',
               )),

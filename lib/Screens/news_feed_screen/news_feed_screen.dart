@@ -37,10 +37,10 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  CategoryCard(text: 'Trending'),
-                  CategoryCard(text: 'Relationship'),
-                  CategoryCard(text: 'Self-care'),
+                children:  [
+                  CategoryCard(text: 'Trending', CategoryCardSelected : true),
+                  CategoryCard(text: 'Relationship', CategoryCardSelected: false),
+                  CategoryCard(text: 'Self-care', CategoryCardSelected : false),
                 ],
               ),
             //  for (Post post in samplePosts) if (post.category == selectedCategory)  PostCard(post: post),
@@ -64,7 +64,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
 }
 
 List<CategoryCard> categoryCards = [
-  const CategoryCard(text: 'Trending'),
-  const CategoryCard(text: 'Relationship'),
-  const CategoryCard(text: 'Self-care'),
+  CategoryCard(text: 'Trending', CategoryCardSelected : true),
+  CategoryCard(text: 'Relationship', CategoryCardSelected: false),
+  CategoryCard(text: 'Self-care', CategoryCardSelected : false),
 ];
