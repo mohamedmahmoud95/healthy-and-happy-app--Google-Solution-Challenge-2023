@@ -41,6 +41,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
 
+  curved_navigation_bar: ^1.0.3
+  flutter_rating_bar: ^4.0.1
+  reviews_slider: ^2.0.0
+  pedometer: ^3.0.0
+  air_quality: ^2.0.0
+  noise_meter: ^3.2.0
+  fitness: ^1.0.1
+  #health: ^5.0.0
+  google_translator: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -51,6 +61,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
+
+  http: ^0.13.5
+  webview_flutter: ^4.0.7
+  url_launcher: ^6.1.10
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -110,3 +124,30 @@ flutter:
   assets:
     - assets/images/facebook.png
     - assets/images/google.png
+    - assets/images/workout.png
+    - assets/images/workout2.png
+    - assets/images/workout3.png
+    - assets/images/workout4.png
+    - assets/images/watch.png
+    - assets/images/watch2.png
+    - assets/images/sleep.png
+    - assets/images/sleep2.png
+    - assets/images/pedometer.png
+    - assets/images/pedometer2.png
+    - assets/images/pedometer3.png
+    - assets/images/pedometer4.png
+    - assets/images/home_image.jpg
+    - assets/images/template.png
+    - assets/images/twitter.png
+    - assets/images/Mohamed_Mahmoud.png
+    - assets/images/profile_pic.png
+    - assets/icons/mental_health_icon.png
+    - assets/icons/health_icon.png
+    - assets/icons/therapy_session_icon.png
+    - assets/icons/reading_icon.png
+    - assets/icons/mental_health_icon2.png
+
+
+
+
+

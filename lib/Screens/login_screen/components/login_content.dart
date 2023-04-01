@@ -3,6 +3,7 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
+import '../../screens_wrapper/screens_wrapper.dart';
 import '../animations/change_screen_animation.dart';
 import 'bottom_text.dart';
 import 'top_text.dart';
@@ -46,7 +47,7 @@ class _LoginContentState extends State<LoginContent>
                 borderSide: BorderSide.none,
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: mainWhite,
               hintText: hint,
 
               prefixIcon: Icon(iconData),
@@ -63,7 +64,9 @@ class _LoginContentState extends State<LoginContent>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+          },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: const StadiumBorder(),
@@ -127,8 +130,8 @@ class _LoginContentState extends State<LoginContent>
           ),
           const SizedBox(width: 30),
           SizedBox(
-              width: 33,
-              height: 33,
+              width: 33.5,
+              height: 33.5,
               child: Image.asset(
                 'assets/images/google.png',
               )),
