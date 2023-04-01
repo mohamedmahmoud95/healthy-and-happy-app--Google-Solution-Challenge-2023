@@ -261,7 +261,7 @@ class TherapistListPage extends StatelessWidget {
                   trailing:     RatingBarIndicator(
                     rating: _availableTherapists[index].rating,
                     itemCount: 5,
-                    itemSize: 10.0,
+                    itemSize: 16.0,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, _) =>
                     const Icon(

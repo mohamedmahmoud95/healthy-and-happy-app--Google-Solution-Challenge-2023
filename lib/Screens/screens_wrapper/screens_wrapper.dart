@@ -7,6 +7,7 @@ import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart
 
 import '../../Constants/project_colors.dart';
 
+import '../articles_screen/articles_screen.dart';
 import '../home_screen/home_screen.dart';
 import '../sessions_screen/sessions_screen.dart';
 
@@ -23,27 +24,30 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   int index = 0;
   final items = <Widget>[
     const Icon(
-      Icons.home_outlined,
+      Icons.home,
       size: 30,
       color: lightLavender,
     ),
 
     const Icon(
-      Icons.newspaper_outlined,
-      size: 30,
-      color: lightLavender,
-    ),
-    const Icon(
-      Icons.video_camera_front_outlined,
+      Icons.newspaper,
       size: 30,
       color: lightLavender,
     ),
 
-    const Icon(
-      Icons.chat_bubble_outline,
+    const ImageIcon(
+
+      AssetImage("assets/icons/therapy_session_icon.png"),
       color: lightLavender,
-      size: 30,
+      size: 40,
     ),
+
+    const ImageIcon(
+      AssetImage("assets/icons/reading_icon.png"),
+      color: lightLavender,
+      size: 33,
+    ),
+
 
   ];
 
@@ -63,7 +67,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
 
       case 3:
        // schedule a session
-        return  HomeScreen();//
+        return  const ArticlesScreen();//
     // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
         //ChatsWidget(appUser: sampleAppUser1,);
     }
@@ -72,10 +76,10 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   }
 
   final List<String> titles = <String>[
-    "Home",
+    "Good morning, ${sampleAppUser1.firstName} ^^",
     "Community",
-    "Sessions",
-    "Chats",
+    "Talk to a professional",
+    " Acquire more knowledge", //to edit this one, edit it in the articles screen
   ];
 
 
@@ -88,23 +92,14 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   @override
   Widget build(BuildContext ctx) {
           return Scaffold(
-            appBar: AppBar(
-                iconTheme: const IconThemeData(color: primaryColor, size: 30),
+            appBar: index == 3? null:
+            AppBar(
+               // iconTheme: const IconThemeData(color: primaryColor, size: 30),
                 backgroundColor: mainWhite,
                 elevation: 0,
                 title: Text(titles[index],
-                    style: const TextStyle(color: Colors.black))),
-            // appBar: AppBar(
-            //     backgroundColor: mainWhite,
-            //     title: Text(
-            //       titles[index],
-            //       style: const TextStyle(color: Colors.black),
-            //     ),
-            //     leading: IconButton(
-            //       onPressed: () => Scaffold.of(ctx).openDrawer(),
-            //       icon: SvgPicture.asset("assets/icons/menu.svg"),
-            //     )),
-         //   drawer: CustomDrawer(appUser: (state).appUser),
+                    style: const TextStyle(color: mainPurple, fontWeight: FontWeight.normal),)),
+
             body: returnSelectedScreen(index),
 
 

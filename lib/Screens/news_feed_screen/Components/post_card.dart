@@ -31,15 +31,15 @@ class _PostCardState extends State<PostCard> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "${widget.post.postAuthor.profilePicUrl != null ? widget.post.postAuthor.profilePicUrl! : 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859'}"),
+                    backgroundImage: AssetImage(
+                        "${widget.post.postAuthor.profilePicUrl != null ? widget.post.postAuthor.profilePicUrl! : 'assets/images/profile_pic.png'}"),
                   ),
                   const SizedBox(width: 8.0),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${widget.post.postAuthor!.firstName}  ${widget.post.postAuthor!.lastName}',
+                        '${widget.post.postAuthor.firstName}  ${widget.post.postAuthor.lastName}',
                         style: const TextStyle(color: navyBlue),
                       ),
                       Text(
