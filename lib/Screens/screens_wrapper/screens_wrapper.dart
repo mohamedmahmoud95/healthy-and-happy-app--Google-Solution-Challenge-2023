@@ -3,18 +3,16 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
-
-
 import '../../Constants/project_colors.dart';
 
 import '../articles_screen/articles_screen.dart';
 import '../home_screen/home_screen.dart';
-import '../sessions_screen/sessions_screen.dart';
+import '../sessions_screen/consult_therapist_screen.dart';
 
 
 
 class ScreensWrapper extends StatefulWidget {
-  const ScreensWrapper({Key? key}) : super(key: key);
+   ScreensWrapper({Key? key,  }) : super(key: key);
 
   @override
   _ScreensWrapperState createState() => _ScreensWrapperState();
@@ -55,14 +53,14 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     switch (x) {
       case 0:
         //news feed
-        return  HomeScreen();
+        return  const HomeScreen();
       case 1:
         //self-care
         return  const NewsFeedScreen();
 
       case 2:
         //chat
-      return  TherapistListPage();
+      return  ConsultTherapistScreen();
     //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
 
       case 3:
@@ -79,7 +77,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     "Good morning, ${sampleAppUser1.firstName} ^^",
     "Community",
     "Talk to a professional",
-    " Acquire more knowledge", //to edit this one, edit it in the articles screen
+    " Acquire knowledge", //to edit this one, edit it in the articles screen
   ];
 
 
@@ -91,36 +89,32 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
 
   @override
   Widget build(BuildContext ctx) {
-          return Scaffold(
-            appBar: index == 3? null:
-            AppBar(
-               // iconTheme: const IconThemeData(color: primaryColor, size: 30),
-                backgroundColor: mainWhite,
-                elevation: 0,
-                title: Text(titles[index],
-                    style: const TextStyle(color: mainPurple, fontWeight: FontWeight.normal),)),
+    return Scaffold(
+      appBar: index == 3 ? null :
+      AppBar(
+        // iconTheme: const IconThemeData(color: primaryColor, size: 30),
+          backgroundColor: mainWhite,
+          elevation: 0,
+          title: Text(titles[index],
+            style: const TextStyle(
+                color: mainPurple, fontWeight: FontWeight.normal),)),
 
-            body: returnSelectedScreen(index),
-
-
-
+      body: returnSelectedScreen(index),
 
 
-            bottomNavigationBar:
-            CurvedNavigationBar(
-              color: lavender,
-              backgroundColor: mainWhite,
-              height: 55,
-              index: index,
-              items: items,
-              onTap: (index) {
-                setState(() {
-                  this.index = index;
-                });
-              },
-            ),
-          );
-        }
-
+      bottomNavigationBar:
+      CurvedNavigationBar(
+        color: lavender,
+        backgroundColor: mainWhite,
+        height: 55,
+        index: index,
+        items: items,
+        onTap: (index) {
+          setState(() {
+            this.index = index;
+          });
+        },
+      ),
+    );
   }
-
+}

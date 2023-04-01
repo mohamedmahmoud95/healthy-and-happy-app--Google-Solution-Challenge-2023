@@ -14,33 +14,33 @@ class Article {
 final List<Article> articlesAboutMentalHealth = [
   Article(
       title: "What is mental health?",
-      text: ' The WHO states that mental health is \n '
-          '“more than just the absence of mental disorders or disabilities.”\n '
+      text: 'The WHO states that mental health is\n'
+          '“more than just the absence of mental disorders or disabilities.”\n'
           'Peak mental health is not only about managing\n'
-          ' active conditions but also looking after\n'
-          ' ongoing wellness and happiness.\n\n'
+          'active conditions but also looking after\n'
+          'ongoing wellness and happiness.\n\n'
 
-      '  It also emphasizes that preserving and\n'
-      ' restoring mental health is crucial individually\n'
-          ' and at a community and society level.\n\n'
+      'It also emphasizes that preserving and\n'
+      'restoring mental health is crucial individually\n'
+          'and at a community and society level.\n\n'
 
-      ' In the United States, the National Alliance \n'
+      'In the United States, the National Alliance \n'
           'on Mental Illness estimates that almost 1 in 5 adults experience mental health problems each year.\n\n'
 
-      ' In 2020, an estimated 14.2 million adultsTrusted Source in the U.S.,\n or about 5.6%, had a serious psychological condition,\n according to the National Institute of Mental Health (NIMH).\n\n'
+      'In 2020, an estimated 14.2 million adultsTrusted Source in the U.S.,\n or about 5.6%, had a serious psychological condition,\n according to the National Institute of Mental Health (NIMH).\n\n'
 
       'Risk factors for mental health conditions\n'
-      ' Everyone is at some risk of developing a mental health disorder,\n regardless of age, sex, income,\nor ethnicity. In the U.S.\n and much of the developed world, \nmental disorders are one of the leading causes of disability.\n\n'
+      'Everyone is at some risk of developing a mental health disorder,\n regardless of age, sex, income,\nor ethnicity. In the U.S.\n and much of the developed world, \nmental disorders are one of the leading causes of disability.\n\n'
 
-      ' Social and financial circumstances,\n adverse childhood experiences,\n biological factors, and underlying medical conditions can all shape a person’s mental health.'
+      'Social and financial circumstances,\n adverse childhood experiences,\n biological factors, and underlying medical conditions can all shape a person’s mental health.'
 
-      ' Many people with a mental health disorder have more than one condition at a time.'
+      'Many people with a mental health disorder have more than one condition at a time.'
 
-      ' It is important to note that good mental health depends on a delicate balance of factors and that several elements may contribute to developing these disorders.'
+      'It is important to note that good mental health depends on a delicate balance of factors and that several elements may contribute to developing these disorders.'
 
       'The following factors can contribute to mental health disruptions.'
 
-      ' Continuous social and economic pressure'
+      'Continuous social and economic pressure'
 
       ' Having limited financial means or belonging to a marginalized or persecuted ethnic group can increase the risk of mental health disorders.'
 
@@ -50,8 +50,8 @@ final List<Article> articlesAboutMentalHealth = [
 
 
       ,
-      brief: 'The WHO states that mental health \n '
-          'is “more than just the absence of mental \n'
+      brief: 'The WHO states that mental health is\n '
+          '“more than just the absence of mental \n'
           'disorders or disabilities.” \n'
           'Peak mental health is not only...',
 
@@ -62,23 +62,28 @@ final List<Article> articlesAboutMentalHealth = [
       photoUrl: 'https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/04/GettyImages-1171160560_hero-1024x575.jpg'),
 
   Article(title: "How to Stop a Panic Attack",
-      text: '   How to get over a trauma',
+
+      text: 'Panic attacks can be scary.\n'
+          'Try these expert coping strategies when\n'
+          'you sense that nauseating, sudden feeling\n'
+          'of acute and disabling anxiety...',
+
       source: 'Anxiety DisordersAug 9, 2021',
 
 
       numOfShares: 1,
 
       numRead: 25,
-      brief: 'Panic attacks can be scary.\n '
+      brief: 'Panic attacks can be scary.\n'
           'Try these expert coping strategies when\n'
-          ' you sense that nauseating, sudden feeling\n'
-          ' of acute and disabling anxiety...',
+          'you sense that nauseating, sudden feeling\n'
+          'of acute and disabling anxiety...',
 
       photoUrl: 'https://images.ctfassets.net/zkw0qlnf0vqv/psycom_page_fid33327_asset_16313/77ddeeae839b982115ed3333cf11ffa1/Businessman_is_drowned_in_the_brain?fm=webp&fit=thumb&q=65&w=544&h=362'),
 
   Article(title: "Cortisol: What It Does And Why\n It Matters for Mental Health?",
 
-      text: '   symptoms of Depression',
+      text: 'Cortisol: What It Does And Why\n It Matters for Mental Health?',
       source: 'PSYCOM, Aug 9, 2021',
       brief: "Known as the stress hormone,\n cortisol can impact your sleep, \n your mood, and your energy level. \n When levels are off, your body and brain.. ",
       numRead: 45,
@@ -88,7 +93,9 @@ final List<Article> articlesAboutMentalHealth = [
 
   Article(title: "Mental health of graduate\nstudents sorely overlooked",
       source: 'Nature, 28 June 2021',
-      brief: "Many graduate students feel overwhelmed\n by their work situation, and don’t know\n where to turn for help.,.",
+      brief: "Many graduate students feel overwhelmed\n"
+          "by their work situation, and don’t know\n"
+          "where to turn for help.,.",
 
 
       numRead: 12,
@@ -116,13 +123,20 @@ final List<Article> articlesAboutMentalHealth = [
 
 
 
+
+
 final List<Article> articlesAboutHealth = [
 Article(title: "Effect of Sports on General \nHealth",
-text: '',
-brief: 'Sports have an immense impact \n '
+
+text: 'Sports have an immense impact \n '
+    'on a person’s daily life and health.\n'
+    'They do not just give you an\n'
+    'interesting routine, but also..',
+
+  brief: 'Sports have an immense impact \n '
 'on a person’s daily life and health.\n'
-' They do not just give you an\n'
-' interesting routine, but also..',
+'They do not just give you an\n'
+'interesting routine, but also..',
 
 source: 'Manhattan medical arts, September 25, 2019',
 
@@ -132,8 +146,15 @@ photoUrl: 'https://manhattanmedicalarts.com/wp-content/uploads/2019/09/effect.we
 ),
 
   Article(title: "12 Daily Habits to Achieve\n a Healthier 2023",
-    text: '',
-    brief: 'Make this year the one\n when you finally take control\n of your health with these\n simple daily habits.',
+    text: 'Make this year the one\n'
+        'when you finally take control\n'
+        'of your health with these\n'
+        'simple daily habits.',
+
+    brief: 'Make this year the one\n'
+        'when you finally take control\n'
+        'of your health with these\n'
+        'simple daily habits.',
 
     source: 'CNET, Jan. 12, 2023',
 

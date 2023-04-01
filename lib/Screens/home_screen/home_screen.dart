@@ -1,13 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Reusable%20Widgets/card_widget.dart';
+import 'package:mental_health_app/Screens/psychological_tests_screen/depression_test.dart';
 import 'package:reviews_slider/reviews_slider.dart';
 
 import '../../Constants/project_colors.dart';
-import 'components/mood_rating_bar.dart';
+import '../../Reusable Widgets/big_card_widget.dart';
+import '../../screens/psychological_tests_screen/components/question_card.dart';
+import '../psychological_tests_screen/components/question_card.dart';
+import '../psychological_tests_screen/psychological_tests_screen.dart';
+import '../sessions_screen/consult_therapist_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreen();
 
@@ -50,10 +56,12 @@ static int? currentMood;
                     const SizedBox(height:16),
 
                     ReviewSlider(
+
                         onChange: (int value){
                           if (kDebugMode) {
                             currentMood = value;
                             print('Current Mood: $value');
+
                           }
                         }),
 
@@ -74,15 +82,30 @@ static int? currentMood;
                             CardWidget(text: "Wearables", image: 'assets/images/watch.png', onClicked: (){}),
 
 
+                            BigCardWidget(text:   "\nPsychometer\n\n"
+                                " Depression, Anxiety\n and stress scale\n"
+                                , image: 'assets/images/test6.png', onClicked: (){
+    Navigator.push(
+    context,
+   // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
+    MaterialPageRoute(builder: (context) => DepressionTest()),);
 
-                    ],
+    }
+    ),
+                      //  QuestionCard(question:sampleQuestion1, selectedAnswer: 1,),
 
-                    ),
-                  ],
-                )
+                              ],
+
+                              ),
+                    const SizedBox(height: 30,)
+
+                  ]
+
+
               ),
             ),
         )
+        ),
     );
   }
 }
