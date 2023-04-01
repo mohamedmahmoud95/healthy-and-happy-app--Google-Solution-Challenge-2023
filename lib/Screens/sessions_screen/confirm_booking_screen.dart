@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../Constants/project_colors.dart';
 import '../../Models/appointment.dart';
 import '../../Reusable Widgets/button_widget.dart';
+import '../../screens/screens_wrapper/screens_wrapper.dart';
 
 class ConfirmBookingScreen extends StatelessWidget {
   final Appointment appointment;
@@ -53,11 +54,10 @@ class ConfirmBookingScreen extends StatelessWidget {
             const SizedBox(height: 75),
             ButtonWidget(text: 'Confirm', onClicked: ()
             {
-
-              Navigator.pop(context);
-
-              // TODO: Save the booking and return to the home page
-              //  Navigator.popUntil(context, ModalRoute.withName('/HomeScreen'));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  ScreensWrapper()),
+              );
             },
 
             ),
@@ -65,7 +65,11 @@ class ConfirmBookingScreen extends StatelessWidget {
 
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  ScreensWrapper()),
+                );
               },
               child: const Text('Cancel', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.red),),
             ),

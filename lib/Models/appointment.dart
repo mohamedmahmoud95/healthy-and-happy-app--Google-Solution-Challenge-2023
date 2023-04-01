@@ -7,5 +7,8 @@ class Appointment {
   final DateTime date;
   final TimeOfDay time;
 
-  Appointment({required this.therapist, required this.date, required this.time});
+  Appointment({
+    required this.therapist,
+    required this.date,
+    required this.time});
 }

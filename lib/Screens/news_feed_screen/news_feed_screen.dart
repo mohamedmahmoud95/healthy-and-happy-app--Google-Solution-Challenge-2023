@@ -39,7 +39,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:  [
                   CategoryCard(text: 'Trending', CategoryCardSelected : true),
-                  CategoryCard(text: 'Relationship', CategoryCardSelected: false),
+                  CategoryCard(text: 'Nutrition', CategoryCardSelected: false),
                   CategoryCard(text: 'Self-care', CategoryCardSelected : false),
                 ],
               ),
@@ -63,8 +63,4 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
   }
 }
 
-List<CategoryCard> categoryCards = [
-  CategoryCard(text: 'Trending', CategoryCardSelected : true),
-  CategoryCard(text: 'Relationship', CategoryCardSelected: false),
-  CategoryCard(text: 'Self-care', CategoryCardSelected : false),
-];
+

@@ -3,7 +3,6 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 
 import '../../Reusable Widgets/button_widget.dart';
 import '../../screens/screens_wrapper/screens_wrapper.dart';
-import '../../screens/sessions_screen/sessions_screen.dart';
 
 
 class PsychologicalTestsScreen extends StatefulWidget {

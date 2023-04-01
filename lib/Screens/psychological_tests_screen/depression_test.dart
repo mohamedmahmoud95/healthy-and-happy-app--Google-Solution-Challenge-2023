@@ -1,8 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 
 import '../../screens/screens_wrapper/screens_wrapper.dart';
-import '../../screens/sessions_screen/sessions_screen.dart';
 import '../sessions_screen/therapists_list_screen.dart';
 
 
@@ -98,8 +98,10 @@ class _DepressionTestState extends State<DepressionTest> {
                     child: TextButton(
                       child: const Text('Thank you', style: TextStyle(color: mainPurple, fontWeight: FontWeight.w500), ),
                       onPressed: () {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  ScreensWrapper()),
+                        );
 
                       },
                     ),
