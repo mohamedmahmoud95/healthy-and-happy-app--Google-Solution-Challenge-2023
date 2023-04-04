@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Screens/articles_screen/read_article_page.dart';
-import '../../../Constants/project_colors.dart';
+import '../Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/Components/share_post_widget.dart';
 
-import '../../../Models/article.dart';
+import '../Models/article.dart';
+import '../Screens/acquire_knowledge_screen/read_article_page.dart';
 
 class ArticleCard extends StatefulWidget {
   final Article article;
@@ -67,22 +67,24 @@ class _ArticleCardState extends State<ArticleCard> {
 
                       const SizedBox(height: 8.0),
 
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 8.0),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 8.0),
 
-                          Text(
-                            '${widget.article.title } ',
-                            style: const TextStyle(color: navyBlue, fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 8.0),
+                            Text(
+                              '${widget.article.title } ',
+                              style: const TextStyle(color: navyBlue, fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 8.0),
 
-                          Text(
-                            '${widget.article.brief } ',
-                            style: const TextStyle(color: navyBlue, fontSize: 15),
-                          ),
-                        ],
+                            Text(
+                              '${widget.article.brief } ',
+                              style: const TextStyle(color: navyBlue, fontSize: 15),
+                            ),
+                          ],
+                        ),
                       ),
 
                       const SizedBox(width: 40),
@@ -157,7 +159,7 @@ class _ArticleCardState extends State<ArticleCard> {
                       ),
 
 
-        ],
+                  ],
                 ),
 
             ),
@@ -171,94 +173,3 @@ class _ArticleCardState extends State<ArticleCard> {
   }
 }
 
-
-/*
-
-class ArticleCard extends StatelessWidget {
-
-Article article;
-   ArticleCard({super.key, required this.article});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: mainWhite,
-      body: ListView.builder(
-          itemCount: articles.length,
-          itemBuilder: (context, index) {
-            final article = articles[index];
-
-            return Card(
-              color: lightOrange,
-
-              clipBehavior: Clip.hardEdge,
-
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-
-              child: InkWell(
-                onTap: () {
-
-
-                },
-
-                splashColor: Colors.white38,
-
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-
-                    width: 150,
-                    height: 90,
-
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child:
-                      Center(
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 30,
-                            backgroundImage: NetworkImage(article.photoUrl),
-                          ),
-
-                          title: Text(
-                            article.text,
-                            style: const TextStyle(color: navyBlue),),
-
-
-                          trailing: RatingBarIndicator(
-                            rating: articles[index].rating,
-                            itemCount: 5,
-                            itemSize: 12.0,
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, _) =>
-                            const Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) =>
-                                  ArticlePage( article: articles[0])),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }
-      ),
-    );
-  }
-
-
-}
-
-
- */

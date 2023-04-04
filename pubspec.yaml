@@ -39,6 +39,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  video_player: ^2.6.1
   flutter_inappwebview: ^5.7.2+3
   cupertino_icons: ^1.0.5
   webview_flutter: ^4.0.7
@@ -53,6 +54,8 @@ dependencies:
   #health: ^5.0.0
   google_translator: ^1.0.0
   survey_kit: ^0.1.2
+  http: ^0.13.5
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +68,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
 
-  http: ^0.13.5
   webview_flutter: ^4.0.7
   url_launcher: ^6.1.10
 
@@ -159,6 +161,10 @@ flutter:
     - assets/icons/therapy_session_icon.png
     - assets/icons/reading_icon.png
     - assets/icons/mental_health_icon2.png
+    - assets/icons/yoga.png
+    - assets/icons/yoga2.png
+    - assets/icons/workout.png
+
 
 
 

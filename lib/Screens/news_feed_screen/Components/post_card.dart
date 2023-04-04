@@ -59,15 +59,7 @@ class _PostCardState extends State<PostCard> {
               ),
             ),
             Center(
-              child: Expanded(
-
-                // Center(
-                //   child: Expanded(
-
-                    child: Image.network('${widget.post.imageURL}'),
-
-                    //    Image.network('${widget.post.imageURL}'),
-                  ),
+              child: Image.network('${widget.post.imageURL}'),
                 ),
                 // child: SizedBox(
                 //

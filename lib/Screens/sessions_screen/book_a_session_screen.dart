@@ -44,121 +44,120 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
               style: TextStyle(color: Colors.black))
       ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
-          const SizedBox(height:12),
-          Image.network('https://img.freepik.com/free-vector/woman-crying-therapy-session_74855-17143.jpg'),
-          const SizedBox(height:12),
+            const SizedBox(height:12),
+            Image.network('https://img.freepik.com/free-vector/woman-crying-therapy-session_74855-17143.jpg'),
+            const SizedBox(height:12),
 
 
 
-          const SizedBox(height: 20),
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 16.0),
-          //   child: Center(
-          //     child: Text(
-          //       'Choose a date',
-          //       style: TextStyle(fontSize: 18, color: Colors.black),
-          //     ),
-          //   ),
-          // ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child:
-            Center(
-              child: ButtonWidget(
-                text:  _selectedDate == null ? 'Click to select a date' : _selectedDate.toString().substring(0, 10),
-                onClicked: () {
-                  showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime.now().add(const Duration(days: 14)),
-                  ).then((value) {
-                    setState(() {
-                      _selectedDate = value;
+            const SizedBox(height: 20),
+
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child:
+              Center(
+                child: ButtonWidget(
+                  text:  _selectedDate == null ? 'Click to select a date' : _selectedDate.toString().substring(0, 10),
+                  onClicked: () {
+                    showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime.now().add(const Duration(days: 14)),
+                    ).then((value) {
+                      setState(() {
+                        _selectedDate = value;
+                      });
                     });
-                  });
+                  },
+
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'Choose a time:',
+                style: TextStyle(fontSize: 18,  color: Colors.black),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+            Expanded(
+
+              child: ListView.builder(
+                itemCount: _availableTimes.length,
+                itemBuilder: (context, index) {
+                  final time = _availableTimes[index];
+                  return Column(
+                    children: [
+                      const Divider(),
+                      Center(
+
+                        child: ListTile(
+                          title: Text(time.format(context),
+                            style: const TextStyle(fontSize: 18,  color: Colors.black),),
+                          trailing: _selectedTime == time ? const Icon(Icons.check) : null,
+                          onTap: () {
+                            setState(() {
+                              _selectedTime = time;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child:      Center(
+                child: ButtonWidget(text: 'Book now', onClicked: () {
+                  if (_selectedDate == null || _selectedTime == null) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Missing Information',
+                          style: TextStyle(fontSize: 18,  color: Colors.black),),
+                        content: const Text('Please select a date and time',
+                          style: TextStyle(fontSize: 18,  color: Colors.black),),
+                        actions: [
+
+                          Center(child: ButtonWidget(text: 'OK', onClicked: () => Navigator.pop(context)))
+
+                        ],
+                      ),
+                    );
+                  } else {
+                    final appointment = Appointment(
+                      therapist: widget.therapist,
+                      date: _selectedDate!,
+                      time: _selectedTime!,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ConfirmBookingScreen(appointment: appointment)),
+                    );
+                  }
                 },
 
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 30),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'Choose a time:',
-              style: TextStyle(fontSize: 18,  color: Colors.black),
-            ),
-          ),
-
-          const SizedBox(height: 10),
-          Expanded(
-
-            child: ListView.builder(
-              itemCount: _availableTimes.length,
-              itemBuilder: (context, index) {
-                final time = _availableTimes[index];
-                return Column(
-                  children: [
-                    const Divider(),
-                    ListTile(
-                      title: Text(time.format(context),
-                        style: const TextStyle(fontSize: 18,  color: Colors.black),),
-                      trailing: _selectedTime == time ? const Icon(Icons.check) : null,
-                      onTap: () {
-                        setState(() {
-                          _selectedTime = time;
-                        });
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child:      Center(
-              child: ButtonWidget(text: 'Book now', onClicked: () {
-                if (_selectedDate == null || _selectedTime == null) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Missing Information',
-                        style: TextStyle(fontSize: 18,  color: Colors.black),),
-                      content: const Text('Please select a date and time',
-                        style: TextStyle(fontSize: 18,  color: Colors.black),),
-                      actions: [
-
-                        Center(child: ButtonWidget(text: 'OK', onClicked: () => Navigator.pop(context)))
-
-                      ],
-                    ),
-                  );
-                } else {
-                  final appointment = Appointment(
-                    therapist: widget.therapist,
-                    date: _selectedDate!,
-                    time: _selectedTime!,
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ConfirmBookingScreen(appointment: appointment)),
-                  );
-                }
-              },
-
-              ),
-            ),
-          ),
-          const SizedBox(height: 100),
-        ],
+            const SizedBox(height: 50),
+          ],
+        ),
       ),
     );
   }

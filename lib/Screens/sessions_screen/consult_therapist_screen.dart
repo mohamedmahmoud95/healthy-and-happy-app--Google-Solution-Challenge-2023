@@ -21,56 +21,60 @@ class _ConsultTherapistScreenState extends State<ConsultTherapistScreen> {
         backgroundColor: mainWhite,
 
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
+          child: Wrap(
+            direction: Axis.vertical,
+            children: [ Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
 
-                      Image.asset('assets/images/online_session.png',),
+                        Image.asset('assets/images/online_session.png',scale: 1.5,),
 
-                      const SizedBox(height: 12),
+                        const SizedBox(height: 12),
 
-                      const Align(
-                        alignment: Alignment.center,
-                        child: Text(
+                        const Align(
+                          alignment: Alignment.center,
+                          child: Text(
 
-                          "               You take, We help ^^\n\n"
-                              "Talk to your therapist online, privately,\n                "
-                              "anytime, anywhere!",
-                          style: TextStyle(
+                            "       You take, We help \n\n"
+                                "Talk to your therapist online, \n\n"
+                                "privately, anytime, anywhere!",
+                            style: TextStyle(
 
-                            color: mainPurple,
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal,
+                              color: mainPurple,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
-                      ),
 
-                      const SizedBox(height: 12),
+                        const SizedBox(height: 12),
 
 
-                      const SizedBox(height: 40),
-                      Center(
-                        child: ButtonWidget(text: 'Book a session',
-                          onClicked: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
+                        const SizedBox(height: 40),
+                        Center(
+                          child: ButtonWidget(text: 'Book a session',
+                            onClicked: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
+                          ),
+                          ),
                         ),
-                        ),
-                      ),
 
 
-                        ],
+                          ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
+          ],
           ),
         ),
       ),

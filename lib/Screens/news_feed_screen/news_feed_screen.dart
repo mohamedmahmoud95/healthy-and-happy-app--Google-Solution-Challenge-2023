@@ -15,7 +15,7 @@ class NewsFeedScreen extends StatefulWidget {
 
 class _NewsFeedScreenState extends State<NewsFeedScreen> {
   ScrollController _scrollController = ScrollController();
-  FloatingActionButtonLocation _floatingActionButtonLocation =
+  final FloatingActionButtonLocation _floatingActionButtonLocation =
       FloatingActionButtonLocation.endFloat;
 
   @override
@@ -52,8 +52,6 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
               const SizedBox(
                 height: 20,
               ),
-
-
               //  Container(child: PostsList()),
             ],
           )),

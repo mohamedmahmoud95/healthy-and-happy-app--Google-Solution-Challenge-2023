@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:mental_health_app/Screens/articles_screen/components/article_card_widget.dart';
+import 'package:mental_health_app/Reusable%20Widgets/article_card_widget.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../Models/article.dart';

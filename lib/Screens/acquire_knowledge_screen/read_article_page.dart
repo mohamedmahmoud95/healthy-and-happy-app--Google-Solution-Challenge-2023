@@ -1,11 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Models/article.dart';
-import 'package:mental_health_app/Reusable%20Widgets/card_widget.dart';
-import 'package:reviews_slider/reviews_slider.dart';
+import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../Constants/project_colors.dart';
+
+
 
 class ReadArticleScreen extends StatefulWidget {
   final Article article;
@@ -19,8 +21,19 @@ class ReadArticleScreen extends StatefulWidget {
 
 class _ReadArticleScreen extends State<ReadArticleScreen> {
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
+    final Uri _url = Uri.parse('${widget.article.url}');
+    Future<void> _launchUrl() async {
+      if (!await launchUrl(_url)) {
+        throw Exception('Could not launch $_url');
+      }
+    }
+
     final screenSize = MediaQuery
         .of(context)
         .size;
@@ -69,6 +82,31 @@ class _ReadArticleScreen extends State<ReadArticleScreen> {
                         style:  TextStyle(color: navyBlue, fontSize: 15,),
                         ),
                    ),
+
+
+                    //Please note that you need to use elevated button instead of ButtonWidget here
+                    //for some reason.. the url launcher does not work with my button widget..
+                    //Center(child: ButtonWidget(text: "Learn more", onClicked: (){_launchUrl;})),
+
+                    Center(
+                       child: ElevatedButton(
+
+                         style: ElevatedButton.styleFrom(
+                           foregroundColor: mainWhite,
+                           // backgroundColor: mainBlue,
+                           shape: const StadiumBorder(),
+                           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                         ),
+                        onPressed: _launchUrl,
+
+                         child: const Text(
+                           "Learn more",
+                           style: TextStyle(fontSize: 16),
+                         ),
+                    ),
+                     ),
+
+                    const SizedBox(height: 30,),
 
                   ],
                 ),

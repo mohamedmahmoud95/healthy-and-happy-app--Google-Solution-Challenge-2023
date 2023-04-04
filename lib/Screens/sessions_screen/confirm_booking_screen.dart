@@ -42,6 +42,13 @@ class ConfirmBookingScreen extends StatelessWidget {
             const SizedBox(height: 75),
 
             Text(
+              'Session info',
+              style: const TextStyle(fontSize: 18, color: Colors.black),
+            ),
+
+            const SizedBox(height: 20),
+
+            Text(
               'Date: ${appointment.date.toString().substring(0, 10)}',
               style: const TextStyle(fontSize: 18, color: Colors.black),
             ),
