@@ -1,1 +1,0 @@
-const int defaultPadding = 8;
