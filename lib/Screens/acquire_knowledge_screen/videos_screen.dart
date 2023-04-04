@@ -82,7 +82,7 @@ class _VideoScreenState extends State<VideoScreen> {
   void initState() {
     super.initState();
     //fetchImages();
-    handleSearch('best videos about Mental health ');
+    handleSearch('short informative videos about Mental health tedx');
   }
 
   @override
