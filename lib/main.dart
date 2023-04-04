@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Constants/project_colors.dart';
-import 'screens/login_screen/login_screen.dart';
+import 'View/Screens/login_screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
