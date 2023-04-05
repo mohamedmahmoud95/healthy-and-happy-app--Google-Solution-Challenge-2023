@@ -1,16 +1,12 @@
 # mental_health_app
 
-A new Flutter project, for Googe Solution challenge
+This is Healthy and Happy
+our App for Google DSC Solution Challenge 2023
 
-## Getting Started
+App doscumentation:
+https://docs.google.com/document/d/1W6bbm8kgaX4kQma2yCDsz9hy1g4x1CIA7yZH1EisnIM/edit?usp=sharing
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+How to use:
+- Clone the app
+- Run it on an emulator (preferably iPhone 14 pro max)
+- and you're good to go
