@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Reusable%20Widgets/exercise_video_card.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -79,6 +80,19 @@ class _YogaScreenState extends State<YogaScreen> {
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
                 children: [
+
+                  WorkoutCardWidget(
+                    text: 'Cat Cow pose',
+                    imageUrl: 'https://pbs.twimg.com/media/CgKJTktUIAASQs5.png',
+
+                    onClicked: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Cat())
+                      );
+                    },
+                  ),
+
                   WorkoutCardWidget(
                     text: 'Child pose',
                     imageUrl: 'https://static.vecteezy.com/system/resources/previews/012/598/361/original/child-pose-yoga-free-png.png',
@@ -103,17 +117,6 @@ class _YogaScreenState extends State<YogaScreen> {
                     },
                   ),
 
-                  WorkoutCardWidget(
-                    text: 'Cat Cow pose',
-                    imageUrl: 'https://pbs.twimg.com/media/CgKJTktUIAASQs5.png',
-
-                    onClicked: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Cat())
-                      );
-                    },
-                  ),
 
                   WorkoutCardWidget(
                     text: 'Restorative bridge',
@@ -343,11 +346,9 @@ class  _CatState extends State<Cat> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.network(
-              'https://www.matherhospital.org/wp-content/uploads/2020/05/Yoga-pose-cat-cow-illustration.jpg',
-              height: 300,
-              fit: BoxFit.cover,
-            ),
+
+
+          EVideoCard(),
             const SizedBox(height: 16),
             const Text(
               ' How to ?',

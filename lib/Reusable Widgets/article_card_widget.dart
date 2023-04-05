@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Reusable%20Widgets/share_post_widget.dart';
 import '../Constants/project_colors.dart';
-import 'package:mental_health_app/Screens/news_feed_screen/Components/share_post_widget.dart';
 
 import '../Models/article.dart';
 import '../Screens/acquire_knowledge_screen/read_article_page.dart';

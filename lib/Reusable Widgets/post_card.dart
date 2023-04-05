@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
-import 'package:mental_health_app/Screens/news_feed_screen/Components/share_post_widget.dart';
-import 'package:mental_health_app/Screens/news_feed_screen/Components/write_comment_widget.dart';
+import 'package:mental_health_app/Reusable%20Widgets/share_post_widget.dart';
+import 'package:mental_health_app/Reusable%20Widgets/write_comment_widget.dart';
 
 import '../../../Models/post.dart';
 
@@ -61,13 +61,7 @@ class _PostCardState extends State<PostCard> {
             Center(
               child: Image.network('${widget.post.imageURL}'),
                 ),
-                // child: SizedBox(
-                //
-                //   height: 200,
-                //   child: Image.network('${widget.post.imageURL}'),
-                // ),
-           //   ),
-          //  ),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

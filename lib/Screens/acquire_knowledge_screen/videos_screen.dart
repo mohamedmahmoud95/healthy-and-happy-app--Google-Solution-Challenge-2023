@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
@@ -81,7 +82,9 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   void initState() {
     super.initState();
-    //fetchImages();
+    if (kDebugMode) {
+      print('initializing videos list');
+    }
     handleSearch('short informative videos about Mental health tedx');
   }
 

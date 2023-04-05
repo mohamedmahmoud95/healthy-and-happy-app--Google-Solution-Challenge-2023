@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Screens/acquire_knowledge_screen/videos_screen.dart';
 import '../../../Constants/project_colors.dart';
-import 'video_screen.dart';
 import 'health_articles_screen.dart';
 import 'mental_health_articles_screen.dart';
 

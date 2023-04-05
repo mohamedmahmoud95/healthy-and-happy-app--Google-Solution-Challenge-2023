@@ -1,12 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Screens/acquire_knowledge_screen/video_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../Constants/project_colors.dart';
 import '../Models/video.dart';
-import '../Screens/news_feed_screen/Components/share_post_widget.dart';
 
 
 class VideoCard extends StatelessWidget {
@@ -17,6 +15,14 @@ class VideoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    YoutubePlayerController _controller = YoutubePlayerController(
+      initialVideoId: video.id,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: true,
+      ),
+    );
 
     return Container(
       color: lightLavender,
@@ -56,9 +62,11 @@ class VideoCard extends StatelessWidget {
                         height: 200,
 
                         child:
-                        Image.network(video.thumbnailUrl,
-                          fit: BoxFit.cover,
-                        )
+                        YoutubePlayer(
+                          controller: _controller,
+                          showVideoProgressIndicator: true,
+                        ),
+
                     ),
                   ),
 
@@ -84,17 +92,34 @@ class VideoCard extends StatelessWidget {
                               '${video.channelName } ',
                               style: const TextStyle(color: mainPurple, fontSize: 18,),
                             ),
-                            const SizedBox(height: 8.0),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  maxLines: 3,
+                                  'Description:',
+                                  style: TextStyle(color: navyBlue, fontSize: 15,),
+                                ),
+
+                                IconButton(
+                                  iconSize: 50,
+                                  onPressed:()=> _launchUrl(),
+                                  icon: Image.network(
+                                      'https://w7.pngwing.com/pngs/674/324/png-transparent-youtube-logo-music-video-computer-icons-youtube-logo-text-trademark-logo.png'),
+                                ),
+                              ],
+                            ),
+
+
 
                             Text(
                               maxLines: 3,
-                              'Description:\n${video.description } ',
+                              video.description,
                               style: const TextStyle(color: navyBlue, fontSize: 15,),
                             ),
                             const SizedBox(height: 8.0),
 
-
-                            const SizedBox(width: 40),
                           ],
                         ),
                       ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Models/post.dart';
+import 'package:mental_health_app/Reusable%20Widgets/new_post_widget.dart';
+import 'package:mental_health_app/Reusable%20Widgets/post_card.dart';
 
-import 'Components/category_card.dart';
-import 'Components/new_post_widget.dart';
-import 'Components/post_card.dart';
+import '../../Reusable Widgets/category_card.dart';
+
 
 class NewsFeedScreen extends StatefulWidget {
   const NewsFeedScreen({super.key});
