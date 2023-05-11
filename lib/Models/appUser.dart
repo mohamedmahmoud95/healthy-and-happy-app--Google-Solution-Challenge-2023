@@ -25,46 +25,7 @@ class AppUser {
     this.likedPostsIds,
 
   });
-  //
-  // Map<String, dynamic> toMap() {
-  //   return {
-  //     'id': id,
-  //     'email': email,
-  //     'firstName': firstName,
-  //     'lastName': lastName,
-  //     'phoneNumber': phoneNumber,
-  //     'profilePicUrl': profilePicUrl,
-  //
-  //     'about': about,
-  //     'idsOfAnotherUsersChattedWith': idsOfAnotherUsersChattedWith,
-  //     'likedPostsIds': likedPostsIds,
-  //     'friendsUsersIds': friendsUsersIds,
-  //     //    'proposalsIds': proposalsIds,
-  //   };
-  // }
-  //
-  // factory AppUser.fromMap(Map<String, dynamic> map) {
-  //   return AppUser(
-  //     id: map['id'],
-  //     email: map['email'],
-  //     firstName: map['firstName'],
-  //     lastName: map['lastName'],
-  //     phoneNumber: map['phoneNumber'],
-  //     profilePicUrl: map['profilePicUrl'],
-  //
-  //     about: map['about'],
-  //     idsOfAnotherUsersChattedWith: map['idsOfAnotherUsersChattedWith'] != null
-  //         ? List<String>.from(map['idsOfAnotherUsersChattedWith'])
-  //         : [],
-  //     likedPostsIds: map['likedPostsIds'] != null
-  //         ? List<String>.from(map['likedBooksIds'])
-  //         : [],
-  //     friendsUsersIds: map['friendsUsersIds'] != null
-  //         ? List<String>.from(map['friendsUsersIds'])
-  //         : [],
-  //
-  //   );
-  // }
+
 }
 
 
