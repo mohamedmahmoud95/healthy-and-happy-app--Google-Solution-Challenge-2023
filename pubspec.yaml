@@ -42,8 +42,8 @@ dependencies:
   video_player: ^2.6.1
   flutter_inappwebview: ^5.7.2+3
   cupertino_icons: ^1.0.5
-  webview_flutter: ^4.0.7
-  url_launcher: ^6.1.10
+  webview_flutter: ^4.2.0
+  url_launcher: ^6.1.11
   curved_navigation_bar: ^1.0.3
   flutter_rating_bar: ^4.0.1
   reviews_slider: ^2.0.0
@@ -54,8 +54,9 @@ dependencies:
   #health: ^5.0.0
   google_translator: ^1.0.0
   survey_kit: ^0.1.2
-  http: ^0.13.5
+  http: ^0.13.6
   youtube_player_flutter: ^8.1.2
+  teachable: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,8 +69,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
 
-  webview_flutter: ^4.0.7
-  url_launcher: ^6.1.10
+  webview_flutter: ^4.2.0
+  url_launcher: ^6.1.11
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
