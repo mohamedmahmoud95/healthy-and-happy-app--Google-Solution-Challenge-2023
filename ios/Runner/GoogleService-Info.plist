@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1068981377080-bdg54dsikocaghj868uau8sq35v2vct8.apps.googleusercontent.com</string>
+	<string>1068981377080-6d25io00r7utvat63tdk7k5987jujaa4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1068981377080-bdg54dsikocaghj868uau8sq35v2vct8</string>
+	<string>com.googleusercontent.apps.1068981377080-6d25io00r7utvat63tdk7k5987jujaa4</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>1068981377080-d7n5jr3r43731ta3lnfjpc9b9vut68q1.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.solutionchallenge.healthyandhappy</string>
+	<string>com.example.mentalHealthApp</string>
 	<key>PROJECT_ID</key>
 	<string>healthy-and-happy-b85cc</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1068981377080:ios:0404c1be95336977342ecd</string>
+	<string>1:1068981377080:ios:8666eaf4ef29826c342ecd</string>
 </dict>
 </plist>
