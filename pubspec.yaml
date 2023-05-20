@@ -69,8 +69,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
 
-  webview_flutter: ^4.2.0
-  url_launcher: ^6.1.11
+  #webview_flutter: ^4.2.0
+  #url_launcher: ^6.1.11
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
