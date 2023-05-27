@@ -26,9 +26,7 @@ class Post
     this.category,
     this.trending,
     this.dateTime,
-  }){
-    updatePostTrendingState(); //initializer
-  }
+  });
 
   void updatePostTrendingState()
   {

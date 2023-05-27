@@ -40,6 +40,8 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
         post.trending = false;
       }
     }
+
+    posts.sort((a, b) => b.dateTime!.compareTo(a.dateTime!)); //sort posts by DateTime
   }
 
 
@@ -492,13 +494,12 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                                     debugPrint("New post category ${newPost.category?.categoryName}");
 
                                     setState(() {
-                                      posts.add(newPost);
+                                    //  posts.add(newPost);
+                                      posts.insert(0, newPost); //insert the new post at the beginning of the posts list
                                     });
-
                                     Navigator.pop(context);
+                                    setState((){});
                                   },
-
-
                                 ),
                               ],
                             ),

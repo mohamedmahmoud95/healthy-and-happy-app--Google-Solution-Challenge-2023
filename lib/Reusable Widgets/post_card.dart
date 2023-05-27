@@ -24,7 +24,20 @@ class _PostCardState extends State<PostCard> {
       if (widget.post.dateTime!.month == now.month) {
         if (widget.post.dateTime!.day == now.day) {
           if (widget.post.dateTime!.hour == now.hour) {
-            return "${now.minute - widget.post.dateTime!.minute} min ago";
+            if (widget.post.dateTime!.minute == now.minute) {
+              if (widget.post.dateTime!.second +3 >= (now.second) ) {
+                //keep the timing ("just now") for 3 seconds after publishing the post
+                return "just now";
+              }
+              else {
+              //  then change to: a few seconds ago,
+                return "a few seconds ago";
+              }
+            }
+              else {
+                //then minutes
+                return "${now.minute - widget.post.dateTime!.minute} min ago";
+               }
           }
           else {
             return "${now.hour - widget.post.dateTime!.hour} hr ago";
