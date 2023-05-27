@@ -72,22 +72,23 @@ class _PostCardState extends State<PostCard> {
                       IconButton(
                           icon: Icon(
                             Icons.thumb_up,
-                            color: widget.post.numOfLikes > 0
+                            color: (widget.post.numOfLikes!) > 0
                                 ? mainBlue
                                 : likeIconColor,
 
                           ),
                           onPressed: () {
                             setState(() {
-                              numOfTimesLikeButtonTapped++;
+                              numOfTimesLikeButtonTapped++;  //so the same user can click an increase the number of like only by 1
                               if (numOfTimesLikeButtonTapped <=1)
-                                   widget.post.numOfLikes++;
-                              else if (numOfTimesLikeButtonTapped > 1 &&  widget.post.numOfLikes > 0) {
+                                   widget.post.numOfLikes =  (widget.post.numOfLikes!)+1;
+                              else if (numOfTimesLikeButtonTapped > 1 && (widget.post.numOfLikes!) > 0) {
                                 {
-                                  widget.post.numOfLikes--;
+                                  widget.post.numOfLikes =  (widget.post.numOfLikes!)-1;
                                   numOfTimesLikeButtonTapped = 0;
                                 }
                               }
+                              widget.post.updatePostTrendingState();
                             });
 
                           }),
@@ -98,7 +99,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                   Row(
                     children: [
-                      WriteCommentWidget(numOfComments:widget.post.numOfComments),
+                      WriteCommentWidget(numOfComments:widget.post.numOfComments!),
                       const SizedBox(width: 4),
                       Text("${widget.post.numOfComments ?? 0} comment",
                           style: const TextStyle(color: navyBlue)),
@@ -106,7 +107,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                   Row(
                     children: [
-                      SharePostWidget(numOfShares: widget.post.numOfShares),
+                      SharePostWidget(numOfShares: widget.post.numOfShares!),
 
                       const SizedBox(width: 4),
                       Text("${widget.post.numOfShares ?? 0} share",
