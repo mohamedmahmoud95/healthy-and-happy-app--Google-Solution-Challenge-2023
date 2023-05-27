@@ -57,6 +57,7 @@ dependencies:
   http: ^0.13.6
   youtube_player_flutter: ^8.1.2
   teachable: ^0.0.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
