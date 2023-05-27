@@ -1,3 +1,9 @@
+
+
+
+
+//Please note that this is not the widget currently in use to create a new post
+//we replaced it with another widget defined in the news_feed_screen class
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 
@@ -56,11 +62,11 @@ class _NewPostWidgetState extends State<NewPostWidget> {
 // ),
                     const SizedBox(height: 8,),
 
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Row(
-                          children: const [
+                          children: [
                             Icon(
                               Icons.image_outlined,
                               color: mainBlue,
@@ -71,10 +77,10 @@ class _NewPostWidgetState extends State<NewPostWidget> {
                           ],
                         ),
 
-                        const SizedBox(width: 30,),
+                        SizedBox(width: 30,),
 
                         Row(
-                          children: const [
+                          children: [
                             Icon(
                               Icons.video_camera_back_outlined,
                               color: mainBlue,

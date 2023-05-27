@@ -93,6 +93,8 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
   }
 
 
+  String newPostText = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -180,11 +182,10 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
           showDialog(
             context: context,
             builder: (context) {
-              String postText = '';
-              List<String> dropdownItems = listOfPostCategoriesToChooseFromWhenCreateNewPost
-                  .map((category) => category.categoryName)
-                  .toList();
-              String enteredCategory = dropdownItems.first;
+
+              List<PostCategory> dropdownItems = listOfPostCategoriesToChooseFromWhenCreateNewPost;
+
+              PostCategory enteredCategory = dropdownItems.first;
 
               return StatefulBuilder(
                 builder: (context, setState) {
@@ -221,8 +222,11 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                             TextField(
                               style: const TextStyle(color: Colors.black),
                               onChanged: (value) {
-                                postText = value;
+                                setState(() {
+                                  newPostText = value;
+                                });
                               },
+
                               decoration: InputDecoration(
                                 hintText: "What's on your mind?",
                                 border: OutlineInputBorder(
@@ -290,7 +294,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                                                         ),
                                                         IconButton(onPressed: (){
                                                           imageFromUrl(enteredImageUrl!);
-                                                        }, icon: Icon(Icons.upload_sharp)),
+                                                        }, icon: const Icon(Icons.upload_sharp)),
                                                       ],
                                                     ),
 
@@ -429,7 +433,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                           ),
 
 
-                                DropdownButton<String>(
+                                DropdownButton<PostCategory>(
                                   underline: Container(
                                     height: 1,
                                     color: lavender,
@@ -441,12 +445,12 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                                     });
                                   },
                                   items:
-                                  dropdownItems.map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                      return DropdownMenuItem<String>(
+                                  dropdownItems.map<DropdownMenuItem<PostCategory>>(
+                                        (PostCategory value) {
+                                      return DropdownMenuItem<PostCategory>(
                                         value: value,
                                         child: Text(
-                                          value,
+                                          value.categoryName,
                                           style: const TextStyle(
                                             color: mainPurple,
                                           ),
@@ -463,23 +467,37 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                               children: [
                                 ButtonWidget(
                                   text: 'Publish',
-                                  backgroundColor: postText.isEmpty? Colors.grey : mainOrange ,
+                                  backgroundColor: newPostText.isEmpty? Colors.grey : mainOrange ,
 
                                   onClicked: () {
-
-                                      Post newPost = Post(
-                                          text: postText!,
-                                          postAuthor: sampleAppUser1,
-                                          dateTime: DateTime.now(),
-                                          category: listOfPostCategories
-                                              .firstWhere((category) =>
-                                          category.categoryName ==
-                                              enteredCategory));
-                                      setState() {
-                                      posts.add(newPost);
+                                    if (newPostText.isEmpty) {
+                                      return; // Do not create a new post if the text is empty
                                     }
+
+                                    Post newPost = Post(
+                                      text: newPostText,
+                                      postAuthor: sampleAppUser1,
+                                      dateTime: DateTime.now(),
+                                      category: listOfPostCategories.firstWhere(
+                                            (category) => category == enteredCategory,
+                                        orElse: () => other, // Provide a fallback value if category not found
+                                      ),
+                                    );
+
+                                    debugPrint("New post added");
+                                    debugPrint("New post text $newPostText");
+                                    debugPrint("New post text from inside it ${newPost.text}");
+                                    debugPrint("New post author ${newPost.postAuthor!.firstName}");
+                                    debugPrint("New post time ${newPost.dateTime}");
+                                    debugPrint("New post category ${newPost.category?.categoryName}");
+
+                                    setState(() {
+                                      posts.add(newPost);
+                                    });
+
                                     Navigator.pop(context);
                                   },
+
 
                                 ),
                               ],
