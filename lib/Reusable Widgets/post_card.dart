@@ -82,15 +82,17 @@ class _PostCardState extends State<PostCard> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 '${widget.post.text}',
                 style: const TextStyle(color: navyBlue),
               ),
             ),
+            widget.post.imageURL !=null ?
             Center(
               child: Image.network('${widget.post.imageURL}'),
-                ),
+                ) :
+            const SizedBox(height: 10,),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
