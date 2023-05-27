@@ -42,23 +42,26 @@ dependencies:
   video_player: ^2.6.1
   flutter_inappwebview: ^5.7.2+3
   cupertino_icons: ^1.0.5
-  webview_flutter: ^4.2.0
+  webview_flutter: ^4.2.1
   url_launcher: ^6.1.11
   curved_navigation_bar: ^1.0.3
   flutter_rating_bar: ^4.0.1
   reviews_slider: ^2.0.0
   pedometer: ^3.0.0
-  air_quality: ^2.0.0
+  #air_quality: ^2.0.0
   noise_meter: ^3.2.0
   fitness: ^1.0.1
   #health: ^5.0.0
   google_translator: ^1.0.0
   survey_kit: ^0.1.2
-  http: ^0.13.6
+  #http: ^1.0.0
+  http: ^0.13.0
   youtube_player_flutter: ^8.1.2
   teachable: ^0.0.2
   intl: ^0.18.1
   image_picker: ^0.8.7+5
+  path_provider: ^2.0.15
+
 
 dev_dependencies:
   flutter_test:
