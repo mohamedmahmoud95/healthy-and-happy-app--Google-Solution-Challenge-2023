@@ -1,19 +1,19 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/category.dart';
 
 import '../../../Constants/project_colors.dart';
 
 
 class CategoryCard extends StatefulWidget {
-  final String text;
-  static int numOfTappedCards = 0;
-  static Color colorOfOtherCards = lightOrange;
-  bool CategoryCardSelected = false;
-
-   CategoryCard({
+  PostCategory category;
+  PostCategory selectedCategory;
+  final VoidCallback onSelected;
+  CategoryCard({
     Key? key,
-    required this.text,
-    required this.CategoryCardSelected,
+    required this.category,
+    required this.selectedCategory,
+    required this.onSelected,
   }) : super(key: key);
 
   @override
@@ -21,17 +21,21 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  Color defaultCardColor = lightOrange;
-  Color tappedCardColor = mainOrange;
+  Color notSelectedColor = lightOrange;
+  Color selectedColor = mainOrange;
   Color cardColor = lightOrange;
   Color textColor = navyBlue;
-  Color tappedCardTextColor = mainWhite;
-  Color defaultCardTextColor = navyBlue;
+  Color selectedTextColor = mainWhite;
+  Color notSelectedTextColor = navyBlue;
+
+
 
   @override
-  Widget build(BuildContext context) => Card(
+  Widget build(BuildContext context) =>
 
-    color: widget.CategoryCardSelected? tappedCardColor:defaultCardColor,
+      Card(
+
+    color: widget.selectedCategory == widget.category? selectedColor:notSelectedColor,
 
     clipBehavior: Clip.hardEdge,
 
@@ -42,41 +46,26 @@ class _CategoryCardState extends State<CategoryCard> {
     child: InkWell(
       onTap: () {
         setState(() {
-          widget.CategoryCardSelected = ! widget.CategoryCardSelected;
-          if (widget.CategoryCardSelected) {
-            CategoryCard.numOfTappedCards +=1;
-          }
-          else {
-            cardColor = CategoryCard.colorOfOtherCards;
-          }
-
-          if (CategoryCard.numOfTappedCards <= 1) {
-            cardColor == defaultCardColor ? cardColor = mainOrange : cardColor =
-                lightOrange;
-          }
-          else
-            {
-              cardColor = defaultCardColor;
-            }
-        });
-
-        debugPrint('${widget.text} category card tapped.');
+          widget.onSelected();
+          debugPrint('${widget.category.categoryName} category card tapped.');
+        },
+        );
       },
 
       splashColor:  Colors.white38,
 
       child:  SizedBox(
-        width: 130,
+        width: 120,
         height: 50,
 
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  widget.text,
+                  widget.category.categoryName,
                   style:  TextStyle(
                       fontSize: 15,
-                      color: widget.CategoryCardSelected? tappedCardTextColor:defaultCardTextColor,
+                      color:  widget.selectedCategory == widget.category? selectedTextColor:notSelectedTextColor,
                       fontWeight: FontWeight.w600),
                 ),
           ),
