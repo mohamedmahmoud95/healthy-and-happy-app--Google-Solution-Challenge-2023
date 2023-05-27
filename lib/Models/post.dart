@@ -7,27 +7,25 @@ class Post
   String? id;
   String? text;
   String? imageURL;
-  AppUser postAuthor;
+  AppUser? postAuthor;
   int? numOfLikes;
   int? numOfComments;
   int? numOfShares;
-  PostCategory category;
+  PostCategory? category;
   bool? trending;
-  DateTime dateTime;
-
+  DateTime? dateTime;
 
   Post({
     this.id,
     this.text,
     this.imageURL,
-    required this.postAuthor,
-    this.numOfLikes ,
+    this.postAuthor,
+    this.numOfLikes = 0 ,
     this.numOfComments,
     this.numOfShares,
-    required this.category,
+    this.category,
     this.trending,
-    required this.dateTime,
-
+    this.dateTime,
   }){
     updatePostTrendingState(); //initializer
   }
@@ -52,5 +50,4 @@ Post samplePost2 = Post(postAuthor: sampleAppUser2, numOfLikes: 33, numOfComment
 Post samplePost3 = Post(postAuthor: sampleAppUser3, numOfLikes: 11, numOfComments: 1, numOfShares: 5, category: nutrition, dateTime: DateTime.now().subtract(const Duration(minutes: 45)),text: "You don't have to control your thoughts. \nYou just have to stop letting them control you.\n - Dan Millman" ,imageURL: "https://blogimage.vantagefit.io/vfitimages/2022/08/21-Men-s-Mental-Health-Quotes-to-Mark-Men-s-Mental-Health-Week-.png");
 
 Post samplePost4 = Post(postAuthor: sampleAppUser4, numOfLikes: 23, numOfComments: 0, numOfShares: 7, category: other,dateTime: DateTime.now().subtract(const Duration(hours: 2)), text: "" ,imageURL: "https://everydaypower.com/wp-content/uploads/2022/12/mental-health-quotes-2.png");
-
 
