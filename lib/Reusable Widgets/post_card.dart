@@ -1,10 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Reusable%20Widgets/share_post_widget.dart';
 import 'package:mental_health_app/Reusable%20Widgets/write_comment_widget.dart';
-
 import '../../../Models/post.dart';
-import 'package:intl/intl.dart';
 
 class PostCard extends StatefulWidget {
   final Post post;
@@ -19,31 +18,33 @@ class _PostCardState extends State<PostCard> {
   int numOfTimesLikeButtonTapped = 0;
 
   String calcPostTime(){
-    DateTime postTime = widget.post.dateTime;
+    DateTime? postTime = widget.post.dateTime;
     DateTime now = DateTime.now();
-    if(widget.post.dateTime.year == now.year) {
-      if (widget.post.dateTime.month == now.month) {
-        if (widget.post.dateTime.day == now.day) {
-          if (widget.post.dateTime.hour == now.hour) {
-            return "${now.minute - widget.post.dateTime.minute} min ago";
+    if(widget.post.dateTime!.year == now.year) {
+      if (widget.post.dateTime!.month == now.month) {
+        if (widget.post.dateTime!.day == now.day) {
+          if (widget.post.dateTime!.hour == now.hour) {
+            return "${now.minute - widget.post.dateTime!.minute} min ago";
           }
           else {
-            return "${now.hour - widget.post.dateTime.hour} hr ago";
+            return "${now.hour - widget.post.dateTime!.hour} hr ago";
           }
         }
         else {
-          return "${now.minute - widget.post.dateTime.day} d ago";
+          return "${now.minute - widget.post.dateTime!.day} d ago";
         }
       }
       else {
-        return "${now.minute - widget.post.dateTime.month} months ago";
+        return "${now.minute - widget.post.dateTime!.month} months ago";
       }
     }
     else
       {
-        return "${now.minute - widget.post.dateTime.year} years ago";
+        return "${now.minute - widget.post.dateTime!.year} years ago";
       }
   }
+
+
 
 
   @override
@@ -61,14 +62,14 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   CircleAvatar(
                     backgroundImage: AssetImage(
-                        "${widget.post.postAuthor.profilePicUrl != null ? widget.post.postAuthor.profilePicUrl! : 'assets/images/profile_pic.png'}"),
+                        "${widget.post.postAuthor?.profilePicUrl != null ? widget.post.postAuthor?.profilePicUrl! : 'assets/images/profile_pic.png'}"),
                   ),
                   const SizedBox(width: 8.0),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${widget.post.postAuthor.firstName}  ${widget.post.postAuthor.lastName}',
+                        '${widget.post.postAuthor?.firstName}  ${widget.post.postAuthor?.lastName}',
                         style: const TextStyle(color: navyBlue),
                       ),
                       Text(

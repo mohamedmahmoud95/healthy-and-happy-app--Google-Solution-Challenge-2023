@@ -7,25 +7,25 @@ class Post
   String? id;
   String? text;
   String? imageURL;
-  AppUser postAuthor;
+  AppUser? postAuthor;
   int? numOfLikes;
   int? numOfComments;
   int? numOfShares;
-  PostCategory category;
+  PostCategory? category;
   bool? trending;
-  DateTime dateTime;
+  DateTime? dateTime;
 
   Post({
     this.id,
     this.text,
     this.imageURL,
-    required this.postAuthor,
-    this.numOfLikes ,
+    this.postAuthor,
+    this.numOfLikes = 0 ,
     this.numOfComments,
     this.numOfShares,
-    required this.category,
+    this.category,
     this.trending,
-    required this.dateTime,
+    this.dateTime,
   }){
     updatePostTrendingState(); //initializer
   }

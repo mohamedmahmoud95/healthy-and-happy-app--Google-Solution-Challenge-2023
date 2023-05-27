@@ -58,6 +58,7 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   teachable: ^0.0.2
   intl: ^0.18.1
+  image_picker: ^0.8.7+5
 
 dev_dependencies:
   flutter_test:
