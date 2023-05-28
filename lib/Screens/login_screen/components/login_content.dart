@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../Constants/project_colors.dart';
+import '../../../Models/appUser.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
 import '../../screens_wrapper/screens_wrapper.dart';
 import '../animations/change_screen_animation.dart';
@@ -65,6 +66,9 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
+          setState(() {
+            thisAppUser.isTherapist = false; //regular user, not a therapist
+          });
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
           },
         style: ElevatedButton.styleFrom(
@@ -75,6 +79,35 @@ class _LoginContentState extends State<LoginContent>
           shadowColor: Colors.black87,
         ),
         child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget therapistLoginButton(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
+      child: ElevatedButton(
+        onPressed: () {
+          setState(() {
+            thisAppUser.isTherapist = true;
+          });
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+        },
+        style: ElevatedButton.styleFrom(
+
+          padding: const EdgeInsets.symmetric(vertical: 14,),
+          shape: const StadiumBorder(),
+          //  primary: kSecondaryColor,
+          elevation: 8,
+          shadowColor: Colors.black87,
+        ),
+        child:  Text(
           title,
           style: const TextStyle(
             fontSize: 18,
@@ -172,6 +205,7 @@ class _LoginContentState extends State<LoginContent>
       inputField('Email', Ionicons.mail_outline, false),
       inputField('Password', Ionicons.lock_closed_outline, true),
       loginButton('Log In'),
+      therapistLoginButton('Therapist login'),
       forgotPassword(),
     ];
 
