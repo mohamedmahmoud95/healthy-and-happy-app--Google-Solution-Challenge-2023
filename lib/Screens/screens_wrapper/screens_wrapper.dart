@@ -1,7 +1,5 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 import '../../Constants/project_colors.dart';
@@ -11,66 +9,59 @@ import 'package:mental_health_app/Screens/acquire_knowledge_screen/acquire_knowl
 
 import '../therapists_screen/therapists_screen.dart';
 
-
-
 class ScreensWrapper extends StatefulWidget {
-   ScreensWrapper({Key? key,  }) : super(key: key);
+  int? passedIndex;
+  ScreensWrapper({Key? key, this.passedIndex}) : super(key: key);
 
   @override
   _ScreensWrapperState createState() => _ScreensWrapperState();
 }
 
 class _ScreensWrapperState extends State<ScreensWrapper> {
-  int index = 0;
+  int bottomBarNavigatorIndex = 0;
   final items = <Widget>[
     const Icon(
       Icons.home,
       size: 30,
       color: lightLavender,
     ),
-
     const Icon(
       Icons.newspaper,
       size: 30,
       color: lightLavender,
     ),
-
     const ImageIcon(
-
       AssetImage("assets/icons/therapy_session_icon.png"),
       color: lightLavender,
       size: 40,
     ),
-
     const ImageIcon(
       AssetImage("assets/icons/reading_icon.png"),
       color: lightLavender,
       size: 33,
     ),
-
-
   ];
 
-  Widget returnSelectedScreen(int x ) {
+  Widget returnSelectedScreen(int x) {
     switch (x) {
       case 0:
         //news feed
-        return  const HomeScreen();
+        return const HomeScreen();
       case 1:
         //self-care
-        return  const NewsFeedScreen();
+        return const NewsFeedScreen();
 
       case 2:
         //chat
-      return  TherapistsScreen();
-        //ConsultTherapistScreen();
-    //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
+        return const TherapistsScreen();
+      //ConsultTherapistScreen();
+      //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
 
       case 3:
-       // schedule a session
-        return  const ArticlesScreen();//
-    // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
-        //ChatsWidget(appUser: sampleAppUser1,);
+        // schedule a session
+        return const ArticlesScreen(); //
+      // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
+      //ChatsWidget(appUser: sampleAppUser1,);
     }
     //--------------------------------------------------------------------//
     throw Exception();
@@ -83,8 +74,6 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     " Acquire knowledge", //to edit this one, edit it in the articles screen
   ];
 
-
-
   @override
   void initState() {
     super.initState();
@@ -93,21 +82,24 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   @override
   Widget build(BuildContext ctx) {
     return Scaffold(
-      appBar: index == 3 ? null :
-      AppBar(
-        iconTheme: const IconThemeData(color: mainPurple, size: 30),
-          backgroundColor: mainWhite,
-          elevation: 0,
-          title: Text(titles[index],
-            style: const TextStyle(
-                color: mainPurple, fontWeight: FontWeight.normal),)),
-      drawer:  Drawer(
+      appBar: bottomBarNavigatorIndex == 3
+          ? null
+          : AppBar(
+              iconTheme: const IconThemeData(color: mainPurple, size: 30),
+              backgroundColor: mainWhite,
+              elevation: 0,
+              title: Text(
+                titles[bottomBarNavigatorIndex],
+                style: const TextStyle(
+                    color: mainPurple, fontWeight: FontWeight.normal),
+              )),
+      drawer: Drawer(
         backgroundColor: mainWhite,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-              DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: lavender,
               ),
               child: Row(
@@ -119,111 +111,198 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                     backgroundColor: mainWhite,
                     child: CircleAvatar(
                       radius: 50,
-                      foregroundImage: AssetImage('${thisAppUser.profilePicUrl}'),
+                      foregroundImage:
+                          AssetImage('${thisAppUser.profilePicUrl}'),
                     ),
-
                   ),
-
-             Column(
-               mainAxisAlignment: MainAxisAlignment.center,
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-               Text(
-                      '${thisAppUser.firstName}',
-                      style:  TextStyle(
-                        color: Colors.white,
-                        fontSize: thisAppUser.firstName!.length > 8 ? 16 : 24,
-                        overflow: TextOverflow.clip
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${thisAppUser.firstName}',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize:
+                                thisAppUser.firstName!.length > 8 ? 16 : 24,
+                            overflow: TextOverflow.clip),
                       ),
-                    ),
-
-
-
-                   Text(
-                    '${thisAppUser.lastName}',
-                    style:  TextStyle(
-                      color: Colors.white,
-                      fontSize: thisAppUser.lastName!.length > 8 ? 16 : 24,
-                    ),
+                      Text(
+                        '${thisAppUser.lastName}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: thisAppUser.lastName!.length > 8 ? 16 : 24,
+                        ),
+                      ),
+                    ],
                   ),
-
-               ],
-             ),
-
-            ],
-        ),
-             ),
+                ],
+              ),
+            ),
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(color: Colors.transparent,),
+              child: Divider(
+                color: Colors.transparent,
+              ),
             ),
 
             ListTile(
-              leading: const Icon(Icons.home, color: mainPurple,),
-              title: const Text('Home', style: TextStyle(color: mainPurple,fontSize: 20),),
+              leading: const Icon(
+                Icons.home,
+                color: mainPurple,
+              ),
+              title: const Text(
+                'Home',
+                style: TextStyle(color: mainPurple, fontSize: 20),
+              ),
               onTap: () {
-                // Handle the onTap action for the Home item
-              },
-            ),
-
-             const Padding(
-               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-               child: Divider(color: lavender,),
-             ),
-
-            ListTile(
-              leading: const Icon(Icons.settings, color: mainPurple,),
-              title: const Text('Settings', style: TextStyle(color: mainPurple,fontSize: 20),),
-              onTap: () {
+                setState(() {
+                  bottomBarNavigatorIndex = 0; // Navigate to home screen
+                });
+                Navigator.pop(context); // Pop the drawer
               },
             ),
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(color: lavender,),
+              child: Divider(
+                color: lavender,
+              ),
             ),
 
+            //         ListTile(
+            //           leading: const Icon(Icons.newspaper, color: mainPurple,),
+            //           title: const Text('Community', style: TextStyle(color: mainPurple,fontSize: 20),),
+            //           onTap: () {
+            // setState(() {
+            //   bottomBarNavigatorIndex = 1; //Navigate to newsfeed screen
+            // });
+            // Navigator.pop(context); // Pop the drawer
+            //
+            //           },
+            //         ),
+            //
+            //         const Padding(
+            //           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            //           child: Divider(color: lavender,),
+            //         ),
+
+            // ListTile(
+            //   leading: const ImageIcon(
+            //
+            //     AssetImage("assets/icons/therapy_session_icon.png"),
+            //   color: mainPurple,
+            //   size: 30,),
+            //   title: const Text('My sessions', style: TextStyle(color: mainPurple,fontSize: 20),),
+            //   onTap: () {
+            //     setState(() {
+            //       bottomBarNavigatorIndex = 2; //Navigate to sessions screen
+            //     });
+            //     Navigator.pop(context); // Pop the drawer
+            //   },
+            // ),
+            //
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            //   child: Divider(color: lavender,),
+            // ),
+            //
+            //
+            //
+            // ListTile(
+            //   leading: const ImageIcon(
+            //
+            //     AssetImage("assets/icons/reading_icon.png"),
+            //     color: mainPurple,
+            //     size: 30,),
+            //   title: const Text('Know more', style: TextStyle(color: mainPurple,fontSize: 20),),
+            //   onTap: () {
+            //     setState(() {
+            //       bottomBarNavigatorIndex = 3; //Navigate to know-more screen
+            //     });
+            //     Navigator.pop(context); // Pop the drawer
+            //   },
+            // ),
+            //
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            //   child: Divider(color: lavender,),
+            // ),
+
             ListTile(
-              leading: const Icon(Icons.settings, color: mainPurple,),
-              title: const Text('Settings', style: TextStyle(color: mainPurple,fontSize: 20),),
+              leading: const Icon(
+                Icons.grid_view_outlined,
+                color: mainPurple,
+              ),
+              title: const Text(
+                'All app features',
+                style: TextStyle(color: mainPurple, fontSize: 20),
+              ),
               onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AllAppFeatures()));
               },
             ),
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(color: lavender,),
+              child: Divider(
+                color: lavender,
+              ),
             ),
 
             ListTile(
-              leading: const Icon(Icons.settings, color: mainPurple,),
-              title: const Text('Settings', style: TextStyle(color: mainPurple,fontSize: 20),),
+              leading: const Icon(
+                Icons.settings,
+                color: mainPurple,
+              ),
+              title: const Text(
+                'Settings',
+                style: TextStyle(color: mainPurple, fontSize: 20),
+              ),
               onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()));
               },
             ),
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(color: lavender,),
+              child: Divider(
+                color: lavender,
+              ),
+            ),
+
+            ListTile(
+              leading: const Icon(
+                Icons.logout,
+                color: mainPurple,
+              ),
+              title: const Text(
+                'logout',
+                style: TextStyle(color: mainPurple, fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.popUntil(
+                    context,
+                    ModalRoute.withName(Navigator
+                        .defaultRouteName)); // Navigate back until the login screen is reached.
+              },
             ),
           ],
         ),
-
       ),
-      body: returnSelectedScreen(index),
-
-
-      bottomNavigationBar:
-      CurvedNavigationBar(
+      body: returnSelectedScreen(widget.passedIndex ?? bottomBarNavigatorIndex),
+      bottomNavigationBar: CurvedNavigationBar(
         color: lavender,
         backgroundColor: mainWhite,
         height: 55,
-        index: index,
+        index: bottomBarNavigatorIndex,
         items: items,
         onTap: (index) {
           setState(() {
-            this.index = index;
+            bottomBarNavigatorIndex = index;
           });
         },
       ),
@@ -231,34 +310,30 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   }
 }
 
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
 
+class _SettingsScreenState extends State<SettingsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
 
+class AllAppFeatures extends StatefulWidget {
+  const AllAppFeatures({Key? key}) : super(key: key);
 
+  @override
+  State<AllAppFeatures> createState() => _AllAppFeaturesState();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class _AllAppFeaturesState extends State<AllAppFeatures> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
