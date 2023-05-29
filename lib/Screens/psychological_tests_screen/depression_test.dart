@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 
 import '../../screens/screens_wrapper/screens_wrapper.dart';
-import '../sessions_screen/therapists_list_screen.dart';
+import '../sessions_screen_for_normal_users/therapists_list_screen.dart';
 
 
 class DepressionTest extends StatefulWidget {

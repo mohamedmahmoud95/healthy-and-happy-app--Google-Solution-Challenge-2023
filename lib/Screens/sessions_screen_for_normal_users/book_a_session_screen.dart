@@ -9,7 +9,7 @@ import '../../Reusable Widgets/button_widget.dart';
 import 'confirm_booking_screen.dart';
 
 class SessionBookingScreen extends StatefulWidget {
-   final Therapist therapist;
+  final Therapist therapist;
 
   const SessionBookingScreen({super.key, required this.therapist});
 

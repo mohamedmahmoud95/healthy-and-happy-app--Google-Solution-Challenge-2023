@@ -6,8 +6,9 @@ import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart
 import '../../Constants/project_colors.dart';
 
 import '../home_screen/home_screen.dart';
-import '../sessions_screen/consult_therapist_screen.dart';
 import 'package:mental_health_app/Screens/acquire_knowledge_screen/acquire_knowledge_screen.dart';
+
+import '../therapists_screen/therapists_screen.dart';
 
 
 
@@ -60,7 +61,8 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
 
       case 2:
         //chat
-      return  ConsultTherapistScreen();
+      return  TherapistsScreen();
+        //ConsultTherapistScreen();
     //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
 
       case 3:
