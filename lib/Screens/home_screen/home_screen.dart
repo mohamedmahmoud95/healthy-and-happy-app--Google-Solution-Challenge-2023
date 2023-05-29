@@ -1,11 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Reusable%20Widgets/card_widget.dart';
 import 'package:mental_health_app/Screens/psychological_tests_screen/depression_test.dart';
 
 import 'package:reviews_slider/reviews_slider.dart';
 
 import '../../Constants/project_colors.dart';
+import '../../Reusable Widgets/appBar_widget.dart';
 import '../../Reusable Widgets/big_card_widget.dart';
 import '../workouts_and_yoga_screen/workouts_and_yoga_tabbar_screen.dart';
 
@@ -26,6 +28,8 @@ class _HomeScreen extends State<HomeScreen> {
 
     return Scaffold(
       backgroundColor: mainWhite,
+       // appBar: AppBarWidget(title: 'Good morning, ${thisAppUser.firstName} ^^',),
+
       body: Container(
           color: mainWhite,
           child: SingleChildScrollView(
