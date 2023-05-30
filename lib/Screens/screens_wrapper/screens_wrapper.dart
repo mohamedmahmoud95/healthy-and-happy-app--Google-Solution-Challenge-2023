@@ -4,6 +4,7 @@ import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 import '../../Constants/project_colors.dart';
 
+import '../all_app_features_screen/all_app_features_screen.dart';
 import '../home_screen/home_screen.dart';
 import 'package:mental_health_app/Screens/acquire_knowledge_screen/acquire_knowledge_screen.dart';
 
@@ -241,7 +242,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AllAppFeatures()));
+                    builder: (context) => const AllAppFeaturesScreen()));
               },
             ),
 
@@ -324,16 +325,3 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 }
 
-class AllAppFeatures extends StatefulWidget {
-  const AllAppFeatures({Key? key}) : super(key: key);
-
-  @override
-  State<AllAppFeatures> createState() => _AllAppFeaturesState();
-}
-
-class _AllAppFeaturesState extends State<AllAppFeatures> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
