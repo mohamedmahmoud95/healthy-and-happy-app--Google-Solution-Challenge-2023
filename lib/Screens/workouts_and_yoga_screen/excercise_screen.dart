@@ -11,13 +11,7 @@ import '../../Reusable Widgets/workout_card_widget.dart';
 
 
 
-YoutubePlayerController _controller = YoutubePlayerController(
-  initialVideoId: 'f2O6mQkFiiw',
-  flags: const YoutubePlayerFlags(
-    autoPlay: false,
-    mute: true,
-  ),
-);
+
 
 
 class ExerciseScreen extends StatefulWidget {
@@ -30,7 +24,13 @@ class ExerciseScreen extends StatefulWidget {
 
 class  _ExerciseScreenState extends State<ExerciseScreen> {
   late VideoPlayerController _controller;
-
+  // YoutubePlayerController _controller = YoutubePlayerController(
+  //   initialVideoId: '${widget.exercise.videoId}',
+  //   flags: const YoutubePlayerFlags(
+  //     autoPlay: false,
+  //     mute: true,
+  //   ),
+  // );
   @override
   void initState() {
     super.initState();
@@ -72,7 +72,10 @@ class  _ExerciseScreenState extends State<ExerciseScreen> {
 
             const SizedBox(height: 8),
 
-            ExerciseVideoCard(exercise: catCowPose,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExerciseVideoCard(exercise: widget.exercise,),
+            ),
 
             const SizedBox(height: 16),
             Padding(

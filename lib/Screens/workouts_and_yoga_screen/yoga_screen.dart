@@ -91,8 +91,6 @@ class _YogaScreenState extends State<YogaScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => ExerciseScreen(exercise: catCowPose)));
-                            //const Cat())
-
                       },
                     ),
 
@@ -115,8 +113,7 @@ class _YogaScreenState extends State<YogaScreen> {
                       onClicked: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const FWbend())
-                        );
+                            MaterialPageRoute(builder: (context) => ExerciseScreen(exercise: forwardBendPose)));
                       },
                     ),
 

@@ -59,7 +59,52 @@ final Exercise catCowPose = Exercise(
 );
 
 
+final Exercise forwardBendPose = Exercise(
+  name: 'Forward Bend',
+  youTubeVideoUrl: 'https://www.youtube.com/watch?v=g7Uhp5tphAs',
+  imageUrl: 'http://cdn.shopify.com/s/files/1/0085/4373/1759/articles/blog-childsPose_600x.jpg',
 
+  videoId: 'g7Uhp5tphAs',
+
+  howTo:
+  'Stand with both feet on the mat.\n'
+      'Your feet are together or hip width apart\n'
+      'inhale and raise your straight arms over your head,\n'
+      'palms are facing each other.\n\n'
+      'Keep your arms active until the fingertips.\n\n'
+      'Bring your shoulderblades together and shoulders away from the ears.\n\n'
+      'Lift yourself through the crown of your head up to the sky,\n'
+      'lengthening the spine.Exhale and start to bend forward starting with your hips.\n\n'
+      'Bend down as far as you can with a straigh back.\n\n'
+      'Keep your legs straight,\n'
+      'lift your kneecaps up.\n\n'
+      'If possible place the hands on the ground or let them easily hang down.\n\n'
+      'You can also interlace your arms.\n\n'
+      'Take care not to lean backwards,\n'
+      'keep your body weight over the balls of your feet.\n\n'
+      'The muscle strength comes from your legs not from your torso.\n\n'
+      'This is relaxed and hangs freely down to the floor,\n'
+      'feeling how gravity works on lengthening your spine.\n\n'
+      'Keep your head relaxed without tension in neck or shoulders.\n\n'
+      'Observe how with every exhalation the gaps between your vertebra in the cervical spine opens.\n\n'
+      'Start with holding the pose for several breaths and with practice increase the time to one minute.\n\n'
+      'To come out of the pose,\n'
+      'slowly roll your body up with an inhalation,\n'
+      'vertebra for vertebra.\n'
+      'Your head lifts up at last.\n',
+
+
+  benefits:
+      '- Calms the brain and helps with frequent headaches\n\n'
+      '- relieves stress and mild depression\n\n'
+          '- Stimulates the liver and kidneys'
+          '- Stretches the hamstrings, calves, and hips\n\n'
+          '- Strengthens the thighs and knees\n\n'
+          '- Improves digestion'
+          '- Reduces fatigue, anxiety, insomnia\n',
+
+
+);
 
 final Exercise childPose = Exercise(
   name: "Child Pose",
