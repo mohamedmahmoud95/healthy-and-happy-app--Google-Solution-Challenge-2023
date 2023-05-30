@@ -38,12 +38,7 @@ class _AllAppFeaturesScreenState extends State<AllAppFeaturesScreen> {
             child: Center(
               child: Column(children: [
 
-
-
                 const SizedBox(height: 16),
-
-
-
 
                 Wrap(
                   spacing: 12.0, // gap between adjacent chips
@@ -91,7 +86,49 @@ class _AllAppFeaturesScreenState extends State<AllAppFeaturesScreen> {
                                 builder: (context) => DepressionTest()),
                           );
                         }),
-                    //  QuestionCard(question:sampleQuestion1, selectedAnswer: 1,),
+
+                    CardWidget(
+                        optionalNumber: 237,
+                        text: "Pedometer",
+                        image: 'assets/images/pedometer4.png',
+                        onClicked: () {}),
+
+                    CardWidget(
+                        text: "Workout",
+                        image: 'assets/images/workout2.png',
+                        onClicked: () {
+                          Navigator.push(
+                            context,
+                            // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
+                            MaterialPageRoute(
+                                builder: (context) =>  const WorkoutAndYogaScreen()),
+                          );
+
+                        }),
+
+                    CardWidget(
+                        text: "Sleep tracking",
+                        image: 'assets/images/sleep.png',
+                        onClicked: () {}),
+
+                    CardWidget(
+                        text: "Wearables",
+                        image: 'assets/images/watch.png',
+                        onClicked: () {}),
+
+
+                    BigCardWidget(
+                        text: "\nPsychometer\n\n"
+                            " Depression, Anxiety\n and stress scale\n",
+                        image: 'assets/images/test6.png',
+                        onClicked: () {
+                          Navigator.push(
+                            context,
+                            // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
+                            MaterialPageRoute(
+                                builder: (context) => DepressionTest()),
+                          );
+                        }),
                   ],
                 ),
                 const SizedBox(

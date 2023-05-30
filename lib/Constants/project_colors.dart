@@ -9,6 +9,8 @@ const secondary = Color(0xFF2D5D70);
 const mainWhite = Color.fromARGB(255,251,251, 251);
 
 
+const lightPurple = Color.fromARGB(255,236,243,252);
+
 const mainPurple = Color.fromARGB(255,49,8, 122);
 const lavender = Color(0xFF5e5fca);
 const lightLavender = Color.fromARGB(255,239,239,250);
@@ -29,3 +31,10 @@ const darkOrange = Color(0xFFF67952);
 const calmGreen = Color.fromARGB(55, 8, 12, 44);
 
 const Color page = Color.fromARGB(255, 244,219,210);
+
+const Color lightPink = Color.fromARGB(255,252,244,244);
+const Color pink = Color.fromARGB(255,244,116,116);
+
+
+
+
