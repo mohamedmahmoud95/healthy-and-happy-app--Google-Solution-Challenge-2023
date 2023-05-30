@@ -27,3 +27,5 @@ const darkOrange = Color(0xFFF67952);
 
 
 const calmGreen = Color.fromARGB(55, 8, 12, 44);
+
+const Color page = Color.fromARGB(255, 244,219,210);
