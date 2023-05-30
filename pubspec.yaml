@@ -61,6 +61,9 @@ dependencies:
   intl: ^0.18.1
   image_picker: ^0.8.7+5
   path_provider: ^2.0.15
+  font_awesome_flutter: ^10.4.0
+  table_calendar: ^3.0.9
+  flutter_settings_screens: ^0.3.1
 
 
 dev_dependencies:
@@ -170,6 +173,37 @@ flutter:
     - assets/icons/yoga.png
     - assets/icons/yoga2.png
     - assets/icons/workout.png
+    - assets/images/twitter.png
+    - assets/images/Mohamed_Mahmoud.png
+    - assets/images/profile_pic.png
+    - assets/images/test.png
+    - assets/images/test2.png
+    - assets/images/test3.png
+    - assets/images/test4.png
+    - assets/images/test5.png
+    - assets/images/test6.png
+    - assets/images/test7.png
+    - assets/images/doctor01.png
+    - assets/images/doctor02.png
+    - assets/images/doctor04.png
+    - assets/images/doctor05.png
+    - assets/images/patient.png
+    - assets/images/online_session.png
+    - assets/images/offline_session.png
+    - assets/images/offline_session_2.png
+    - assets/icons/mental_health_icon.png
+    - assets/icons/health_icon.png
+    - assets/icons/therapy_session_icon.png
+    - assets/icons/reading_icon.png
+    - assets/icons/mental_health_icon2.png
+    - assets/icons/yoga.png
+    - assets/icons/yoga2.png
+    - assets/icons/workout.png
+    - assets/images/success.json
+    - assets/images/mark.jpeg
+
+
+
 
 
 

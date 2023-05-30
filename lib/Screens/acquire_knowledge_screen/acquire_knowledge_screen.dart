@@ -27,7 +27,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
           appBar: AppBar(
                backgroundColor: mainWhite,
                elevation: 0,
-               title: const Text('Acquire knowledge',
+               title: const Text('Know more',
                    style: TextStyle(color: mainPurple,fontWeight: FontWeight.normal)),
 
           bottom:  TabBar(

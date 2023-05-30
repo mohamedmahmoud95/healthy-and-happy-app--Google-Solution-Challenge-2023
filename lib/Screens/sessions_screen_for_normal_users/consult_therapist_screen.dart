@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
-import 'package:mental_health_app/Screens/sessions_screen/therapists_list_screen.dart';
+import 'package:mental_health_app/Screens/sessions_screen_for_normal_users/therapists_list_screen.dart';
+
 
 
 class ConsultTherapistScreen extends StatefulWidget {
@@ -58,23 +59,31 @@ class _ConsultTherapistScreenState extends State<ConsultTherapistScreen> {
 
 
                         const SizedBox(height: 40),
+
+                        Center(
+                          child: ButtonWidget(text: 'Doctor Appointment',
+                            onClicked: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
+                            ),
+                          ),
+                        ),
                         Center(
                           child: ButtonWidget(text: 'Book a session',
                             onClicked: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
-                          ),
+                              context,
+                              MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
+                            ),
                           ),
                         ),
 
-
-                          ],
+                      ],
                     ),
                   ),
                 ),
               ],
             ),
-          ],
+            ],
           ),
         ),
       ),

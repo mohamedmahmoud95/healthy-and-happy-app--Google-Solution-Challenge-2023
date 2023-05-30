@@ -10,7 +10,7 @@ import 'book_a_session_screen.dart';
 
 class TherapistListScreen extends StatefulWidget {
 
-   TherapistListScreen({super.key});
+  TherapistListScreen({super.key});
 
   @override
   State<TherapistListScreen> createState() => _TherapistListScreenState();
@@ -35,7 +35,7 @@ class _TherapistListScreenState extends State<TherapistListScreen> {
         itemCount: availableTherapists.length,
         itemBuilder: (context, index) {
 
-           therapist = availableTherapists[index];
+          therapist = availableTherapists[index];
 
           return Card(
             color: lightOrange,
