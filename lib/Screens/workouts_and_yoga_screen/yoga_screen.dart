@@ -34,110 +34,110 @@ class _YogaScreenState extends State<YogaScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
- home: Scaffold(
+      home: Scaffold(
 
-      backgroundColor: mainWhite,
-
-
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-
-      YoutubePlayerBuilder(
-      player: YoutubePlayer(
-      controller: _controller,
-      ),
-        builder: (context, player) {
-          return Column(
-            children: [
-              // some widgets
-           //   player,
-              //some other widgets
-            ],
-          );
-        },
-    ),
+        backgroundColor: mainWhite,
 
 
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+
+            YoutubePlayerBuilder(
+              player: YoutubePlayer(
+                controller: _controller,
+              ),
+              builder: (context, player) {
+                return const Column(
+                  children: [
+                    // some widgets
+                    //   player,
+                    //some other widgets
+                  ],
+                );
+              },
+            ),
 
 
-          Container(
-            height: 300,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://t3.ftcdn.net/jpg/03/51/12/98/360_F_351129860_I95uGc6ztv8mg5oXPivi9ljXkEZYnpov.jpg',
+
+
+            Container(
+              height: 300,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://t3.ftcdn.net/jpg/03/51/12/98/360_F_351129860_I95uGc6ztv8mg5oXPivi9ljXkEZYnpov.jpg',
+                  ),
+                  fit: BoxFit.contain,
                 ),
-                fit: BoxFit.contain,
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  children: [
 
-                  WorkoutCardWidget(
-                    text: 'Cat Cow pose',
-                    imageUrl: 'https://pbs.twimg.com/media/CgKJTktUIAASQs5.png',
+                    WorkoutCardWidget(
+                      text: 'Cat Cow pose',
+                      imageUrl: 'https://pbs.twimg.com/media/CgKJTktUIAASQs5.png',
 
-                    onClicked: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Cat())
-                      );
-                    },
-                  ),
+                      onClicked: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Cat())
+                        );
+                      },
+                    ),
 
-                  WorkoutCardWidget(
-                    text: 'Child pose',
-                    imageUrl: 'https://static.vecteezy.com/system/resources/previews/012/598/361/original/child-pose-yoga-free-png.png',
+                    WorkoutCardWidget(
+                      text: 'Child pose',
+                      imageUrl: 'https://static.vecteezy.com/system/resources/previews/012/598/361/original/child-pose-yoga-free-png.png',
 
-                    onClicked: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ChildPoseScreen())
-                      );
-                    },
-                  ),
+                      onClicked: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ChildPoseScreen())
+                        );
+                      },
+                    ),
 
-                  WorkoutCardWidget(
-                    text: 'forward bend',
-                    imageUrl: 'https://www.pngkit.com/png/full/936-9362435_forward-fold-yoga-pose-forward-bend-cartoon.png',
+                    WorkoutCardWidget(
+                      text: 'forward bend',
+                      imageUrl: 'https://www.pngkit.com/png/full/936-9362435_forward-fold-yoga-pose-forward-bend-cartoon.png',
 
-                    onClicked: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const FWbend())
-                      );
-                    },
-                  ),
-
-
-                  WorkoutCardWidget(
-                    text: 'Restorative bridge',
-                    imageUrl: 'https://cdn0.iconfinder.com/data/icons/yoga-5/545/yoga6-512.png',
-
-                    onClicked: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Bridge())
-                      );
-                    },
-                  ),
+                      onClicked: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const FWbend())
+                        );
+                      },
+                    ),
 
 
-                ],
+                    WorkoutCardWidget(
+                      text: 'Restorative bridge',
+                      imageUrl: 'https://cdn0.iconfinder.com/data/icons/yoga-5/545/yoga6-512.png',
+
+                      onClicked: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Bridge())
+                        );
+                      },
+                    ),
+
+
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
- ),
     );
   }
 }
@@ -348,7 +348,7 @@ class  _CatState extends State<Cat> {
           children: [
 
 
-          EVideoCard(),
+            EVideoCard(),
             const SizedBox(height: 16),
             const Text(
               ' How to ?',
@@ -356,31 +356,37 @@ class  _CatState extends State<Cat> {
             ),
             const SizedBox(height: 8),
             const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                'Start in tabletop position on your fours, \n'
-                    'Wrists under your shoulders, knees under your hips. \n'
-                    'Knees, legs, feet are hip width apart.\n\n'
-                    'Keep shoulders back and down, relaxed neck.\n\n'
-                    'Center your head in a neutral position,\n'
-                    ' gaze softens downward.\n\n'
-                    ' Visualize your spine moving softly like the flow of a wave.\n\n'
-                    'On an inhale you move into cow pose.\n\n'
-                    'Begin to lift your sitting bones and your\n'
-                    ' chest towards the ceiling, \n'
-                    'while your belly sinks to the floor. \n\n'
-                    'Lift your chin, curving slightly your neck. \n\n'
-                    'Look towards the ceiling. \n\n'
-                    'Keep the shoulders away from the ears, \n\n'
-                    'and bring shoulderblades together to open your chest.\n\n'
-                    'On an exhale reversely move into cat: \n\n'
-                    'Pull your belly button to your spine, \n\n'
-                    'curving your back towards the ceiling.\n\n'
-                    'Repeat cat-cow several times together with your breath. \n\n'
-                    'Try to stay firm in arms and legs. \n\n'
-                    'The movement comes from your back and abdomen muscles. \n\n'
-                    'Focus on the coordination of breath and movement.\n\n',
-                style: TextStyle(fontSize: 16),
+              padding: EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Start in tabletop position on your fours, \n'
+                        'Wrists under your shoulders, knees under your hips. \n'
+                        'Knees, legs, feet are hip width apart.\n\n'
+                        'Keep shoulders back and down, relaxed neck.\n\n'
+                        'Center your head in a neutral position,\n'
+                        ' gaze softens downward.\n\n'
+                        ' Visualize your spine moving softly like the flow of a wave.\n\n'
+                        'On an inhale you move into cow pose.\n\n'
+                        'Begin to lift your sitting bones and your\n'
+                        ' chest towards the ceiling, \n'
+                        'while your belly sinks to the floor. \n\n'
+                        'Lift your chin, curving slightly your neck. \n\n'
+                        'Look towards the ceiling. \n\n'
+                        'Keep the shoulders away from the ears, \n\n'
+                        'and bring shoulderblades together to open your chest.\n\n'
+                        'On an exhale reversely move into cat: \n\n'
+                        'Pull your belly button to your spine, \n\n'
+                        'curving your back towards the ceiling.\n\n'
+                        'Repeat cat-cow several times together with your breath. \n\n'
+                        'Try to stay firm in arms and legs. \n\n'
+                        'The movement comes from your back and abdomen muscles. \n\n'
+                        'Focus on the coordination of breath and movement.\n\n',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -389,15 +395,22 @@ class  _CatState extends State<Cat> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'gentle flow to increase flexibility and mobility \n'
-                  'of your spine stretches front torso and neck massages \n'
-                  'spine and internal organs increases awareness of \n'
-                  'your spine and body coordination\n\n'
+            const Card(
+              elevation: 2,
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'gentle flow to increase flexibility and mobility \n'
+                      'of your spine stretches front torso and neck massages \n'
+                      'spine and internal organs increases awareness of \n'
+                      'your spine and body coordination\n\n'
                   ,
-              style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
             ),
 
+            const SizedBox(height: 30),
 
           ],
         ),
