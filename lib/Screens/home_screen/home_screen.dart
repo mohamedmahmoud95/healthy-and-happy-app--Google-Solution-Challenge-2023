@@ -30,10 +30,10 @@ class _HomeScreen extends State<HomeScreen> {
       backgroundColor: mainWhite,
        // appBar: AppBarWidget(title: 'Good morning, ${thisAppUser.firstName} ^^',),
 
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
           color: mainWhite,
-          child: SingleChildScrollView(
-            child: Center(
+          child: Center(
               child: Column(children: [
                 const SizedBox(height: 8),
                 Image.asset('assets/images/home_image.jpg'),
@@ -111,7 +111,8 @@ class _HomeScreen extends State<HomeScreen> {
                 )
               ]),
             ),
-          )),
+        ),
+      ),
     );
   }
 }

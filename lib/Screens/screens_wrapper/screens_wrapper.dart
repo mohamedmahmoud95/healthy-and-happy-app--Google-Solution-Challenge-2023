@@ -4,10 +4,13 @@ import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 import '../../Constants/project_colors.dart';
 
+import '../../screens/screens_wrapper/screens_wrapper.dart';
+import '../about_us_screen/about_us_screen.dart';
 import '../all_app_features_screen/all_app_features_screen.dart';
 import '../home_screen/home_screen.dart';
 import 'package:mental_health_app/Screens/acquire_knowledge_screen/acquire_knowledge_screen.dart';
 
+import '../settings_screen/settings_screen.dart';
 import '../therapists_screen/therapists_screen.dart';
 
 class ScreensWrapper extends StatefulWidget {
@@ -263,10 +266,33 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                 style: TextStyle(color: mainPurple, fontSize: 20),
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const SettingsScreen()));
+                 Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>  const SettingsScreen()));
               },
             ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: Divider(
+                color: lavender,
+              ),
+            ),
+
+            ListTile(
+              leading: const Icon(
+                Icons.people,
+                color: mainPurple,
+              ),
+              title: const Text(
+                'About us',
+                style: TextStyle(color: mainPurple, fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>  const AboutUsScreen()));
+              },
+            ),
+
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
@@ -310,18 +336,3 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
     );
   }
 }
-
-class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
-
-  @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
