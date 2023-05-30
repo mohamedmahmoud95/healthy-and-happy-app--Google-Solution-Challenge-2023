@@ -1,20 +1,21 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/exercise.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../Constants/project_colors.dart';
 
 
-class EVideoCard extends StatelessWidget {
-
-
+class ExerciseVideoCard extends StatelessWidget {
+  final Exercise exercise;
+  const ExerciseVideoCard({super.key, required this.exercise, });
 
   @override
   Widget build(BuildContext context) {
 
     YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: 'y39PrKY_4JM',
+      initialVideoId: '${exercise.videoId}',
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
@@ -22,7 +23,7 @@ class EVideoCard extends StatelessWidget {
     );
 
     return Container(
-      color: lightLavender,
+      color: mainWhite,
       margin: const EdgeInsets.all(2),
       child: Card(
         color: lightOrange,
@@ -70,7 +71,7 @@ class EVideoCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
 
-                              const Text('Cat-Cow Yoga pose', maxLines: 2,
+                               Text( '${exercise.name}', maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(color: mainPurple, fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -100,7 +101,7 @@ class EVideoCard extends StatelessWidget {
   }
 
   Future<void> _launchUrl() async {
-    final Uri _url = Uri.parse("https://www.youtube.com/watch?v=y39PrKY_4JM");
+    final Uri _url = Uri.parse('${exercise.youTubeVideoUrl}');
     if (!await launchUrl(_url)) {
       throw Exception('Could not launch $_url');
     }

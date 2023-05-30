@@ -28,21 +28,21 @@ class VideoScreen extends StatefulWidget {
 class _VideoScreenState extends State<VideoScreen> {
   List<String> images = [];
   List<VideoItem> searchResults = [];
-
-  Future<List<String>> fetchImages() async {
-    final response = await http.get(Uri.parse('https://picsum.photos/v2/list?page=1&limit=20'));
-    if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-      List<String> urls = data.map((item) => item['download_url'].toString()).toList();
-
-      setState(() {
-        images = urls..shuffle();
-      });
-      return urls;
-    } else {
-      throw Exception('Failed to load images');
-    }
-  }
+  //
+  // Future<List<String>> fetchImages() async {
+  //   final response = await http.get(Uri.parse('https://picsum.photos/v2/list?page=1&limit=20'));
+  //   if (response.statusCode == 200) {
+  //     List<dynamic> data = jsonDecode(response.body);
+  //     List<String> urls = data.map((item) => item['download_url'].toString()).toList();
+  //
+  //     setState(() {
+  //       images = urls..shuffle();
+  //     });
+  //     return urls;
+  //   } else {
+  //     throw Exception('Failed to load images');
+  //   }
+  // }
 
   Future<List<VideoItem>> searchVideos(String query) async {
     final response = await http.get(Uri.parse('https://www.googleapis.com/youtube/v3/search'
@@ -126,11 +126,7 @@ class _VideoScreenState extends State<VideoScreen> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    // GridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    //   crossAxisCount: 2,
-                    //   crossAxisSpacing: 10,
-                    //   mainAxisSpacing: 10,
-                    // ),
+
                     itemCount: searchResults.length,
                     itemBuilder: (context, index) {
                       return
@@ -178,7 +174,8 @@ class VideoPlayerScreen extends StatelessWidget {
           children: [
             Image.network(video.thumbnailUrl),
             const SizedBox(height: 20),
-            ButtonWidget(text: 'Watch on YouTube', onClicked: (){})
+            ButtonWidget(text: 'Watch on YouTube', onClicked: (){
+            })
           ],
         ),
       ),

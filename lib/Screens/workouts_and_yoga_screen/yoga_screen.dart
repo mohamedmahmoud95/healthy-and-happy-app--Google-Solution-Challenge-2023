@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Reusable%20Widgets/exercise_video_card.dart';
+import 'package:mental_health_app/Screens/workouts_and_yoga_screen/excercise_screen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../Constants/project_colors.dart';
+import '../../Models/exercise.dart';
 import '../../Reusable Widgets/workout_card_widget.dart';
 
 
@@ -88,8 +90,9 @@ class _YogaScreenState extends State<YogaScreen> {
                       onClicked: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Cat())
-                        );
+                            MaterialPageRoute(builder: (context) => ExerciseScreen(exercise: catCowPose)));
+                            //const Cat())
+
                       },
                     ),
 
@@ -348,7 +351,7 @@ class  _CatState extends State<Cat> {
           children: [
 
 
-            EVideoCard(),
+            ExerciseVideoCard(exercise: catCowPose,),
             const SizedBox(height: 16),
             const Text(
               ' How to ?',
@@ -401,7 +404,7 @@ class  _CatState extends State<Cat> {
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   'gentle flow to increase flexibility and mobility \n'
-                      'of your spine stretches front torso and neck massages \n'
+                      'of your spine stretches front torso and neck massages \n\n'
                       'spine and internal organs increases awareness of \n'
                       'your spine and body coordination\n\n'
                   ,

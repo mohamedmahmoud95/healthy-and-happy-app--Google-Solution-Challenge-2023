@@ -25,7 +25,7 @@ class VideoCard extends StatelessWidget {
     );
 
     return Container(
-      color: lightLavender,
+      color: mainWhite,
       margin: const EdgeInsets.all(2),
       child: Card(
         color: lightOrange,
