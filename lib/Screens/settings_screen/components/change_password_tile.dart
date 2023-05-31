@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
+import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
 
 import '../../../Constants/project_colors.dart';
 
@@ -11,10 +13,18 @@ class ChangePasswordTile extends StatefulWidget {
 
 class _ChangePasswordTileState extends State<ChangePasswordTile> {
   bool changePasswordTileIsCollapsed = true;
+  bool _currentPasswordVisible = false;
+  bool _newPasswordVisible = false;
+  bool _confirmedNewPasswordVisible = false;
+
+  String enteredCurrentPassword = '';
+  String enteredNewPassword = '';
+  String enteredConfirmedNewPassword = '';
+
 
   @override
   Widget build(BuildContext context) {
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
         color: mainWhite,
@@ -26,17 +36,15 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
         child: ExpansionTile(
           onExpansionChanged: (value) {
             setState(() {
-              changePasswordTileIsCollapsed =
-              !changePasswordTileIsCollapsed;
+              changePasswordTileIsCollapsed = !changePasswordTileIsCollapsed;
             });
           },
           collapsedBackgroundColor: mainWhite,
           iconColor: Colors.deepOrange,
           collapsedIconColor: mainPurple,
           leading: CircleAvatar(
-              backgroundColor: changePasswordTileIsCollapsed
-                  ? lightLavender
-                  : lightPink,
+              backgroundColor:
+                  changePasswordTileIsCollapsed ? lightLavender : lightPink,
               child: Icon(
                 Icons.key,
                 color: changePasswordTileIsCollapsed
@@ -53,15 +61,184 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                   : Colors.deepOrange,
             ),
           ),
-          children: const [
+          children: [
             Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Text(
-                  "Your password seems good already :)",
-                  style: TextStyle(fontSize: 16),
-                ),
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+
+                  SizedBox(
+                    height: 50,
+                    child: Material(
+                      elevation: 1,
+                      shadowColor: Colors.black87,
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                      child: TextField(
+                        onSubmitted: (value) {
+                          setState(() {
+                            enteredCurrentPassword = value;
+                          });
+                          //compare the entered value with the current password
+                        },
+                        style: const TextStyle(color: Colors.black),
+                        obscureText: _currentPasswordVisible,
+                        textAlignVertical: TextAlignVertical.bottom,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: lightOrange,
+                          hintText: "Current password",
+
+                          prefix: const SizedBox(width: 10,),
+
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _currentPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _currentPasswordVisible = !_currentPasswordVisible;
+                              });
+                            },
+                          ),
+                          // prefixIcon: Icon(Icon),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  const SizedBox(height: 20,),
+
+
+
+                  SizedBox(
+                    height: 50,
+                    child: Material(
+                      elevation: 1,
+                      shadowColor: Colors.black87,
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                      child: TextField(
+                        onSubmitted: (value) {
+                          setState(() {
+                            enteredNewPassword = value;
+                          });
+                          //compare the entered value with the current password
+                        },
+                        style: const TextStyle(color: Colors.black),
+                        obscureText: _newPasswordVisible,
+                        textAlignVertical: TextAlignVertical.bottom,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: lightPink,
+                          hintText: "New password",
+
+                          prefix: const SizedBox(width: 10,),
+
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _newPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _newPasswordVisible = !_newPasswordVisible;
+                              });
+                            },
+                          ),
+
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  const SizedBox(height: 20,),
+
+
+
+                  SizedBox(
+                    height: 50,
+                    child: Material(
+                      elevation: 1,
+                      shadowColor: Colors.black87,
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                      child: TextField(
+                        onSubmitted: (value) {
+                          setState(() {
+                            enteredConfirmedNewPassword = value;
+
+                          });
+                          //compare the entered value with the current password
+                        },
+                        style: const TextStyle(color: Colors.black),
+                        obscureText: _confirmedNewPasswordVisible,
+                        textAlignVertical: TextAlignVertical.bottom,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: lightPink,
+                          hintText: "Confirm new password",
+
+                          prefix: const SizedBox(width: 10,),
+
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _confirmedNewPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _confirmedNewPasswordVisible = !_confirmedNewPasswordVisible;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  const SizedBox(height: 20,),
+
+                  ButtonWidget(text: "Change password", onClicked: (){
+                    if(enteredCurrentPassword == thisAppUser.password)
+                      {
+                        if(enteredNewPassword == enteredConfirmedNewPassword)
+                          {
+                            thisAppUser.password = enteredConfirmedNewPassword;
+                            debugPrint("user's password was updqted");
+                          }
+                        else
+                          {
+                            debugPrint("entered new passwords do not match each other, please try again!");
+
+                          }
+                      }
+                    else
+                      {
+                        debugPrint("entered current password is not correct!");
+                      }
+
+                  }),
+
+
+
+                ],
               ),
             ),
           ],
