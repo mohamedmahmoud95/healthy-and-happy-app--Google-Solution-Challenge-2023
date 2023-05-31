@@ -44,12 +44,16 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
           collapsedIconColor: mainPurple,
           leading: CircleAvatar(
               backgroundColor:
-                  changePasswordTileIsCollapsed ? lightLavender : lightPink,
+                  changePasswordTileIsCollapsed
+                   //   ? lightLavender
+                      ? lightPink
+                      : lightPink,
               child: Icon(
                 Icons.key,
                 color: changePasswordTileIsCollapsed
-                    ? mainPurple
-                    : Colors.deepOrange,
+                  //  ? mainPurple
+                    ? darkOrange
+                    : darkOrange,
               )),
           title: Text(
             'Change password',
@@ -58,7 +62,7 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
               fontWeight: FontWeight.w500,
               color: changePasswordTileIsCollapsed
                   ? mainPurple
-                  : Colors.deepOrange,
+                  : darkOrange,
             ),
           ),
           children: [
@@ -85,6 +89,15 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                         obscureText: _currentPasswordVisible,
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: const BorderSide(width: 0.5, color: mainPurple),
+                          ),
+
+                          // enabledBorder: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(30),
+                          //   borderSide: const BorderSide(width: 1, color: darkOrange),
+                          // ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -135,6 +148,15 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                         obscureText: _newPasswordVisible,
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: const BorderSide(width: 0.5, color: mainPurple),
+                          ),
+
+                          // enabledBorder: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(30),
+                          //   borderSide: const BorderSide(width: 1, color: darkOrange),
+                          // ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -186,6 +208,16 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                         obscureText: _confirmedNewPasswordVisible,
                         textAlignVertical: TextAlignVertical.bottom,
                         decoration: InputDecoration(
+
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: const BorderSide(width: 0.5, color: mainPurple),
+                          ),
+
+                          // enabledBorder: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(30),
+                          //   borderSide: const BorderSide(width: 1, color: darkOrange),
+                          // ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -235,8 +267,6 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                       }
 
                   }),
-
-
 
                 ],
               ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/settings_screen/components/change_password_tile.dart';
-
 import '../../Constants/project_colors.dart';
+import 'components/dark_theme_toggler.dart';
 import 'components/delete_account_tile.dart';
 import 'components/edit_profile_pic_widget.dart';
 import 'components/rate_us.dart';
@@ -16,10 +16,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool editPasswordTileIsCollapsed = true;
-  bool deleteAccountTileIsCollapsed = true;
-  bool reportProblemTileIsCollapsed = true;
-  bool contactUsTileIsCollapsed = true;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +33,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text('Settings',
                 style: TextStyle(
                     color: mainPurple, fontWeight: FontWeight.normal))),
+
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const SizedBox(height: 20),
               const EditProfilePicWidget(),
@@ -57,12 +53,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ChangePasswordTile(),
                   ReportProblemTile(),
                   DeleteAccountTile(),
+                  DarkThemeToggler(),
                 ],
               ),
+              const SizedBox(height: 40,),
 
-              const SizedBox(
-                height: 40,
-              ),
               const RateUsWidget(),
             ],
           ),

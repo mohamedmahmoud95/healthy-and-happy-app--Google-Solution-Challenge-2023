@@ -38,13 +38,15 @@ class _ReportProblemTileState extends State<ReportProblemTile> {
           collapsedIconColor: mainPurple,
           leading: CircleAvatar(
               backgroundColor: reportProblemTileIsCollapsed
-                  ? lightLavender
+                  //? lightLavender
+                  ? lightPink
                   : lightPink,
               child: Icon(
-                Icons.key,
+                Icons.report_problem_rounded,
                 color: reportProblemTileIsCollapsed
-                    ? mainPurple
-                    : Colors.deepOrange,
+                //  ? mainPurple
+                    ? darkOrange
+                    : darkOrange,
               )),
           title: Text(
             'Report a problem',

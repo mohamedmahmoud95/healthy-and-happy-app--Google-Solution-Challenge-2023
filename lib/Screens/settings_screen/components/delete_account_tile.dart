@@ -34,17 +34,19 @@ class _DeleteAccountTileState extends State<DeleteAccountTile> {
             });
           },
           collapsedBackgroundColor: mainWhite,
-          iconColor: Colors.deepOrange,
+          iconColor: darkOrange,
           collapsedIconColor: mainPurple,
           leading: CircleAvatar(
               backgroundColor: deleteAccountTileIsCollapsed
-                  ? lightLavender
+                 // ? lightLavender
+                  ? lightPink
                   : lightPink,
               child: Icon(
                 Icons.delete,
                 color: deleteAccountTileIsCollapsed
-                    ? mainPurple
-                    : Colors.deepOrange,
+                //  ? mainPurple
+                    ? darkOrange
+                    : darkOrange,
               )),
           title: Text(
             'Delete account',
@@ -53,7 +55,7 @@ class _DeleteAccountTileState extends State<DeleteAccountTile> {
               fontWeight: FontWeight.w500,
               color: deleteAccountTileIsCollapsed
                   ? mainPurple
-                  : Colors.deepOrange,
+                  : darkOrange,
             ),
           ),
           children: [
