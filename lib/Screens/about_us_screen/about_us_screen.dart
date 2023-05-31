@@ -26,10 +26,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               elevation: 0,
               title: const Text('About us',
                   style: TextStyle(
-                      color: mainPurple, fontWeight: FontWeight.normal))
-          ),
-
-
+                      color: mainPurple, fontWeight: FontWeight.normal))),
           body: SingleChildScrollView(
             child: Container(
               color: mainWhite,
@@ -48,9 +45,14 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                           children: [
                             Center(
                               child: CircleAvatar(
-                                radius: 50,
-                                foregroundImage: AssetImage(
-                                  '${sampleAppUser1.profilePicUrl}',
+                                radius: 51,
+                                backgroundColor: mainPurple,
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  foregroundImage: AssetImage(
+                                      sampleAppUser1.profilePicUrl != null
+                                          ? sampleAppUser1.profilePicUrl!
+                                          : 'assets/images/profile_pic.png'),
                                 ),
                               ),
                             ),
@@ -63,25 +65,29 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                               style: const TextStyle(
                                   color: lavender, fontSize: 20),
                             )),
-
                             const SizedBox(
                               height: 10,
                             ),
                             Center(
                                 child: Text(
-                                  '${sampleAppUser1.email}',
-                                  style: const TextStyle(
-                                      color: lavender, fontSize: 12),
-                                )),
+                              '${sampleAppUser1.email}',
+                              style: const TextStyle(
+                                  color: lavender, fontSize: 12),
+                            )),
                           ],
                         ),
                         Column(
                           children: [
                             Center(
                               child: CircleAvatar(
-                                radius: 50,
-                                foregroundImage: AssetImage(
-                                  '${sampleAppUser2.profilePicUrl}',
+                                radius: 51,
+                                backgroundColor: mainPurple,
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  foregroundImage: AssetImage(
+                                      sampleAppUser2.profilePicUrl != null
+                                          ? sampleAppUser2.profilePicUrl!
+                                          : 'assets/images/profile_pic.png'),
                                 ),
                               ),
                             ),
@@ -99,10 +105,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                             ),
                             Center(
                                 child: Text(
-                                  '${sampleAppUser2.email}',
-                                  style: const TextStyle(
-                                      color: lavender, fontSize: 12),
-                                )),
+                              '${sampleAppUser2.email}',
+                              style: const TextStyle(
+                                  color: lavender, fontSize: 12),
+                            )),
                           ],
                         ),
                       ],
@@ -117,9 +123,14 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                           children: [
                             Center(
                               child: CircleAvatar(
-                                radius: 50,
-                                foregroundImage: AssetImage(
-                                  '${sampleAppUser3.profilePicUrl}',
+                                radius: 51,
+                                backgroundColor: mainPurple,
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  foregroundImage: AssetImage(
+                                      sampleAppUser3.profilePicUrl != null
+                                          ? sampleAppUser3.profilePicUrl!
+                                          : 'assets/images/profile_pic.png'),
                                 ),
                               ),
                             ),
@@ -132,25 +143,29 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                               style: const TextStyle(
                                   color: lavender, fontSize: 20),
                             )),
-
                             const SizedBox(
                               height: 10,
                             ),
                             Center(
                                 child: Text(
-                                  '${sampleAppUser3.email}',
-                                  style: const TextStyle(
-                                      color: lavender, fontSize: 12),
-                                )),
+                              '${sampleAppUser3.email}',
+                              style: const TextStyle(
+                                  color: lavender, fontSize: 12),
+                            )),
                           ],
                         ),
                         Column(
                           children: [
                             Center(
                               child: CircleAvatar(
-                                radius: 50,
-                                foregroundImage: AssetImage(
-                                  '${sampleAppUser4.profilePicUrl}',
+                                radius: 51,
+                                backgroundColor: mainPurple,
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  foregroundImage: AssetImage(
+                                      sampleAppUser4.profilePicUrl != null
+                                          ? sampleAppUser4.profilePicUrl!
+                                          : 'assets/images/profile_pic.png'),
                                 ),
                               ),
                             ),
@@ -168,19 +183,17 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                             ),
                             Center(
                                 child: Text(
-                                  '${sampleAppUser4.email}',
-                                  style: const TextStyle(
-                                      color: lavender, fontSize: 12),
-                                )),
+                              '${sampleAppUser4.email}',
+                              style: const TextStyle(
+                                  color: lavender, fontSize: 12),
+                            )),
                           ],
                         ),
                       ],
                     ),
-
                     const SizedBox(
                       height: 40,
                     ),
-
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Card(
@@ -188,29 +201,37 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Center(
-                            child: Text("We are a team of 4 passionate Flutter developers, and Computer Engineering students at Ain Shams University, Cairo, Egypt",
+                            child: Text(
+                              "We are a team of 4 passionate Flutter developers, and Computer Engineering students at Ain Shams University, Cairo, Egypt",
                               textAlign: TextAlign.center,
-                            style: TextStyle(color: mainPurple, fontSize: 16, ),),
+                              style: TextStyle(
+                                color: mainPurple,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Card(
-                    color: lightPurple,
-                    child:  Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Center(
-                          child: Text("And we would love to get in touch with you for any cooperation opportunities ^^",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: mainPurple, fontSize: 16, ),),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Card(
+                        color: lightPurple,
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Center(
+                            child: Text(
+                              "And we would love to get in touch with you for any cooperation opportunities ^^",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: mainPurple,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                  ),
-                ),
-
+                    ),
                   ],
                 ),
               ),
