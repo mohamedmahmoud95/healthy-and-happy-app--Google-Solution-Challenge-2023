@@ -108,5 +108,37 @@ final Exercise forwardBendPose = Exercise(
 
 final Exercise childPose = Exercise(
   name: "Child Pose",
-  youTubeVideoUrl: 'https://www.youtube.com/watch?v=2MJGg-dUKh0&t=37s&ab_channel=VENTUNOYOGA',
+  youTubeVideoUrl: 'https://www.youtube.com/watch?v=qYvYsFrTI0U',
+
+  imageUrl:
+  'https://static.vecteezy.com/system/resources/previews/012/598/361/original/child-pose-yoga-free-png.png',
+
+  videoId: 'qYvYsFrTI0U',
+
+  howTo:
+  'Start kneeling on your hands and knees.\n\n'
+      'The arch of the foot is placed on the floor and your big toes are touching each other.\n\n'
+      'You can perform the pose with your knees together or separate them to the sides,\n'
+      'opening the hips.Exhale and lower down your buttocks to your heels and your forehead to the ground.\n\n'
+      'In child pose your arms can be reached out over your head with the palms facing the ground.\n\n'
+      'Or let them rest along side the body with the palms facing upwards.\n\n'
+      'If you have the knees separated lower your chest to the ground as far as you can without lifting your buttocks from the heels.\n\n'
+      'Rest in child pose and focus on full breaths.\n\n'
+      'Inhale and feel your torso expanding, \n'
+      'belly pressing on your thighs. \n\n'
+      'Exhale and release your spine to lengthen, \n'
+      'softening with your chest to the floor and sinking deeper with your buttocks onto your heels.\n\n'
+      'Stay in the pose from 30sec. \n\n'
+      'to several minutes.\n\n'
+      'To get out of the pose: \n'
+      'place your hands next to your knees and on an inhale roll your back slowly up into a seated position.\n\n',
+
+  benefits:
+  '- gently stretches the lower back, hips and legs\n\n'
+      '- relaxes shoulders, neck and spine\n\n'
+      '- stimulates digestion and elimination\n\n'
+      '- calms the mind and central nervous system\n\n'
+      '- relieves stress and fatigue\n',
+
+
 );

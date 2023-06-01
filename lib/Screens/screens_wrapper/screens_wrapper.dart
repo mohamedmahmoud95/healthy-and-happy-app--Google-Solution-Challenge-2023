@@ -4,7 +4,6 @@ import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
 import '../../Constants/project_colors.dart';
 
-import '../../screens/screens_wrapper/screens_wrapper.dart';
 import '../about_us_screen/about_us_screen.dart';
 import '../all_app_features_screen/all_app_features_screen.dart';
 import '../home_screen/home_screen.dart';
@@ -97,12 +96,37 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                 style: const TextStyle(
                     color: mainPurple, fontWeight: FontWeight.normal),
               )),
-      drawer: Drawer(
+      drawer: drawerWidget(),
+
+
+      body: returnSelectedScreen(widget.passedIndex ?? bottomBarNavigatorIndex),
+      bottomNavigationBar: CurvedNavigationBar(
+        color: lavender,
         backgroundColor: mainWhite,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
+        height: 55,
+        index: bottomBarNavigatorIndex,
+        items: items,
+        onTap: (index) {
+          setState(() {
+            bottomBarNavigatorIndex = index;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget drawerWidget() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const SettingsScreen()));
+            },
+            child: DrawerHeader(
+
               decoration: const BoxDecoration(
                 color: lavender,
               ),
@@ -116,7 +140,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                     child: CircleAvatar(
                       radius: 50,
                       foregroundImage:
-                          AssetImage('${thisAppUser.profilePicUrl}'),
+                      AssetImage('${thisAppUser.profilePicUrl}'),
                     ),
                   ),
                   Column(
@@ -128,7 +152,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize:
-                                thisAppUser.firstName!.length > 8 ? 16 : 24,
+                            thisAppUser.firstName!.length > 8 ? 16 : 24,
                             overflow: TextOverflow.clip),
                       ),
                       Text(
@@ -143,195 +167,125 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                 ],
               ),
             ),
+          ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(
-                color: Colors.transparent,
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Divider(
+              color: Colors.transparent,
             ),
+          ),
 
-            ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: mainPurple,
-              ),
-              title: const Text(
-                'Home',
-                style: TextStyle(color: mainPurple, fontSize: 20),
-              ),
-              onTap: () {
-                setState(() {
-                  bottomBarNavigatorIndex = 0; // Navigate to home screen
-                });
-                Navigator.pop(context); // Pop the drawer
-              },
+          ListTile(
+            leading: const Icon(
+              Icons.home,
+              color: mainPurple,
             ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(
-                color: lavender,
-              ),
+            title: const Text(
+              'Home',
+              style: TextStyle(color: mainPurple, fontSize: 20),
             ),
+            onTap: () {
+              setState(() {
+               // bottomBarNavigatorIndex = 0; // Navigate to home screen
+              });
+              Navigator.pop(context); // Pop the drawer
+            },
+          ),
 
-            //         ListTile(
-            //           leading: const Icon(Icons.newspaper, color: mainPurple,),
-            //           title: const Text('Community', style: TextStyle(color: mainPurple,fontSize: 20),),
-            //           onTap: () {
-            // setState(() {
-            //   bottomBarNavigatorIndex = 1; //Navigate to newsfeed screen
-            // });
-            // Navigator.pop(context); // Pop the drawer
-            //
-            //           },
-            //         ),
-            //
-            //         const Padding(
-            //           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            //           child: Divider(color: lavender,),
-            //         ),
-
-            // ListTile(
-            //   leading: const ImageIcon(
-            //
-            //     AssetImage("assets/icons/therapy_session_icon.png"),
-            //   color: mainPurple,
-            //   size: 30,),
-            //   title: const Text('My sessions', style: TextStyle(color: mainPurple,fontSize: 20),),
-            //   onTap: () {
-            //     setState(() {
-            //       bottomBarNavigatorIndex = 2; //Navigate to sessions screen
-            //     });
-            //     Navigator.pop(context); // Pop the drawer
-            //   },
-            // ),
-            //
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            //   child: Divider(color: lavender,),
-            // ),
-            //
-            //
-            //
-            // ListTile(
-            //   leading: const ImageIcon(
-            //
-            //     AssetImage("assets/icons/reading_icon.png"),
-            //     color: mainPurple,
-            //     size: 30,),
-            //   title: const Text('Know more', style: TextStyle(color: mainPurple,fontSize: 20),),
-            //   onTap: () {
-            //     setState(() {
-            //       bottomBarNavigatorIndex = 3; //Navigate to know-more screen
-            //     });
-            //     Navigator.pop(context); // Pop the drawer
-            //   },
-            // ),
-            //
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            //   child: Divider(color: lavender,),
-            // ),
-
-            ListTile(
-              leading: const Icon(
-                Icons.grid_view_outlined,
-                color: mainPurple,
-              ),
-              title: const Text(
-                'All app features',
-                style: TextStyle(color: mainPurple, fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AllAppFeaturesScreen()));
-              },
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Divider(
+              color: lavender,
             ),
+          ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(
-                color: lavender,
-              ),
+
+
+          ListTile(
+            leading: const Icon(
+              Icons.grid_view_outlined,
+              color: mainPurple,
             ),
-
-            ListTile(
-              leading: const Icon(
-                Icons.settings,
-                color: mainPurple,
-              ),
-              title: const Text(
-                'Settings',
-                style: TextStyle(color: mainPurple, fontSize: 20),
-              ),
-              onTap: () {
-                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  const SettingsScreen()));
-              },
+            title: const Text(
+              'All app features',
+              style: TextStyle(color: mainPurple, fontSize: 20),
             ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const AllAppFeaturesScreen()));
+            },
+          ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(
-                color: lavender,
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Divider(
+              color: lavender,
             ),
+          ),
 
-            ListTile(
-              leading: const Icon(
-                Icons.people,
-                color: mainPurple,
-              ),
-              title: const Text(
-                'About us',
-                style: TextStyle(color: mainPurple, fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  const AboutUsScreen()));
-              },
+          ListTile(
+            leading: const Icon(
+              Icons.settings,
+              color: mainPurple,
             ),
-
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Divider(
-                color: lavender,
-              ),
+            title: const Text(
+              'Settings',
+              style: TextStyle(color: mainPurple, fontSize: 20),
             ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>  const SettingsScreen()));
+            },
+          ),
 
-            ListTile(
-              leading: const Icon(
-                Icons.logout,
-                color: mainPurple,
-              ),
-              title: const Text(
-                'logout',
-                style: TextStyle(color: mainPurple, fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.popUntil(
-                    context,
-                    ModalRoute.withName(Navigator
-                        .defaultRouteName)); // Navigate back until the login screen is reached.
-              },
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Divider(
+              color: lavender,
             ),
-          ],
-        ),
-      ),
-      body: returnSelectedScreen(widget.passedIndex ?? bottomBarNavigatorIndex),
-      bottomNavigationBar: CurvedNavigationBar(
-        color: lavender,
-        backgroundColor: mainWhite,
-        height: 55,
-        index: bottomBarNavigatorIndex,
-        items: items,
-        onTap: (index) {
-          setState(() {
-            bottomBarNavigatorIndex = index;
-          });
-        },
+          ),
+
+          ListTile(
+            leading: const Icon(
+              Icons.people,
+              color: mainPurple,
+            ),
+            title: const Text(
+              'About us',
+              style: TextStyle(color: mainPurple, fontSize: 20),
+            ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>  const AboutUsScreen()));
+            },
+          ),
+
+
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Divider(
+              color: lavender,
+            ),
+          ),
+
+          ListTile(
+            leading: const Icon(
+              Icons.logout,
+              color: mainPurple,
+            ),
+            title: const Text(
+              'logout',
+              style: TextStyle(color: mainPurple, fontSize: 20),
+            ),
+            onTap: () {
+              Navigator.popUntil(
+                  context,
+                  ModalRoute.withName(Navigator
+                      .defaultRouteName)); // Navigate back until the login screen is reached.
+            },
+          ),
+        ],
       ),
     );
   }
