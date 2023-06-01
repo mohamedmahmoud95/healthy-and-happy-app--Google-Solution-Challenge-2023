@@ -3,15 +3,8 @@ import 'package:mental_health_app/Models/exercise.dart';
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
 import 'package:mental_health_app/Reusable%20Widgets/exercise_video_card.dart';
 import 'package:video_player/video_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../Constants/project_colors.dart';
-import '../../Reusable Widgets/workout_card_widget.dart';
-
-
-
-
-
 
 
 class ExerciseScreen extends StatefulWidget {
@@ -161,7 +154,10 @@ class  _ExerciseScreenState extends State<ExerciseScreen> {
             const SizedBox(height: 30),
 
 
-          //  ButtonWidget(text: "Mark as done", onClicked: (){}),
+            ButtonWidget(text: "Mark as done", onClicked: (){
+              //code to add exercise to users list of done, and minus burnt calories
+              debugPrint("${widget.exercise.name} exercise is done");
+            }),
 
           ],
         ),
