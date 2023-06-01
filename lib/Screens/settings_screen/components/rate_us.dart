@@ -19,7 +19,7 @@ class _RateUsWidgetState extends State<RateUsWidget> {
     return  Column(
       children: [
         const Text("Rate us ^^", style: TextStyle(color: mainPurple, fontSize: 20),),
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         RatingBar.builder(
           initialRating: 3,
           minRating: 1,
@@ -32,13 +32,13 @@ class _RateUsWidgetState extends State<RateUsWidget> {
             color: mainOrange,
           ),
           onRatingUpdate: (rating) {
-            debugPrint(rating as String?);
+            debugPrint('App rating  = $rating');
           },
         ),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         ButtonWidget(text: "Submit rating", onClicked: (){
-          debugPrint("Bubmit rating button pressed");
+          debugPrint("Submit rating button pressed");
 
         })
       ],

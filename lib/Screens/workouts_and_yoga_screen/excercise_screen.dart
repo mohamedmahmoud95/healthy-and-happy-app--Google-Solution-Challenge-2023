@@ -93,8 +93,10 @@ class  _ExerciseScreenState extends State<ExerciseScreen> {
                       howToTileIsCollapsed = ! howToTileIsCollapsed;
                     });
                   },
-                  collapsedBackgroundColor: page,
+                  collapsedBackgroundColor: lightOrange,
+                  collapsedIconColor: mainPurple,
                   iconColor: Colors.deepOrange,
+                  leading: const CircleAvatar(backgroundColor: lightPink,child: Icon(Icons.info_outline, color: darkOrange,)),
                   title:
                    Text(
                    'How to?',
@@ -130,10 +132,11 @@ class  _ExerciseScreenState extends State<ExerciseScreen> {
                       benefitsTileIsCollapsed = ! benefitsTileIsCollapsed;
                     });
                   },
-                  collapsedBackgroundColor: page,
-                  iconColor: Colors.deepOrange,
-                  textColor: darkOrange,
-                  collapsedTextColor: mainPurple,
+                  collapsedBackgroundColor: lightOrange,
+                  collapsedIconColor: mainPurple,
+                  iconColor: darkOrange,
+                  leading:  const CircleAvatar(backgroundColor: lightPink,child: Icon(Icons.check_circle_outline_rounded, color: darkOrange,),),
+                  //CircleAvatar(radius: 15, backgroundColor: Colors.transparent, child: Image.asset('assets/icons/health_icon.png', color: darkOrange, scale: 1.5,)),),
 
                   title:
                    Text(

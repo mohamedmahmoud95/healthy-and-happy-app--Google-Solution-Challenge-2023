@@ -49,8 +49,8 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                   ],
                 ),
 
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Text('   Videos '),
                     Tab(icon: Icon(Icons.video_camera_back_outlined, color: mainPurple, size: 30,),),
                   ],
