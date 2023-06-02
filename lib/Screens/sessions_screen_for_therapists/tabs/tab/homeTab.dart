@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Models/appointment.dart';
 
 import '../../../../Models/therapist.dart';
+import '../../../../Reusable Widgets/appointmentCard.dart';
 import '../../../user_profile/screens/profile.dart';
 import '../../page/widget/BookingPage.dart';
 import '../../utils/colors.dart';
@@ -102,8 +104,8 @@ class HomeTab extends StatelessWidget {
                 height: 20,
               ),
               AppointmentCard(
-                onTap: onPressedScheduleCard,
-                isPatient: isPatient
+                onTap: onPressedScheduleCard, appointment: sampleAppointment1,
+             //   isPatient: isPatient
               ),
               const SizedBox(
                 height: 20,

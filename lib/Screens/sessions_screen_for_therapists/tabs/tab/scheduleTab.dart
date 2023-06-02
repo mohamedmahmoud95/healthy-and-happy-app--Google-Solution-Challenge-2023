@@ -142,17 +142,17 @@ class _ScheduleTabState extends State<ScheduleTab> {
                   bool isLastElement = index == filteredSchedules.length - 1;
                   return Card(
                     margin: !isLastElement
-                        ? EdgeInsets.only(bottom: 20)
+                        ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
                     child: Padding(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: AssetImage(_schedule.therapist.photoUrl),
+                                backgroundImage: NetworkImage(_schedule.therapist.photoUrl),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -161,10 +161,10 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    _schedule.therapist.jobTitle,
-                                    style: TextStyle(
-                                      color: Color(MyColors.header01),
-                                      fontWeight: FontWeight.w700,
+                                    _schedule.therapist.name,
+                                    style: const TextStyle(
+                                      color: mainPurple,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   const SizedBox(
@@ -172,10 +172,10 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                   ),
                                   Text(
                                     _schedule.therapist.jobTitle,
-                                    style: TextStyle(
-                                      color: Color(MyColors.grey02),
+                                    style: const TextStyle(
+                                      color: navyBlue,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ],
@@ -185,7 +185,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                           const SizedBox(
                             height: 15,
                           ),
-                          const DateTimeCard(),
+                           DateTimeCard(appointment:  filteredSchedules[index],),
                           const SizedBox(
                             height: 15,
                           ),
@@ -195,7 +195,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               if (showCancelButton)
                                 Expanded(
                                   child: OutlinedButton(
-                                    child: Text('Cancel'),
+                                    child: const Text('Cancel'),
                                     onPressed: () {
                                       cancelSchedule(index);
                                     },
@@ -208,7 +208,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               if (showRescheduleButton)
                                 Expanded(
                                   child: ElevatedButton(
-                                    child: Text('Reschedule'),
+                                    child: const Text('Reschedule'),
                                     onPressed: () {
                                       Navigator.push(
                                         context,

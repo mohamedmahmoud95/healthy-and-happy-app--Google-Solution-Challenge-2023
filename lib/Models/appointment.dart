@@ -25,11 +25,11 @@ class Appointment {
 
 
 //Sample appointments:
-Appointment sampleAppointment1 = Appointment(therapist: sampleTherapist1, patient: sampleAppUser1, date: DateTime( 6,7),  time: const TimeOfDay(hour: 4, minute: 30),  status: Status.upcoming);
-Appointment sampleAppointment2 = Appointment(therapist: sampleTherapist2, patient: sampleAppUser1, date: DateTime( 5,5),  time: const TimeOfDay(hour: 3, minute: 00),  status: Status.completed);
-Appointment sampleAppointment3 = Appointment(therapist: sampleTherapist3, patient: sampleAppUser3, date: DateTime( 4,20), time: const TimeOfDay(hour: 10, minute: 45), status: Status.canceled);
-Appointment sampleAppointment4 = Appointment(therapist: sampleTherapist1, patient: sampleAppUser2, date: DateTime( 6,1),  time: const TimeOfDay(hour: 4, minute: 30),  status: Status.canceled);
-Appointment sampleAppointment5 = Appointment(therapist: sampleTherapist2, patient: sampleAppUser1, date: DateTime( 6,7),  time: const TimeOfDay(hour: 4, minute: 30),  status: Status.canceled);
+Appointment sampleAppointment1 = Appointment(therapist: sampleTherapist1, patient: sampleAppUser1, date: DateTime( 2023, 6,7), time: const TimeOfDay(hour: 4, minute: 30),  status: Status.upcoming);
+Appointment sampleAppointment2 = Appointment(therapist: sampleTherapist2, patient: sampleAppUser1, date: DateTime(2023, 5,5),  time: const TimeOfDay(hour: 3, minute: 00),  status: Status.completed);
+Appointment sampleAppointment3 = Appointment(therapist: sampleTherapist3, patient: sampleAppUser3, date: DateTime( 2023,4,20), time: const TimeOfDay(hour: 10, minute: 45), status: Status.canceled);
+Appointment sampleAppointment4 = Appointment(therapist: sampleTherapist1, patient: sampleAppUser2, date: DateTime( 2023,6,1),  time: const TimeOfDay(hour: 4, minute: 30),  status: Status.canceled);
+Appointment sampleAppointment5 = Appointment(therapist: sampleTherapist2, patient: sampleAppUser1, date: DateTime(2023, 6,7),  time: const TimeOfDay(hour: 4, minute: 30),  status: Status.canceled);
 
 //List of sample appointments:
 List <Appointment> listOfSampleAppointments = [

@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../Models/therapist.dart';
 import '../../Reusable Widgets/therapist_card.dart';
+import '../../screens/sessions_screen_for_therapists/tabs/tab/scheduleTab.dart';
 import 'book_a_session_screen.dart';
 
 class TherapistListScreen extends StatefulWidget {
@@ -42,7 +43,15 @@ class _TherapistListScreenState extends State<TherapistListScreen> {
           'Talk to a professional',
           style: TextStyle(color: mainPurple),
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScheduleTab()));
+
+          }, icon: const Icon(Icons.calendar_month_rounded, color: mainPurple),),
+        ],
       ),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,19 +62,19 @@ class _TherapistListScreenState extends State<TherapistListScreen> {
             ...listOfAvailableTherapists
                 .map(
                   (therapist) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TherapistCard(therapist: therapist),
-                      SizedBox(
-                          height: 30,
-                          width: width / 2,
-                          child: const Divider(
-                            thickness: 0.5,
-                            color: lavender,
-                          )),
-                    ],
-                  ),
-                )
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TherapistCard(therapist: therapist),
+                  SizedBox(
+                      height: 30,
+                      width: width / 2,
+                      child: const Divider(
+                        thickness: 0.5,
+                        color: lavender,
+                      )),
+                ],
+              ),
+            )
                 .toList(),
             const SizedBox(height: 40),
             ButtonWidget(
