@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/BookingPage.dart';
-
 import '../../../../Models/appointment.dart';
 import '../widget/dateTimeCard.dart';
 
@@ -13,15 +12,22 @@ class ScheduleTab extends StatefulWidget {
 }
 
 class _ScheduleTabState extends State<ScheduleTab> {
-  Status status = Status.upcoming;
+  Status selectedStatus = Status.upcoming;
   Alignment _alignment = Alignment.centerLeft;
   bool showCancelButton = false;
   bool showRescheduleButton = false;
 
   @override
+  void initState() {
+    super.initState();
+    showCancelButton = selectedStatus == Status.upcoming;
+    showRescheduleButton = selectedStatus == Status.upcoming;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<Appointment> filteredSchedules = listOfSampleAppointments.where((var schedule) {
-      return schedule.status == status;
+    List<Appointment> filteredSchedules = listOfSampleAppointments.where((schedule) {
+      return schedule.status == selectedStatus;
     }).toList();
 
     void cancelSchedule(int index) {
@@ -30,15 +36,9 @@ class _ScheduleTabState extends State<ScheduleTab> {
       });
     }
 
-    @override
-    void initState() {
-      super.initState();
-      showCancelButton = status == Status.upcoming;
-      showRescheduleButton = status == Status.upcoming;
-    }
-
     return Scaffold(
-      backgroundColor: mainWhite,
+
+    backgroundColor: mainWhite,
       appBar: AppBar(
         backgroundColor: mainWhite,
         elevation: 0,
@@ -80,7 +80,8 @@ class _ScheduleTabState extends State<ScheduleTab> {
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
-                                status = status;
+                                selectedStatus = status;
+                                debugPrint("status = $status");
                                 if (status == Status.upcoming) {
                                   _alignment = Alignment.centerLeft;
                                   showCancelButton = true;
@@ -118,7 +119,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                     ),
                     child: Center(
                       child: Text(
-                        status.name,
+                        selectedStatus.name,
                         style: const TextStyle(
                           color: mainWhite,
                           fontWeight: FontWeight.bold,
@@ -196,7 +197,8 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               if (showCancelButton)
                                 Expanded(
                                   child: OutlinedButton(
-                                    child: const Text('Cancel'),
+
+                                      child: const Text('Cancel', style: TextStyle(fontSize: 16, color: mainPurple),),
                                     onPressed: () {
                                       cancelSchedule(index);
                                     },
@@ -209,7 +211,11 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               if (showRescheduleButton)
                                 Expanded(
                                   child: ElevatedButton(
-                                    child: const Text('Reschedule'),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: mainPurple
+
+                  ),
+                                    child: const Text('Reschedule', style: TextStyle(fontSize: 16),),
                                     onPressed: () {
                                       Navigator.push(
                                         context,
