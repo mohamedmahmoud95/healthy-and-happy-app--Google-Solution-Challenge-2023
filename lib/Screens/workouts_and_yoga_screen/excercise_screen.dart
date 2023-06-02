@@ -17,13 +17,7 @@ class ExerciseScreen extends StatefulWidget {
 
 class  _ExerciseScreenState extends State<ExerciseScreen> {
   late VideoPlayerController _controller;
-  // YoutubePlayerController _controller = YoutubePlayerController(
-  //   initialVideoId: '${widget.exercise.videoId}',
-  //   flags: const YoutubePlayerFlags(
-  //     autoPlay: false,
-  //     mute: true,
-  //   ),
-  // );
+
   @override
   void initState() {
     super.initState();

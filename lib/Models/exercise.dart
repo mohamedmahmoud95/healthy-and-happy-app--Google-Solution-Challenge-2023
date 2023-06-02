@@ -139,6 +139,44 @@ final Exercise childPose = Exercise(
       '- stimulates digestion and elimination\n\n'
       '- calms the mind and central nervous system\n\n'
       '- relieves stress and fatigue\n',
+);
+
+Exercise bridgePose = Exercise(
+  name: "Bridge Pose",
+
+  youTubeVideoUrl: 'https://www.youtube.com/watch?v=NnbvPeAIhmA',
+  videoId: 'NnbvPeAIhmA',
+
+  imageUrl:
+  'https://thumbs.dreamstime.com/b/bridge-pose-vector-illustration-decorative-design-189656202.jpg',
+
+  howTo:
+  'Lie on your back with your knees bent and the soles of your feet flat on the floor.\n\n'
+      'Extend your arms on the floor with your fingers reaching toward your heels. \n\n'
+      'You should be able to just barely touch the backs of your heels with your fingertips.\n\n'
+      'Keep your feet parallel. \n\n'
+      'Maintain that position throughout the pose.\n\n'
+      'Press down into the soles of your feet to lift your hips off the floor.\n\n'
+      'Slide your yoga block under your back directly under your sacrum, \n\n'
+      'letting it rest securely on the bolster. \n\n'
+      'Your arms can stay outstretched on the floor next to your body.\n\n'
+      'This should be a comfortable position. \n\n'
+      'You may want to stay here several minutes as your body settles into the stretch and gets the benefits of a passive back-bend. \n\n'
+      'If the pose causes your back to hurt, \n'
+      'remove the block and come down.\n\n'
+      'To come out, \n'
+      'press down into your feet and lift your hips again. \n\n'
+      'Slide the block out from under your sacrum and gently lower your back to the floor.\n',
+
+  benefits:
+  '- Relieves headaches.\n\n'
+      '- Promotes deep relaxation.\n\n'
+      '- Soothes the nervous system.\n\n'
+      '- Relieves anxiety, depression and irritability.\n\n'
+      '- Improves digestion, respiration and circulation.\n\n'
+      '- Stretches the neck and shoulders.\n\n'
+      '- Reduces “heaviness” in the abdomen and reproductive system.\n',
+
 
 
 );

@@ -61,7 +61,7 @@ class _ConsultTherapistScreenState extends State<ConsultTherapistScreen> {
                         const SizedBox(height: 40),
 
                         Center(
-                          child: ButtonWidget(text: 'Doctor Appointment',
+                          child: ButtonWidget(text: 'My calendar',
                             onClicked: () => Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
