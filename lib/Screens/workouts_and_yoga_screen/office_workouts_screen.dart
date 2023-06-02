@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../Reusable Widgets/button_widget.dart';
 import '../../Reusable Widgets/workout_card_widget.dart';
 
 
-class WorkoutScreen extends StatefulWidget {
-  const WorkoutScreen({super.key});
+class OfficeWorkoutScreen extends StatefulWidget {
+  const OfficeWorkoutScreen({super.key});
 
   @override
-  _WorkoutScreenState createState() => _WorkoutScreenState();
+  _OfficeWorkoutScreenState createState() => _OfficeWorkoutScreenState();
 }
 
-class _WorkoutScreenState extends State<WorkoutScreen> {
+class _OfficeWorkoutScreenState extends State<OfficeWorkoutScreen> {
 
-
+  //url launcher to browse more videos on YouTube when the user presses the "See more" button
+  Future<void> _seeMoreURLLauncher() async {
+    final Uri _url = Uri.parse('https://www.youtube.com/results?search_query=most+efficient+office+workouts+');
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +91,20 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                       ],
                     ),
                   ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonWidget(
+                        text: "See more",
+                        onClicked: () {
+                          _seeMoreURLLauncher();
+                        }),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/Screens/workouts_and_yoga_screen/workouts_screen.dart';
+import 'package:mental_health_app/Screens/workouts_and_yoga_screen/office_workouts_screen.dart';
 import 'package:mental_health_app/Screens/workouts_and_yoga_screen/yoga_screen.dart';
 
 import '../../../Constants/project_colors.dart';
@@ -58,7 +58,7 @@ class _WorkoutAndYogaScreenState extends State<WorkoutAndYogaScreen> {
           body:   const TabBarView(
             children: [
               YogaScreen(),
-              WorkoutScreen(),
+              OfficeWorkoutScreen(),
             ],
           ),
         ),
