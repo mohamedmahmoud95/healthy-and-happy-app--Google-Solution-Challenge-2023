@@ -1,15 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../Models/therapist.dart';
+import '../../Reusable Widgets/therapist_card.dart';
 import 'book_a_session_screen.dart';
 
-
 class TherapistListScreen extends StatefulWidget {
-
   TherapistListScreen({super.key});
 
   @override
@@ -17,90 +16,65 @@ class TherapistListScreen extends StatefulWidget {
 }
 
 class _TherapistListScreenState extends State<TherapistListScreen> {
-
-
+  //url launcher to browse more videos on YouTube when the user presses the "See more" button
+  Future<void> _seeMoreURLLauncher() async {
+    final Uri _url = Uri.parse('https://www.vezeeta.com/ar/دكتور/نفسي/القاهرة');
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     var therapist;
     return Scaffold(
       backgroundColor: mainWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: mainWhite,
-        leading: BackButton(color: mainPurple, onPressed: () => Navigator.pop(context),),
-        title: const Text('Talk to a professional', style: TextStyle(color: mainPurple),),
+        leading: BackButton(
+          color: mainPurple,
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          'Talk to a professional',
+          style: TextStyle(color: mainPurple),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: availableTherapists.length,
-        itemBuilder: (context, index) {
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
 
-          therapist = availableTherapists[index];
+            const SizedBox(height: 30,), //leave a little space at the top
 
-          return Card(
-            color: lightOrange,
-
-            clipBehavior: Clip.hardEdge,
-
-            shape:  RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-
-            child: InkWell(
-              onTap: () {
-
-
-              },
-
-              splashColor:  Colors.white38,
-
-              child:  Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-
-                  width: 150,
-                  height: 90,
-
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child:
-                    Center(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(therapist.photoUrl),
-                        ),
-
-                        title: Text(therapist.name, style: const TextStyle(color: navyBlue),),
-
-                        trailing:     RatingBarIndicator(
-                          rating: availableTherapists[index].rating,
-                          itemCount: 5,
-                          itemSize: 16.0,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, _) =>
-                          const Icon(
-                            Icons.star,
-                            color: mainOrange,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => SessionBookingScreen(therapist: therapist),),
-                          );
-                        },
-                      ),
-                    ),
+            ...availableTherapists
+                .map(
+                  (therapist) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      TherapistCard(therapist: therapist),
+                      SizedBox(
+                          height: 30,
+                          width: width / 2,
+                          child: const Divider(
+                            thickness: 0.5,
+                            color: lavender,
+                          )),
+                    ],
                   ),
-                ),
-              ),
-            ),
-          );
-
-
-
-        },
+                )
+                .toList(),
+            const SizedBox(height: 50),
+            ButtonWidget(
+                text: "See more on Vezeeta",
+                onClicked: () {
+                  _seeMoreURLLauncher();
+                })
+          ],
+        ),
       ),
     );
   }

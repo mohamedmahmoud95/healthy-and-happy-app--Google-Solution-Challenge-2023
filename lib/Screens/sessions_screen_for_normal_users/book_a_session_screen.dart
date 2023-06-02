@@ -1,6 +1,7 @@
 
 // Define the booking page
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
 
 import '../../Constants/project_colors.dart';
 import '../../Models/appointment.dart';
@@ -144,6 +145,8 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
                       therapist: widget.therapist,
                       date: _selectedDate!,
                       time: _selectedTime!,
+                      patient: sampleAppUser2,
+                      status: Status.Upcoming,
                     );
                     Navigator.push(
                       context,
