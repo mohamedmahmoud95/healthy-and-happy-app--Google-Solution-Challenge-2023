@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Models/appointment.dart';
 
-import '../../utils/colors.dart';
 
 class DateTimeCard extends StatelessWidget {
   final Appointment appointment;
@@ -14,8 +13,9 @@ class DateTimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       decoration: BoxDecoration(
-        color: Color(MyColors.bg03),
+        color: bgLavender2,
         borderRadius: BorderRadius.circular(12),
       ),
       width: double.infinity,
@@ -26,9 +26,9 @@ class DateTimeCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.calendar_today,
-                color: Color(MyColors.primary),
+                color: mainPurple,
                 size: 15,
               ),
               const SizedBox(

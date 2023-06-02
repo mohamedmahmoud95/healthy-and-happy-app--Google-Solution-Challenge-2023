@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/detailBody.dart';
-
-import '../utils/colors.dart';
 
 class SliverDoctorDetail extends StatelessWidget {
   const SliverDoctorDetail({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class SliverDoctorDetail extends StatelessWidget {
           SliverAppBar(
             pinned: true,
             title: Text('Detail Doctor'),
-            backgroundColor: Color(MyColors.primary),
+            backgroundColor: mainPurple,
             expandedHeight: 200,
             flexibleSpace: const FlexibleSpaceBar(
               background: Image(

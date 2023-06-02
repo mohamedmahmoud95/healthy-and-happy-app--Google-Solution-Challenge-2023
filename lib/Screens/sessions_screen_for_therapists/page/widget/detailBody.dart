@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../../utils/colors.dart';
-import '../../utils/styles.dart';
 import 'detailDoctorCard.dart';
 import 'doctorInfo.dart';
 
@@ -29,7 +28,10 @@ class DetailBody extends StatelessWidget {
           ),
           Text(
             'About Doctor',
-            style: kTitleStyle,
+            style: TextStyle(
+  color: mainPurple,
+  fontWeight: FontWeight.bold,
+),
           ),
           const SizedBox(
             height: 15,
@@ -37,7 +39,7 @@ class DetailBody extends StatelessWidget {
           Text(
             'Dr. Joshua Simorangkir is a specialist in internal medicine who specialzed blah blah.',
             style: TextStyle(
-              color: Color(MyColors.purple01),
+              color: mainPurple,
               fontWeight: FontWeight.w500,
               height: 1.5,
             ),
@@ -47,7 +49,10 @@ class DetailBody extends StatelessWidget {
           ),
           Text(
             'Location',
-            style: kTitleStyle,
+            style: TextStyle(
+              color: mainPurple,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(
             height: 25,
@@ -55,7 +60,7 @@ class DetailBody extends StatelessWidget {
           ElevatedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(
-                Color(MyColors.primary),
+                mainPurple,
               ),
             ),
             child: const Text('Book Appointment'),

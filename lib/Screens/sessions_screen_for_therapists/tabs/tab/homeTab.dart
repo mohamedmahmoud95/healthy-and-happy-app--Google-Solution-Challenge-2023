@@ -7,10 +7,7 @@ import '../../../../Models/therapist.dart';
 import '../../../../Reusable Widgets/appointmentCard.dart';
 import '../../../user_profile/screens/profile.dart';
 import '../../page/widget/BookingPage.dart';
-import '../../utils/colors.dart';
-import '../../utils/styles.dart';
 import '../model/patients.dart';
-import '../widget/appointmentCard.dart';
 import '../widget/searchInput.dart';
 import '../widget/topDoctorCard.dart';
 
@@ -63,7 +60,10 @@ class HomeTab extends StatelessWidget {
                 children: [
                   Text(
                     'Appointment Today',
-                    style: kTitleStyle,
+                    style: TextStyle(
+                      color: mainPurple,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               )
@@ -73,13 +73,16 @@ class HomeTab extends StatelessWidget {
               children: [
                 Text(
                   'Appointment Today',
-                  style: kTitleStyle,
+                  style: TextStyle(
+                    color: mainPurple,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 TextButton(
                   child: Text(
                     'modify',
                     style: TextStyle(
-                      color: Color(MyColors.yellow01),
+                      color: Colors.yellow[300],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -113,7 +116,7 @@ class HomeTab extends StatelessWidget {
               Text(
                 isPatient ? 'Top Doctors' : 'Patients',
                 style: TextStyle(
-                  color: Color(MyColors.header01),
+                  color: mainPurple,
                   fontWeight: FontWeight.bold,
                 ),
               ),

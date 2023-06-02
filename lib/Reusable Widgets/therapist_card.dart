@@ -30,7 +30,7 @@ class _TherapistCardState extends State<TherapistCard> {
           color: mainWhite,
           clipBehavior: Clip.hardEdge,
           shadowColor: lavender,
-          elevation: 2,
+          elevation: 1,
 
           shape:  RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),

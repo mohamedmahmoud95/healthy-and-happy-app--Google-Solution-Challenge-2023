@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../../utils/colors.dart';
 
 class SearchInput extends StatelessWidget {
   const SearchInput({
@@ -13,7 +13,7 @@ class SearchInput extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(MyColors.bg),
+        color: bgLavender1,
         borderRadius: BorderRadius.circular(5),
       ),
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -24,7 +24,7 @@ class SearchInput extends StatelessWidget {
             padding: const EdgeInsets.only(top: 3),
             child: Icon(
               Icons.search,
-              color: Color(MyColors.purple02),
+              color: lavender,
             ),
           ),
           const SizedBox(
@@ -37,7 +37,7 @@ class SearchInput extends StatelessWidget {
                 hintText: 'Search a doctor or health issue',
                 hintStyle: TextStyle(
                     fontSize: 13,
-                    color: Color(MyColors.purple01),
+                    color: lavender,
                     fontWeight: FontWeight.w700),
               ),
               cursorColor: Colors.indigoAccent,

@@ -3,8 +3,6 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/BookingPage.dart';
 
 import '../../../../Models/appointment.dart';
-import '../../../../screens/sessions_screen_for_therapists/tabs/model/schedules.dart';
-import '../../utils/colors.dart';
 import '../widget/dateTimeCard.dart';
 
 class ScheduleTab extends StatefulWidget {
@@ -141,6 +139,9 @@ class _ScheduleTabState extends State<ScheduleTab> {
                   var _schedule = filteredSchedules[index];
                   bool isLastElement = index == filteredSchedules.length - 1;
                   return Card(
+                    shape:  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     margin: !isLastElement
                         ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
