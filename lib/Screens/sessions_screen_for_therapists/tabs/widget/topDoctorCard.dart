@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../../utils/colors.dart';
 
 class TopDoctorCard extends StatelessWidget {
   String img;
@@ -25,7 +25,7 @@ class TopDoctorCard extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  color: Color(MyColors.grey01),
+                  color: Colors.grey[300],
                   child: Image(
                     width: 100,
                     height: 100,
@@ -41,7 +41,7 @@ class TopDoctorCard extends StatelessWidget {
                     Text(
                       doctorName,
                       style: TextStyle(
-                        color: Color(MyColors.header01),
+                        color: mainPurple,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -51,7 +51,7 @@ class TopDoctorCard extends StatelessWidget {
                     Text(
                       doctorTitle,
                       style: TextStyle(
-                        color: Color(MyColors.grey02),
+                        color:Colors.grey[300],
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -64,7 +64,7 @@ class TopDoctorCard extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.star,
-                          color: Color(MyColors.yellow02),
+                          color: Colors.yellow[300],
                           size: 18,
                         ),
                         const SizedBox(
@@ -72,7 +72,7 @@ class TopDoctorCard extends StatelessWidget {
                         ),
                         Text(
                           '4.0 - 50 Reviews',
-                          style: TextStyle(color: Color(MyColors.grey02)),
+                          style: TextStyle(color: Colors.grey[300]),
                         ),
                       ],
                     ),

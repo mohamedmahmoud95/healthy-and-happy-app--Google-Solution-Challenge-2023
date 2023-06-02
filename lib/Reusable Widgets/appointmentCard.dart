@@ -39,8 +39,8 @@ class AppointmentCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: thisAppUser.isTherapist
-                          ?   AssetImage('${appointment.patient.profilePicUrl}'):
-                          AssetImage(appointment.therapist.photoUrl),
+                          ?   NetworkImage('${appointment.patient.profilePicUrl}'):
+                          NetworkImage(appointment.therapist.photoUrl),
 
                         ),
                         const SizedBox(

@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-
-import '../../utils/colors.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
 class DetailDoctorCard extends StatelessWidget {
   const DetailDoctorCard({
@@ -26,7 +25,7 @@ class DetailDoctorCard extends StatelessWidget {
                     Text(
                       'Dr. Josua Simorangkir',
                       style: TextStyle(
-                          color: Color(MyColors.header01),
+                          color: mainPurple,
                           fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
@@ -35,7 +34,7 @@ class DetailDoctorCard extends StatelessWidget {
                     Text(
                       'Heart Specialist',
                       style: TextStyle(
-                        color: Color(MyColors.grey02),
+                        color: Colors.grey[300],
                         fontWeight: FontWeight.w500,
                       ),
                     ),

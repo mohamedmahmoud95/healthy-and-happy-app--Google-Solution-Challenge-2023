@@ -146,7 +146,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
                       date: _selectedDate!,
                       time: _selectedTime!,
                       patient: sampleAppUser2,
-                      status: Status.upcoming,
+                      status: Status.upcoming, id: 'sampleAppUser2',
                     );
                     Navigator.push(
                       context,

@@ -1,61 +1,64 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Models/appointment.dart';
 
-import '../../utils/colors.dart';
 
 class DateTimeCard extends StatelessWidget {
+  final Appointment appointment;
   const DateTimeCard({
-    Key? key,
+    Key? key, required this.appointment,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+
       decoration: BoxDecoration(
-        color: Color(MyColors.bg03),
-        borderRadius: BorderRadius.circular(10),
+        color: bgLavender2,
+        borderRadius: BorderRadius.circular(12),
       ),
       width: double.infinity,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.calendar_today,
-                color: Color(MyColors.primary),
+                color: mainPurple,
                 size: 15,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
-                'Mon, July 29',
-                style: TextStyle(
+                '${appointment.date.day} - ${appointment.date.month} - ${appointment.date.year}',
+                style: const TextStyle(
                   fontSize: 12,
-                  color: Color(MyColors.primary),
-                  fontWeight: FontWeight.bold,
+                  color: lavender,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.access_alarm,
-                color: Color(MyColors.primary),
+                color: lavender,
                 size: 17,
               ),
               const SizedBox(
                 width: 5,
               ),
               Text(
-                '11:00 ~ 12:10',
-                style: TextStyle(
-                  color: Color(MyColors.primary),
-                  fontWeight: FontWeight.bold,
+                '${appointment.time.hour} : ${appointment.time.minute} - for 45 min',
+                style: const TextStyle(
+                  color: lavender,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],

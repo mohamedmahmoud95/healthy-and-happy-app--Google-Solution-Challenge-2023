@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../tabs/tab/homeTab.dart';
 import '../tabs/tab/scheduleTab.dart';
-import '../utils/colors.dart';
 
 
 class TherapistDashboardScreen extends StatefulWidget {

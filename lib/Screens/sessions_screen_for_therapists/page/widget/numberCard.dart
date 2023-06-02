@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../../utils/colors.dart';
 
 class NumberCard extends StatelessWidget {
   final String label;
@@ -19,7 +19,7 @@ class NumberCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Color(MyColors.bg03),
+          color: bgLavender2,
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 30,
@@ -30,7 +30,7 @@ class NumberCard extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                color: Color(MyColors.grey02),
+                color: Colors.grey[300],
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),
@@ -41,7 +41,7 @@ class NumberCard extends StatelessWidget {
             Text(
               value,
               style: TextStyle(
-                color: Color(MyColors.header01),
+                color: mainPurple,
                 fontSize: 15,
                 fontWeight: FontWeight.w800,
               ),
