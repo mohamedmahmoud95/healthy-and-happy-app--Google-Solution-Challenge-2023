@@ -171,6 +171,8 @@ flutter:
     - assets/icons/therapy_session_icon.png
     - assets/icons/reading_icon.png
     - assets/icons/mental_health_icon2.png
+    - assets/icons/doctor_scope.png
+    - assets/icons/money.png
     - assets/icons/yoga.png
     - assets/icons/yoga2.png
     - assets/icons/workout.png

@@ -50,7 +50,7 @@ class _TherapistListScreenState extends State<TherapistListScreen> {
 
             const SizedBox(height: 30,), //leave a little space at the top
 
-            ...availableTherapists
+            ...listOfAvailableTherapists
                 .map(
                   (therapist) => Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,12 +67,15 @@ class _TherapistListScreenState extends State<TherapistListScreen> {
                   ),
                 )
                 .toList(),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             ButtonWidget(
                 text: "See more on Vezeeta",
                 onClicked: () {
                   _seeMoreURLLauncher();
-                })
+                }),
+
+            const SizedBox(height: 40),
+
           ],
         ),
       ),

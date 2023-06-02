@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../../utils/colors.dart';
 
 class ScheduleCard extends StatelessWidget {
   const ScheduleCard({
@@ -12,7 +12,7 @@ class ScheduleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(MyColors.bg01),
+        color: mainPurple,
         borderRadius: BorderRadius.circular(10),
       ),
       width: double.infinity,
