@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 
+import '../../../../Models/therapist.dart';
 import '../../../user_profile/screens/profile.dart';
 import '../../page/widget/BookingPage.dart';
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
-import '../model/doctors.dart';
 import '../model/patients.dart';
 import '../widget/appointmentCard.dart';
 import '../widget/searchInput.dart';
@@ -98,7 +98,6 @@ class HomeTab extends StatelessWidget {
 
 
 
-
               const SizedBox(
                 height: 20,
               ),
@@ -120,19 +119,19 @@ class HomeTab extends StatelessWidget {
                 height: 20,
               ),
                if (isPatient)
-                for (var doctor in doctors)
+                for (var therapist in listOfAvailableTherapists)
                   TopDoctorCard(
-                    img: doctor['img'],
-                    doctorName: doctor['doctorName'],
-                    doctorTitle: doctor['doctorTitle'],
+                    img: therapist.photoUrl,
+                    doctorName: therapist.name,
+                    doctorTitle: therapist.jobTitle,
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProfilePage(
-                            doctorName: doctor['doctorName'],
-                            doctorImage: doctor['img'],
-                            doctorAbout: doctor['about'],
+                            doctorName: therapist.name,
+                            doctorImage: therapist.photoUrl,
+                            doctorAbout: therapist.jobTitle, //--------------------------to be edited"
                             isPatient:isPatient,
                           ),
                         ),

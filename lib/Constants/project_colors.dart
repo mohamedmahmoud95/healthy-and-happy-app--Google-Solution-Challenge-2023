@@ -32,3 +32,21 @@ const Color page = Color.fromARGB(255, 244,219,210);
 
 const Color lightPink = Color.fromARGB(255,252,240,244);
 const Color pink = Color.fromARGB(255,244,116,116);
+
+
+const Color bgLavender0 = Color(0xff575de3);
+const Color bgLavender1 = Color(0xffc3c5f8);
+const Color bgLavender2 = Color(0xffe8eafe);
+
+// static int primary = 0xff575de3;
+// static int purple01 = 0xff918fa5;
+// static int purple02 = 0xff6b6e97;
+// static int yellow01 = 0xffeaa63b;
+// static int yellow02 = 0xfff29b2b;
+// static int bg = 0xfff5f3fe;
+// static int bg01 = 0xff6f75e1;
+// static int bg02 = 0xffc3c5f8;
+// static int bg03 = 0xffe8eafe;
+// static int text01 = 0xffbec2fc;
+// static int grey01 = 0xffe9ebf0;
+// static int grey02 = 0xff9796af;

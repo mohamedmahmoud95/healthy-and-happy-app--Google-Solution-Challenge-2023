@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/BookingPage.dart';
 
+import '../../../../Models/appointment.dart';
+import '../../../../screens/sessions_screen_for_therapists/tabs/model/schedules.dart';
 import '../../utils/colors.dart';
-import '../../utils/styles.dart';
-import '../model/schedules.dart';
 import '../widget/dateTimeCard.dart';
 
 class ScheduleTab extends StatefulWidget {
@@ -15,28 +15,28 @@ class ScheduleTab extends StatefulWidget {
 }
 
 class _ScheduleTabState extends State<ScheduleTab> {
-  FilterStatus status = FilterStatus.Upcoming;
+  Status status = Status.upcoming;
   Alignment _alignment = Alignment.centerLeft;
   bool showCancelButton = false;
   bool showRescheduleButton = false;
 
   @override
   Widget build(BuildContext context) {
-    List<Map> filteredSchedules = schedules.where((var schedule) {
-      return schedule['status'] == status;
+    List<Appointment> filteredSchedules = listOfSampleAppointments.where((var schedule) {
+      return schedule.status == status;
     }).toList();
 
     void cancelSchedule(int index) {
       setState(() {
-        schedules.removeAt(index);
+        listOfSampleAppointments.removeAt(index);
       });
     }
 
     @override
     void initState() {
       super.initState();
-      showCancelButton = status == FilterStatus.Upcoming;
-      showRescheduleButton = status == FilterStatus.Upcoming;
+      showCancelButton = status == Status.upcoming;
+      showRescheduleButton = status == Status.upcoming;
     }
 
     return Scaffold(
@@ -77,19 +77,19 @@ class _ScheduleTabState extends State<ScheduleTab> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      for (FilterStatus filterStatus in FilterStatus.values)
+                      for (Status status in Status.values)
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
-                                status = filterStatus;
-                                if (status == FilterStatus.Upcoming) {
+                                status = status;
+                                if (status == Status.upcoming) {
                                   _alignment = Alignment.centerLeft;
                                   showCancelButton = true;
                                   showRescheduleButton = true;
                                 } else {
                                   _alignment =
-                                  status == FilterStatus.Complete
+                                  status == Status.completed
                                       ? Alignment.center
                                       : Alignment.centerRight;
                                   showCancelButton = false;
@@ -99,7 +99,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                             },
                             child: Center(
                               child: Text(
-                                filterStatus.name,
+                                status.name,
                                 style:const TextStyle (color:mainPurple),
                               ),
                             ),
@@ -152,7 +152,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: AssetImage(_schedule['img']),
+                                backgroundImage: AssetImage(_schedule.therapist.photoUrl),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -161,7 +161,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    _schedule['doctorName'],
+                                    _schedule.therapist.jobTitle,
                                     style: TextStyle(
                                       color: Color(MyColors.header01),
                                       fontWeight: FontWeight.w700,
@@ -171,7 +171,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                     height: 5,
                                   ),
                                   Text(
-                                    _schedule['doctorTitle'],
+                                    _schedule.therapist.jobTitle,
                                     style: TextStyle(
                                       color: Color(MyColors.grey02),
                                       fontSize: 12,
