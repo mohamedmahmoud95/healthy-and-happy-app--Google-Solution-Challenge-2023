@@ -4,3 +4,20 @@ Features to be added:
 
  - in the videos screen, try enabling the user to switch from big-video-card screens to list view screen (make the video card smaller)
  - In every exercise screen, add a "mark as done" check button, and add burned calories accordingly to today's appUser cal
+
+ - When a user reports a problem or sends a feedback, send this feedback to our email
+
+
+ - Priorities:
+ authentication
+ back-end
+ state-management§
+
+
+
+
+ Platform  Firebase App Id
+ web       1:1068981377080:web:9b4e879db11694bc342ecd
+ android   1:1068981377080:android:582f49b311e9ccd3342ecd
+ ios       1:1068981377080:ios:8666eaf4ef29826c342ecd
+ macos     1:1068981377080:ios:8666eaf4ef29826c342ecd
