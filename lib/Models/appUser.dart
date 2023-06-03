@@ -53,6 +53,7 @@ AppUser sampleAppUser2 = AppUser(
   lastName: "Amr",
   email: "Esraaamrkandil@gmail.com",
   phoneNumber: "+20123456789",
+  profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
   lastActive: "1 hr ago",
   bookedAppointmentsIDs: [],
@@ -63,6 +64,7 @@ AppUser sampleAppUser3 = AppUser(
   lastName: "Alaa",
   email: "https://github.com/Habibaaahmed",
   phoneNumber: "+20123456789",
+  profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
   lastActive: "3 hr ago",
   bookedAppointmentsIDs: [],
@@ -73,6 +75,7 @@ AppUser sampleAppUser4 = AppUser(
   lastName: "",
   email: "https://github.com/S0nd0s",
   phoneNumber: "+20123456789",
+  profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
   lastActive: "1 day ago",
   bookedAppointmentsIDs: [],
@@ -93,3 +96,6 @@ AppUser(
 
 );
  //   sampleAppUser1; // a test appUser to use as the current appUser (the one using the app from his phone)
+
+
+List<AppUser> listOfSampleAppUsers = [sampleAppUser1,sampleAppUser2,sampleAppUser3,sampleAppUser4];

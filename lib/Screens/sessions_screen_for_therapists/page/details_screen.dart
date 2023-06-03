@@ -8,7 +8,8 @@ class SliverDoctorDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: mainWhite,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -16,14 +17,14 @@ class SliverDoctorDetail extends StatelessWidget {
             title: Text('Detail Doctor'),
             backgroundColor: mainPurple,
             expandedHeight: 200,
-            flexibleSpace: const FlexibleSpaceBar(
+            flexibleSpace: FlexibleSpaceBar(
               background: Image(
                 image: NetworkImage('https://media.istockphoto.com/vectors/hospital-building-flat-style-on-blue-sky-vector-id973278536'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: DetailBody(),
           )
         ],

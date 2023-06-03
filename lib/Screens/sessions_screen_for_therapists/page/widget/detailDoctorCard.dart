@@ -22,7 +22,7 @@ class DetailDoctorCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Dr. Josua Simorangkir',
                       style: TextStyle(
                           color: mainPurple,

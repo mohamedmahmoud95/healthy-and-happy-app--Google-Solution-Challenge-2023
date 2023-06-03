@@ -15,7 +15,7 @@ class DateTimeCard extends StatelessWidget {
     return Container(
 
       decoration: BoxDecoration(
-        color: bgLavender2,
+        color: bgLavender3,
         borderRadius: BorderRadius.circular(12),
       ),
       width: double.infinity,

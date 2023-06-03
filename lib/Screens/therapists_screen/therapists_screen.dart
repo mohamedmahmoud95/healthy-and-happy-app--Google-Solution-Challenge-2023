@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Models/appUser.dart';
 import '../sessions_screen_for_normal_users/consult_therapist_screen.dart';
-import '../sessions_screen_for_therapists/page/home.dart';
+import '../sessions_screen_for_therapists/page/list_of_my_patients.dart';
 
 class TherapistsScreen extends StatefulWidget {
   const TherapistsScreen({Key? key}) : super(key: key);

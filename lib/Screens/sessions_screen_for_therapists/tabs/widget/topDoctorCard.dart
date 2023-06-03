@@ -4,9 +4,9 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 
 
 class TopDoctorCard extends StatelessWidget {
-  String img;
-  String doctorName;
-  String doctorTitle;
+  String? img;
+  String? doctorName;
+  String? doctorTitle;
   VoidCallback onTap;
 
   TopDoctorCard({
@@ -19,63 +19,51 @@ class TopDoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 1,
+
+      shape:  RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
         margin: const EdgeInsets.only(bottom: 20),
         child: InkWell(
             onTap: onTap,
             child: Row(
               children: [
+                const SizedBox(width: 15,),
                 Container(
-                  color: Colors.grey[300],
+
+                  color: mainWhite,
                   child: Image(
                     width: 100,
                     height: 100,
-                    image: AssetImage(img),
+                    image: AssetImage(img!),
                   ),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      doctorName,
-                      style: TextStyle(
+                      doctorName!,
+                      style: const TextStyle(
                         color: mainPurple,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      doctorTitle,
-                      style: TextStyle(
-                        color:Colors.grey[300],
-                        fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
                       height: 5,
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow[300],
-                          size: 18,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '4.0 - 50 Reviews',
-                          style: TextStyle(color: Colors.grey[300]),
-                        ),
-                      ],
+                    Text(
+                      doctorTitle!,
+                      style: TextStyle(
+                        color:Colors.grey[300],
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
+
                   ],
                 ),
               ],

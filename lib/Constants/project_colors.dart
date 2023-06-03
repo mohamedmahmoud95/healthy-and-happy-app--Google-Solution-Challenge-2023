@@ -35,6 +35,6 @@ const Color pink = Color.fromARGB(255,244,116,116);
 
 
 const Color bgLavender0 = Color(0xff575de3);
-const Color bgLavender1 = Color(0xffc3c5f8);
+const Color bgLavender1 = Color(0xffc5c5f8);
 const Color bgLavender2 = Color(0xffe8eafe);
-
+const Color bgLavender3 = Color(0x7fc5c5f8);

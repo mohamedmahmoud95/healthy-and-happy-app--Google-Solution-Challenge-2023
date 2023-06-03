@@ -1,51 +1,56 @@
 
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Models/appointment.dart';
 
 
 class ScheduleCard extends StatelessWidget {
+  final Appointment appointment;
   const ScheduleCard({
-    Key? key,
+    Key? key, required this.appointment,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+  String appointmentDate = "${appointment.date.day} - ${appointment.date.month} - ${appointment.date.year} ";
     return Container(
       decoration: BoxDecoration(
-        color: bgLavender1,
+        color: bgLavender3,
         borderRadius: BorderRadius.circular(10),
       ),
       width: double.infinity,
       padding: const EdgeInsets.all(20),
-      child: const Row(
+      child:  Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
+          const Icon(
             Icons.calendar_today,
             color: Colors.white,
             size: 15,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Text(
-            'Mon, July 29',
-            style: TextStyle(color: Colors.white),
+            appointment.date.day == DateTime.now().day? 'Today' :  "${appointment.date.day} - ${appointment.date.month} - ${appointment.date.year} ",
+            style: const TextStyle(color: Colors.white),
           ),
-          SizedBox(
-            width: 20,
+          const SizedBox(
+            width: 35,
           ),
-          Icon(
+          const Icon(
             Icons.access_alarm,
             color: Colors.white,
             size: 17,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Flexible(
+           Flexible(
             child: Text(
-              '11:00 ~ 12:10',
+              '${appointment.time.hour} : ${appointment.time.minute} - for 45 min',
               style: TextStyle(color: Colors.white),
             ),
           ),
