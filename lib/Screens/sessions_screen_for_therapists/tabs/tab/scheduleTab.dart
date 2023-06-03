@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
+import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/BookingPage.dart';
 import '../../../../Models/appointment.dart';
 import '../widget/dateTimeCard.dart';
@@ -16,6 +17,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
   Alignment _alignment = Alignment.centerLeft;
   bool showCancelButton = false;
   bool showRescheduleButton = false;
+  
 
   @override
   void initState() {
@@ -30,6 +32,8 @@ class _ScheduleTabState extends State<ScheduleTab> {
       return schedule.status == selectedStatus;
     }).toList();
 
+    final bool isTherapist = thisAppUser.isTherapist;
+    
     void cancelSchedule(int index) {
       setState(() {
         listOfSampleAppointments.removeAt(index);
@@ -37,7 +41,6 @@ class _ScheduleTabState extends State<ScheduleTab> {
     }
 
     return Scaffold(
-
     backgroundColor: mainWhite,
       appBar: AppBar(
         backgroundColor: mainWhite,
@@ -154,8 +157,10 @@ class _ScheduleTabState extends State<ScheduleTab> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: NetworkImage(_schedule.therapist.photoUrl),
+                                backgroundImage: !isTherapist? NetworkImage(_schedule.therapist.photoUrl):
+                                AssetImage('${_schedule.patient.profilePicUrl}') as ImageProvider<Object>?,
                               ),
+
                               const SizedBox(
                                 width: 10,
                               ),
@@ -163,7 +168,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    _schedule.therapist.name,
+                                    !isTherapist? _schedule.therapist.name : '${_schedule.patient.firstName} ${_schedule.patient.lastName}',
                                     style: const TextStyle(
                                       color: mainPurple,
                                       fontWeight: FontWeight.w600,
@@ -172,8 +177,10 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                   const SizedBox(
                                     height: 5,
                                   ),
+
                                   Text(
-                                    _schedule.therapist.jobTitle,
+                                    !isTherapist?
+                                    _schedule.therapist.jobTitle: '',
                                     style: const TextStyle(
                                       color: navyBlue,
                                       fontSize: 12,

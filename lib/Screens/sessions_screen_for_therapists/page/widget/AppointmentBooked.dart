@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../home_screen/home_screen.dart';
-import '../../../menu_screen/menu_screen.dart';
+import 'package:mental_health_app/Screens/screens_wrapper/screens_wrapper.dart';
 
 class AppointmentBooked extends StatelessWidget {
   const AppointmentBooked({super.key});
@@ -41,7 +39,7 @@ class AppointmentBooked extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(), // Replace YourNextPage with the desired page you want to navigate to
+                            builder: (context) =>  ScreensWrapper(passedIndex: 0,), // Replace YourNextPage with the desired page you want to navigate to
                           ),
                         );
                       },

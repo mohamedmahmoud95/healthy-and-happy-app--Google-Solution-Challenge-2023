@@ -39,15 +39,16 @@ class AppointmentCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: thisAppUser.isTherapist
-                          ?   NetworkImage('${appointment.patient.profilePicUrl}'):
-                          NetworkImage(appointment.therapist.photoUrl),
-
+                              ? AssetImage('${appointment.patient.profilePicUrl}')
+                              : NetworkImage(appointment.therapist.photoUrl) as ImageProvider<Object>?,
                         ),
+
+
                         const SizedBox(
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
@@ -73,7 +74,7 @@ class AppointmentCard extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                   const ScheduleCard(),
+                    ScheduleCard(appointment: appointment,),
                   ],
                 ),
               ),

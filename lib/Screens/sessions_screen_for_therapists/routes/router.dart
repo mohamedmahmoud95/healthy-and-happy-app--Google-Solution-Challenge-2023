@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../page/details_screen.dart';
-import '../page/home.dart';
+import '../page/list_of_my_patients.dart';
 
 
 Map<String, Widget Function(BuildContext)> routes = {

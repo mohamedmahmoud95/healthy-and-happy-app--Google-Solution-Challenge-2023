@@ -36,7 +36,7 @@ class DetailBody extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Text(
+          const Text(
             'Dr. Joshua Simorangkir is a specialist in internal medicine who specialzed blah blah.',
             style: TextStyle(
               color: mainPurple,

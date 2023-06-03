@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 
-import '../tabs/tab/homeTab.dart';
+import '../tabs/tab/list_of_my_patients_tab.dart';
 import '../tabs/tab/scheduleTab.dart';
 
 
@@ -30,17 +31,12 @@ class _TherapistDashboardScreenState extends State<TherapistDashboardScreen> {
 
 
     return Scaffold(
-      appBar: AppBar(
-        //backgroundColor: Color(MyColors.primary),
-        elevation: 0,
-        toolbarHeight: 0,
-      ),
-      body: SafeArea(
-        child: HomeTab(onPressedScheduleCard: () {
+      backgroundColor: mainWhite,
 
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScheduleTab()));
-        },),
-      ),
+      body: ListOfMyPatients(onPressedScheduleCard: () {
+
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScheduleTab()));
+      },),
 
     );
   }

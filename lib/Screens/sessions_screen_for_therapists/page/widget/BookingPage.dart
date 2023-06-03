@@ -74,50 +74,7 @@ class _BookingPageState extends State<BookingPage> {
     ),
     ),
     )
-        : /*SliverGrid(
-    delegate: SliverChildBuilderDelegate(
-    (context, index) {
-    return InkWell(
-    splashColor: Colors.transparent,
-    onTap: () {
-    setState(() {
-    _currentIndex = index;
-    _timeSelected = true;
-    });
-    },
-    child: Container(
-    margin: const EdgeInsets.all(5),
-    decoration: BoxDecoration(
-    border: Border.all(
-    color: _currentIndex == index
-    ? Colors.white
-        : Colors.black,
-    ),
-    borderRadius: BorderRadius.circular(15),
-    color: _currentIndex == index
-    ? Config.primaryColor
-        : null,
-    ),
-    alignment: Alignment.center,
-    child: Text(
-    '${index + 9}:00 ${index + 9 > 11 ? "PM" : "AM"}',
-    style: TextStyle(
-    fontWeight: FontWeight.bold,
-    color: _currentIndex == index
-    ? Colors.white
-        : Colors.black,
-    ),
-    ),
-    ),
-    );
-    },
-    childCount: 9,
-    ),
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 4,
-    childAspectRatio: 1.5,
-    ),
-    ),*/
+        :
 
 SliverGrid(
                   delegate: SliverChildBuilderDelegate(
@@ -204,7 +161,7 @@ SliverGrid(
     child:  Text(
       widget.isPatient ? 'Confirm Appointment' : 'Modify',
 
-    style: TextStyle(
+    style: const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
 
@@ -242,7 +199,7 @@ SliverGrid(
         calendarFormat: _format,
         currentDay: _currentDay,
         rowHeight: 48,
-        calendarStyle: CalendarStyle(
+        calendarStyle: const CalendarStyle(
           todayDecoration: BoxDecoration(
             color: Config.primaryColor,
             shape: BoxShape.circle,
@@ -250,7 +207,7 @@ SliverGrid(
           defaultTextStyle: TextStyle(color: Colors.black), // Change default text color to white
           weekendTextStyle: TextStyle(color: Colors.black), // Change weekend text color to white
         ),
-        headerStyle: HeaderStyle(
+        headerStyle: const HeaderStyle(
           formatButtonVisible: false, // Hide the format button
           titleTextStyle: TextStyle(color: Colors.black), // Change the month header text color to black
         ),

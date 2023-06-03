@@ -85,7 +85,8 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   @override
   Widget build(BuildContext ctx) {
     return Scaffold(
-      appBar: bottomBarNavigatorIndex == 3
+      backgroundColor: mainWhite,
+      appBar: (bottomBarNavigatorIndex == 3 || (bottomBarNavigatorIndex == 2 && thisAppUser.isTherapist))
           ? null
           : AppBar(
               iconTheme: const IconThemeData(color: mainPurple, size: 30),

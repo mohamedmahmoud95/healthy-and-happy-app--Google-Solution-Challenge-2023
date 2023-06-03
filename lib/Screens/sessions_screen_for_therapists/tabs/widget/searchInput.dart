@@ -13,32 +13,32 @@ class SearchInput extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: bgLavender1,
+        color: bgLavender2,
         borderRadius: BorderRadius.circular(5),
       ),
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      child: Row(
+      child: const Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 3),
+            padding: EdgeInsets.only(top: 3),
             child: Icon(
               Icons.search,
               color: lavender,
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 15,
           ),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Search a doctor or health issue',
+                hintText: 'Search...',
                 hintStyle: TextStyle(
-                    fontSize: 13,
+                    fontSize: 15,
                     color: lavender,
-                    fontWeight: FontWeight.w700),
+                    fontWeight: FontWeight.w300),
               ),
               cursorColor: Colors.indigoAccent,
             ),
