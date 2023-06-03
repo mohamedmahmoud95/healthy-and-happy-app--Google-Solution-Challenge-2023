@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Reusable%20Widgets/share_post_widget.dart';
@@ -30,14 +29,14 @@ class _PostCardState extends State<PostCard> {
                 return "just now";
               }
               else {
-              //  then change to: a few seconds ago,
+                //  then change to: a few seconds ago,
                 return "a few seconds ago";
               }
             }
-              else {
-                //then minutes
-                return "${now.minute - widget.post.dateTime!.minute} min ago";
-               }
+            else {
+              //then minutes
+              return "${now.minute - widget.post.dateTime!.minute} min ago";
+            }
           }
           else {
             return "${now.hour - widget.post.dateTime!.hour} hr ago";
@@ -52,9 +51,9 @@ class _PostCardState extends State<PostCard> {
       }
     }
     else
-      {
-        return "${now.minute - widget.post.dateTime!.year} years ago";
-      }
+    {
+      return "${now.minute - widget.post.dateTime!.year} years ago";
+    }
   }
 
 
@@ -86,7 +85,7 @@ class _PostCardState extends State<PostCard> {
                         style: const TextStyle(color: navyBlue),
                       ),
                       Text(
-                          calcPostTime(),
+                        calcPostTime(),
                         style: const TextStyle(color: navyBlue, fontSize: 12),
                       ),
                     ],
@@ -101,11 +100,18 @@ class _PostCardState extends State<PostCard> {
                 style: const TextStyle(color: navyBlue),
               ),
             ),
-            widget.post.imageURL !=null ?
+            ((widget.post.imageURL!.contains('http'))|| ((widget.post.imageURL!.contains('www')))) && widget.post.imageURL != null ?
             Center(
               child: Image.network('${widget.post.imageURL}'),
-                ) :
-            const SizedBox(height: 10,),
+            ) :
+            Center(
+              child:
+              widget.post.imageURL != null ?
+              Image.asset('${widget.post.imageURL}')
+                  :
+              const SizedBox(height: 10,),
+            ),
+
 
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -126,7 +132,7 @@ class _PostCardState extends State<PostCard> {
                             setState(() {
                               numOfTimesLikeButtonTapped++;  //so the same user can click an increase the number of like only by 1
                               if (numOfTimesLikeButtonTapped <=1)
-                                   widget.post.numOfLikes =  (widget.post.numOfLikes!)+1;
+                                widget.post.numOfLikes =  (widget.post.numOfLikes!)+1;
                               else if (numOfTimesLikeButtonTapped > 1 && (widget.post.numOfLikes!) > 0) {
                                 {
                                   widget.post.numOfLikes =  (widget.post.numOfLikes!)-1;

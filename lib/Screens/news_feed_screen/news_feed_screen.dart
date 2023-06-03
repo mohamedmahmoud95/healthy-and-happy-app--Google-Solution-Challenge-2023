@@ -28,7 +28,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
 
   PostCategory selectedCategory = trending;
 
-
+  String newPostImageUrl = '';
 
   @override
   void initState() {
@@ -52,7 +52,10 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if(image == null) return;
       final imageTemp = File(image.path);
-      setState(() => this.image = imageTemp);
+      setState(() {
+        this.image = imageTemp;
+        newPostImageUrl = image.path;
+      });
     } on PlatformException catch(e) {
       debugPrint('Failed to pick image: $e');
     }
@@ -64,7 +67,10 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       final image = await ImagePicker().pickImage(source: ImageSource.camera);
       if(image == null) return;
       final imageTemp = File(image.path);
-      setState(() => this.image = imageTemp);
+      setState(() {
+        this.image = imageTemp;
+        newPostImageUrl = image.path;
+      });
     } on PlatformException catch(e) {
       debugPrint('Failed to pick image: $e');
     }
@@ -85,6 +91,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
 
         setState(() {
           image = tempFile;
+          newPostImageUrl = tempPath;
         });
       } else {
         debugPrint('Failed to load image. Status code: ${response.statusCode}');
@@ -107,30 +114,30 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
         floatingActionButtonLocation: _floatingActionButtonLocation,
         body: SingleChildScrollView(
             child: Column(
-          children: [
-            const SizedBox(
-              height: 8,
-            ),
+              children: [
+                const SizedBox(
+                  height: 8,
+                ),
 
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: buildRowOfCategoryCards(),
-            ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: buildRowOfCategoryCards(),
+                ),
 
-            for (Post post in posts)
-              if (post.category == selectedCategory || selectedCategory == all)
-                PostCard(post: post),
+                for (Post post in posts)
+                  if (post.category == selectedCategory || selectedCategory == all)
+                    PostCard(post: post),
 
-            if (selectedCategory == trending)
-              for (Post post in posts)
-                if (post.trending == true) PostCard(post: post),
+                if (selectedCategory == trending)
+                  for (Post post in posts)
+                    if (post.trending == true) PostCard(post: post),
 
-            const SizedBox(
-              height: 20,
-            ),
-            //  Container(child: PostsList()),
-          ],
-        )),
+                const SizedBox(
+                  height: 20,
+                ),
+                //  Container(child: PostsList()),
+              ],
+            )),
       ),
     );
   }
@@ -176,208 +183,208 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
   }
 
   Widget addNewPostButton() => FloatingActionButton(
-        backgroundColor: lavender,
-        foregroundColor: mainWhite,
-        child: const Icon(Icons.edit),
+    backgroundColor: lavender,
+    foregroundColor: mainWhite,
+    child: const Icon(Icons.edit),
 
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (context) {
 
-              List<PostCategory> dropdownItems = listOfPostCategoriesToChooseFromWhenCreateNewPost;
+          List<PostCategory> dropdownItems = listOfPostCategoriesToChooseFromWhenCreateNewPost;
 
-              PostCategory enteredCategory = dropdownItems.first;
+          PostCategory enteredCategory = dropdownItems.first;
 
-              return StatefulBuilder(
-                builder: (context, setState) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                title: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF5e5fca),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
-                    title: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF5e5fca),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Create Post',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Create Post',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
                       ),
                     ),
-                    content: SingleChildScrollView(
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextField(
-                              style: const TextStyle(color: Colors.black),
-                              onChanged: (value) {
-                                setState(() {
-                                  newPostText = value;
-                                });
-                              },
+                  ),
+                ),
+                content: SingleChildScrollView(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextField(
+                          style: const TextStyle(color: Colors.black),
+                          onChanged: (value) {
+                            setState(() {
+                              newPostText = value;
+                            });
+                          },
 
-                              decoration: InputDecoration(
-                                hintText: "What's on your mind?",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(color: lavender),
-                                ),
-                              ),
-                              maxLines: 10,
+                          decoration: InputDecoration(
+                            hintText: "What's on your mind?",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            const SizedBox(height: 40),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: lavender),
+                            ),
+                          ),
+                          maxLines: 10,
+                        ),
+                        const SizedBox(height: 40),
 
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                CircleAvatar(
-                                  radius: 21,
-                                  backgroundColor: lavender,
-                                  child: CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: mainWhite,
-                                    child: IconButton(
-                                      icon: const Icon(Icons.add_a_photo_outlined, color: lavender,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CircleAvatar(
+                              radius: 21,
+                              backgroundColor: lavender,
+                              child: CircleAvatar(
+                                radius: 20,
+                                backgroundColor: mainWhite,
+                                child: IconButton(
+                                  icon: const Icon(Icons.add_a_photo_outlined, color: lavender,),
 
-                                      onPressed: () {
-                                        // Logic for copying image URL
-                                        // Show modal bottom sheet
-                                        showModalBottomSheet(
-                                          context: context,
-                                          builder: (context) {
-                                            return Container(
-                                             // height: 150,
-                                              child: SingleChildScrollView(
-                                                child: Column(
-                                                  children: [
-
-                                                     ExpansionTile(
-                                                      leading: const Icon(
-                                                        Icons.link,
-                                                        color: mainPurple,
-                                                      ),
-                                                      title: const Text(
-                                                          'Copy Image URL',
-                                                          style: TextStyle(
-                                                              color: mainPurple)),
-                                                      controlAffinity: ListTileControlAffinity.leading,
-                                                      children: <Widget>[
-                                                        TextField(
-                                                          style:  const TextStyle(color: Colors.black),
-                                                          onChanged: (value) {
-                                                            enteredImageUrl = value;
-                                                          },
-                                                          decoration: InputDecoration(
-                                                            hintText: "Paste image URL here",
-                                                            border: OutlineInputBorder(
-                                                              borderRadius: BorderRadius.circular(10),
-                                                            ),
-                                                            focusedBorder: const OutlineInputBorder(
-                                                              borderSide: BorderSide(color: lavender),
-                                                            ),
-                                                          ),
-                                                          maxLines: 1,
-                                                        ),
-                                                        IconButton(onPressed: (){
-                                                          imageFromUrl(enteredImageUrl!);
-                                                        }, icon: const Icon(Icons.upload_sharp)),
-                                                      ],
-                                                    ),
-
-                                                    const SizedBox(
-                                                        width: 400,
-                                                        child: Divider(
-                                                          thickness: 1,
-                                                        )),
-                                                    ListTile(
-                                                      leading: const Icon(
-                                                        Icons.file_upload,
-                                                        color: mainPurple,
-                                                      ),
-                                                      title: const Text(
-                                                        'Upload from Device',
-                                                        style: TextStyle(
-                                                            color: mainPurple),
-                                                      ),
-                                                      onTap: () {
-                                                        pickImageFromGallery();
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-
-                                                    const SizedBox(
-                                                        width: 400,
-                                                        child: Divider(
-                                                          thickness: 1,
-                                                        )),
-                                                    ListTile(
-                                                      leading: const Icon(
-                                                        Icons.camera_alt_outlined,
-                                                        color: mainPurple,
-                                                      ),
-                                                      title: const Text(
-                                                        'Take a picture',
-                                                        style: TextStyle(
-                                                            color: mainPurple),
-                                                      ),
-                                                      onTap: () {
-                                                        imageFromCamera();
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-
-                                                    const SizedBox(
-                                                        height: 10,
-                                                      ),
-
-                                                  ],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-
-                                    ),
-                                ),
-                                ),
-
-
-
-
-
-                      CircleAvatar(
-                        radius: 21,
-                        backgroundColor: lavender,
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundColor: mainWhite,
-                          child: IconButton(
-                            icon: const Icon(Icons.video_call_outlined, color: lavender,),
-
-                            onPressed: () {
-                                    // Logic for copying video URL
+                                  onPressed: () {
+                                    // Logic for copying image URL
                                     // Show modal bottom sheet
                                     showModalBottomSheet(
                                       context: context,
                                       builder: (context) {
                                         return Container(
+                                          // height: 150,
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+
+                                                ExpansionTile(
+                                                  leading: const Icon(
+                                                    Icons.link,
+                                                    color: mainPurple,
+                                                  ),
+                                                  title: const Text(
+                                                      'Copy Image URL',
+                                                      style: TextStyle(
+                                                          color: mainPurple)),
+                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                  children: <Widget>[
+                                                    TextField(
+                                                      style:  const TextStyle(color: Colors.black),
+                                                      onChanged: (value) {
+                                                        enteredImageUrl = value;
+                                                      },
+                                                      decoration: InputDecoration(
+                                                        hintText: "Paste image URL here",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.circular(10),
+                                                        ),
+                                                        focusedBorder: const OutlineInputBorder(
+                                                          borderSide: BorderSide(color: lavender),
+                                                        ),
+                                                      ),
+                                                      maxLines: 1,
+                                                    ),
+                                                    IconButton(onPressed: (){
+                                                      imageFromUrl(enteredImageUrl!);
+                                                    }, icon: const Icon(Icons.upload_sharp)),
+                                                  ],
+                                                ),
+
+                                                const SizedBox(
+                                                    width: 400,
+                                                    child: Divider(
+                                                      thickness: 1,
+                                                    )),
+                                                ListTile(
+                                                  leading: const Icon(
+                                                    Icons.file_upload,
+                                                    color: mainPurple,
+                                                  ),
+                                                  title: const Text(
+                                                    'Upload from Device',
+                                                    style: TextStyle(
+                                                        color: mainPurple),
+                                                  ),
+                                                  onTap: () {
+                                                    pickImageFromGallery();
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+
+                                                const SizedBox(
+                                                    width: 400,
+                                                    child: Divider(
+                                                      thickness: 1,
+                                                    )),
+                                                ListTile(
+                                                  leading: const Icon(
+                                                    Icons.camera_alt_outlined,
+                                                    color: mainPurple,
+                                                  ),
+                                                  title: const Text(
+                                                    'Take a picture',
+                                                    style: TextStyle(
+                                                        color: mainPurple),
+                                                  ),
+                                                  onTap: () {
+                                                    imageFromCamera();
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+
+                                ),
+                              ),
+                            ),
+
+
+
+
+
+                            CircleAvatar(
+                              radius: 21,
+                              backgroundColor: lavender,
+                              child: CircleAvatar(
+                                radius: 20,
+                                backgroundColor: mainWhite,
+                                child: IconButton(
+                                  icon: const Icon(Icons.video_call_outlined, color: lavender,),
+
+                                  onPressed: () {
+                                    // Logic for copying video URL
+                                    // Show modal bottom sheet
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) {
+                                        return SizedBox(
                                           height: 150,
                                           child: Column(
                                             children: [
@@ -431,88 +438,89 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                                   },
 
                                 ),
+                              ),
                             ),
-                          ),
 
 
-                                DropdownButton<PostCategory>(
-                                  underline: Container(
-                                    height: 1,
-                                    color: lavender,
-                                  ),
-                                  value: enteredCategory,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      enteredCategory = newValue!;
-                                    });
-                                  },
-                                  items:
-                                  dropdownItems.map<DropdownMenuItem<PostCategory>>(
-                                        (PostCategory value) {
-                                      return DropdownMenuItem<PostCategory>(
-                                        value: value,
-                                        child: Text(
-                                          value.categoryName,
-                                          style: const TextStyle(
-                                            color: mainPurple,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).toList(),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 30),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ButtonWidget(
-                                  text: 'Publish',
-                                  backgroundColor: newPostText.isEmpty? Colors.grey : mainOrange ,
-
-                                  onClicked: () {
-                                    if (newPostText.isEmpty) {
-                                      return; // Do not create a new post if the text is empty
-                                    }
-
-                                    Post newPost = Post(
-                                      text: newPostText,
-                                      postAuthor: sampleAppUser1,
-                                      dateTime: DateTime.now(),
-                                      category: listOfPostCategories.firstWhere(
-                                            (category) => category == enteredCategory,
-                                        orElse: () => other, // Provide a fallback value if category not found
+                            DropdownButton<PostCategory>(
+                              underline: Container(
+                                height: 1,
+                                color: lavender,
+                              ),
+                              value: enteredCategory,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  enteredCategory = newValue!;
+                                });
+                              },
+                              items:
+                              dropdownItems.map<DropdownMenuItem<PostCategory>>(
+                                    (PostCategory value) {
+                                  return DropdownMenuItem<PostCategory>(
+                                    value: value,
+                                    child: Text(
+                                      value.categoryName,
+                                      style: const TextStyle(
+                                        color: mainPurple,
                                       ),
-                                    );
-
-                                    debugPrint("New post added");
-                                    debugPrint("New post text $newPostText");
-                                    debugPrint("New post text from inside it ${newPost.text}");
-                                    debugPrint("New post author ${newPost.postAuthor!.firstName}");
-                                    debugPrint("New post time ${newPost.dateTime}");
-                                    debugPrint("New post category ${newPost.category?.categoryName}");
-
-                                    setState(() {
-                                    //  posts.add(newPost);
-                                      posts.insert(0, newPost); //insert the new post at the beginning of the posts list
-                                    });
-                                    Navigator.pop(context);
-                                    setState((){});
-                                  },
-                                ),
-                              ],
+                                    ),
+                                  );
+                                },
+                              ).toList(),
                             ),
                           ],
                         ),
-                      ),
+                        const SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ButtonWidget(
+                              text: 'Publish',
+                              backgroundColor: newPostText.isEmpty? Colors.grey : mainOrange ,
+
+                              onClicked: () {
+                                if (newPostText.isEmpty) {
+                                  return; // Do not create a new post if the text is empty
+                                }
+
+                                Post newPost = Post(
+                                  text: newPostText,
+                                  postAuthor: sampleAppUser1,
+                                  imageURL: newPostImageUrl,
+                                  dateTime: DateTime.now(),
+                                  category: listOfPostCategories.firstWhere(
+                                        (category) => category == enteredCategory,
+                                    orElse: () => other, // Provide a fallback value if category not found
+                                  ),
+                                );
+
+                                debugPrint("New post added");
+                                debugPrint("New post text $newPostText");
+                                debugPrint("New post text from inside it ${newPost.text}");
+                                debugPrint("New post author ${newPost.postAuthor!.firstName}");
+                                debugPrint("New post time ${newPost.dateTime}");
+                                debugPrint("New post category ${newPost.category?.categoryName}");
+
+                                setState(() {
+                                  //  posts.add(newPost);
+                                  posts.insert(0, newPost); //insert the new post at the beginning of the posts list
+                                });
+                                Navigator.pop(context);
+                                setState((){});
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  );
-                },
+                  ),
+                ),
               );
             },
           );
         },
-
       );
+    },
+
+  );
 }
