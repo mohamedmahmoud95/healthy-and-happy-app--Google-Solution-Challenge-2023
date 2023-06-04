@@ -100,13 +100,13 @@ class _PostCardState extends State<PostCard> {
                 style: const TextStyle(color: navyBlue),
               ),
             ),
-            ((widget.post.imageURL!.contains('http'))|| ((widget.post.imageURL!.contains('www')))) && widget.post.imageURL != null ?
+            ((widget.post.imageURL!.contains('http'))|| ((widget.post.imageURL!.contains('www')))) && widget.post.imageURL != null && widget.post.imageURL!.isNotEmpty ?
             Center(
               child: Image.network('${widget.post.imageURL}'),
             ) :
             Center(
               child:
-              widget.post.imageURL != null ?
+              widget.post.imageURL != null && widget.post.imageURL!.isNotEmpty ?
               Image.asset('${widget.post.imageURL}')
                   :
               const SizedBox(height: 10,),

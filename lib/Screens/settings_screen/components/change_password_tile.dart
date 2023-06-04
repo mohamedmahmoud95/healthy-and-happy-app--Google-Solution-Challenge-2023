@@ -3,6 +3,7 @@ import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
 
 import '../../../Constants/project_colors.dart';
+import '../../../Reusable Widgets/show_popup_dialog.dart';
 
 class ChangePasswordTile extends StatefulWidget {
   const ChangePasswordTile({Key? key}) : super(key: key);
@@ -248,12 +249,15 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                   const SizedBox(height: 20,),
 
                   ButtonWidget(text: "Change password", onClicked: (){
+                    resetPasswordPopUpDialog(context: context);
+
                     if(enteredCurrentPassword == currentAppUser.password)
                       {
                         if(enteredNewPassword == enteredConfirmedNewPassword)
                           {
                             currentAppUser.password = enteredConfirmedNewPassword;
                             debugPrint("user's password was updqted");
+                            resetPasswordPopUpDialog(context: context);
                           }
                         else
                           {
@@ -273,6 +277,27 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget resetPasswordButton() {
+    return Center(
+      child: ButtonWidget(
+        onClicked: () {
+          resetPasswordPopUpDialog(context: context);
+        },
+        childWidget:  const Center(
+          child: Text(
+            'Change Password',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
+        ), text: '',
       ),
     );
   }

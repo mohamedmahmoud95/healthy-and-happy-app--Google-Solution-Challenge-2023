@@ -61,7 +61,6 @@ class _HomeScreen extends State<HomeScreen> {
                   runSpacing: 12.0, // gap between lines
                   children: [
                     CardWidget(
-                        optionalNumber: 237,
                         text: "Pedometer",
                         image: 'assets/images/pedometer4.png',
                         onClicked: () {

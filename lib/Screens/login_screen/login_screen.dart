@@ -57,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false, //to avoid RenderFlex error when keyboard pops up
+
       body: Stack(
         children: [
 

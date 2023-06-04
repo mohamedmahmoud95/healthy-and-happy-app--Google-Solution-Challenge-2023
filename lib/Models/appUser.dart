@@ -43,6 +43,7 @@ AppUser sampleAppUser1 = AppUser(
     profilePicUrl: "assets/images/Mohamed_Mahmoud.png",
     bookedAppointmentsIDs: ['sampleAppointment1', 'sampleAppointment2', 'sampleAppointment5'],
     id: '',
+  isTherapist: true,
 
 );
 

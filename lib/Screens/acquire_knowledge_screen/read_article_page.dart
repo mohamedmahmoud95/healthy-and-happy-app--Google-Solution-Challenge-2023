@@ -37,6 +37,7 @@ class _ReadArticleScreen extends State<ReadArticleScreen> {
     final screenSize = MediaQuery
         .of(context)
         .size;
+    final double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: mainWhite,
@@ -60,7 +61,13 @@ class _ReadArticleScreen extends State<ReadArticleScreen> {
               children: [
 
                 const SizedBox(height: 8),
-                Image.network(widget.article.photoUrl),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    elevation: 2,
+                      child: Image.network(widget.article.photoUrl)
+                  ),
+                ),
                 const SizedBox(height: 8),
 
                 Column(
@@ -68,19 +75,37 @@ class _ReadArticleScreen extends State<ReadArticleScreen> {
                   children: [
                     const SizedBox(height: 8.0),
 
-                    Text(
-                      '  ${widget.article.title } ',
-                      style: const TextStyle(color: navyBlue, fontSize: 20, fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Center(
+                        child: Text(
+
+                          '${widget.article.title } ',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: mainPurple, fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 8.0),
 
 
-                   Padding(
-                     padding: const EdgeInsets.all(8.0),
-                     child: Text(
-                        '${widget.article.text } ',
-                        style:  TextStyle(color: navyBlue, fontSize: 15,),
-                        ),
+                   Center(
+                     child: Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Card(
+                         elevation: 3,
+                         child: SizedBox(
+                           width: width-30,
+                           child: Padding(
+                             padding: const EdgeInsets.all(16.0),
+                             child: Text(
+                                '${widget.article.text } ',
+                                style:  TextStyle(color: navyBlue, fontSize: 15,),
+                                ),
+                           ),
+                         ),
+                       ),
+                     ),
                    ),
 
 
