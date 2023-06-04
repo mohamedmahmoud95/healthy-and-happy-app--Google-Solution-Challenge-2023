@@ -248,11 +248,11 @@ class _ChangePasswordTileState extends State<ChangePasswordTile> {
                   const SizedBox(height: 20,),
 
                   ButtonWidget(text: "Change password", onClicked: (){
-                    if(enteredCurrentPassword == thisAppUser.password)
+                    if(enteredCurrentPassword == currentAppUser.password)
                       {
                         if(enteredNewPassword == enteredConfirmedNewPassword)
                           {
-                            thisAppUser.password = enteredConfirmedNewPassword;
+                            currentAppUser.password = enteredConfirmedNewPassword;
                             debugPrint("user's password was updqted");
                           }
                         else

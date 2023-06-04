@@ -38,7 +38,7 @@ class AppointmentCard extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: thisAppUser.isTherapist
+                          backgroundImage: currentAppUser.isTherapist
                               ? AssetImage('${appointment.patient.profilePicUrl}')
                               : NetworkImage(appointment.therapist.photoUrl) as ImageProvider<Object>?,
                         ),
@@ -53,7 +53,7 @@ class AppointmentCard extends StatelessWidget {
                           children: [
 
                             Text(
-                              thisAppUser.isTherapist ?  '${appointment.patient.firstName} ${appointment.patient.lastName}' :
+                              currentAppUser.isTherapist ?  '${appointment.patient.firstName} ${appointment.patient.lastName}' :
                               appointment.therapist.name ,
                               style: const TextStyle(color: Colors.white),
                             ),
@@ -63,7 +63,7 @@ class AppointmentCard extends StatelessWidget {
                             ),
 
                             Text(
-                              thisAppUser.isTherapist ? '' : appointment.therapist.jobTitle,
+                              currentAppUser.isTherapist ? '' : appointment.therapist.jobTitle,
                               style: const TextStyle(
                                   color: Colors.white),
                             ),

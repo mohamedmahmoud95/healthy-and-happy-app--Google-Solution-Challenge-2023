@@ -49,23 +49,23 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   Widget returnSelectedScreen(int x) {
     switch (x) {
       case 0:
-        //news feed
+      //news feed
         return const HomeScreen();
       case 1:
-        //self-care
+      //self-care
         return const NewsFeedScreen();
 
       case 2:
-        //chat
+      //chat
         return const TherapistsScreen();
-      //ConsultTherapistScreen();
-      //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
+    //ConsultTherapistScreen();
+    //    BookingPage(therapist: Therapist(name: 'Dr. ahmed fathy', photoUrl: 'https://lakeforestgroup.com/wp-content/uploads/2014/11/doctor-profile-02.jpg'));
 
       case 3:
-        // schedule a session
+      // schedule a session
         return const ArticlesScreen(); //
-      // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
-      //ChatsWidget(appUser: sampleAppUser1,);
+    // ConversationScreen(thisAppUser: sampleAppUser1, otherAppUser: sampleAppUser2,);
+    //ChatsWidget(appUser: sampleAppUser1,);
     }
     //--------------------------------------------------------------------//
     throw Exception();
@@ -87,17 +87,17 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   Widget build(BuildContext ctx) {
     return Scaffold(
       backgroundColor: mainWhite,
-      appBar: (bottomBarNavigatorIndex == 3 || (bottomBarNavigatorIndex == 2 && thisAppUser.isTherapist))
+      appBar: (bottomBarNavigatorIndex == 3 || (bottomBarNavigatorIndex == 2 && currentAppUser.isTherapist))
           ? null
           : AppBar(
-              iconTheme: const IconThemeData(color: mainPurple, size: 30),
-              backgroundColor: mainWhite,
-              elevation: 0,
-              title: Text(
-                titles[bottomBarNavigatorIndex],
-                style: const TextStyle(
-                    color: mainPurple, fontWeight: FontWeight.normal),
-              )),
+          iconTheme: const IconThemeData(color: mainPurple, size: 30),
+          backgroundColor: mainWhite,
+          elevation: 0,
+          title: Text(
+            titles[bottomBarNavigatorIndex],
+            style: const TextStyle(
+                color: mainPurple, fontWeight: FontWeight.normal),
+          )),
       drawer: drawerWidget(),
 
 
@@ -119,12 +119,12 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
 
   Widget drawerWidget() {
 
-      if (thisAppUser == null) {
-        // Handle the case when thisAppUser is null, e.g., show a loading indicator
-        return CircularProgressIndicator();
-      }
+    if (currentAppUser == null) {
+      // Handle the case when thisAppUser is null, e.g., show a loading indicator
+      return CircularProgressIndicator();
+    }
 
-      return Drawer(
+    return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -148,7 +148,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                     child: CircleAvatar(
                       radius: 50,
                       foregroundImage:
-                      AssetImage('${thisAppUser.profilePicUrl}'),
+                      AssetImage(currentAppUser.profilePicUrl),
                     ),
                   ),
                   Column(
@@ -156,18 +156,18 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${thisAppUser.firstName}',
+                        currentAppUser.firstName,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize:
-                            thisAppUser.firstName!.length > 8 ? 16 : 24,
+                            currentAppUser.firstName.length > 8 ? 16 : 24,
                             overflow: TextOverflow.clip),
                       ),
                       Text(
-                        '${thisAppUser.lastName}',
+                        currentAppUser.lastName,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: thisAppUser.lastName!.length > 8 ? 16 : 24,
+                          fontSize: currentAppUser.lastName.length > 8 ? 16 : 24,
                         ),
                       ),
                     ],
@@ -195,7 +195,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
             ),
             onTap: () {
               setState(() {
-               // bottomBarNavigatorIndex = 0; // Navigate to home screen
+                // bottomBarNavigatorIndex = 0; // Navigate to home screen
               });
               Navigator.pop(context); // Pop the drawer
             },

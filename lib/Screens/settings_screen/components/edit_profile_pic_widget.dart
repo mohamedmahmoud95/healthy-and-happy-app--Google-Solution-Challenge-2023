@@ -26,7 +26,7 @@ class _EditProfilePicWidgetState extends State<EditProfilePicWidget> {
       final imageTemp = File(image.path);
       setState((){
         this.image = imageTemp;
-        thisAppUser.profilePicUrl = image.path;
+        currentAppUser.profilePicUrl = image.path;
       });
     } on PlatformException catch (e) {
       debugPrint('Failed to pick image: $e');
@@ -40,7 +40,7 @@ class _EditProfilePicWidgetState extends State<EditProfilePicWidget> {
       final imageTemp = File(image.path);
       setState(() {
         this.image = imageTemp;
-        thisAppUser.profilePicUrl = image.path;
+        currentAppUser.profilePicUrl = image.path;
       });
     } on PlatformException catch (e) {
       debugPrint('Failed to pick image: $e');
@@ -61,7 +61,8 @@ class _EditProfilePicWidgetState extends State<EditProfilePicWidget> {
 
         setState(() {
           image = tempFile;
-          thisAppUser.profilePicUrl = image?.path;
+          currentAppUser != null ?
+          currentAppUser.profilePicUrl = image!.path:  debugPrint('null image path');
         });
       } else {
         debugPrint('Failed to load image. Status code: ${response.statusCode}');
@@ -82,8 +83,8 @@ class _EditProfilePicWidgetState extends State<EditProfilePicWidget> {
             Positioned(
               child: CircleAvatar(
                 radius: 60,
-                foregroundImage: AssetImage(
-                  '${thisAppUser.profilePicUrl}',
+                  foregroundImage: AssetImage(
+                  '${currentAppUser.profilePicUrl}',
                 ),
               ),
             ),

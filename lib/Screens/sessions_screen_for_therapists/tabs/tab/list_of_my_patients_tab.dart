@@ -84,7 +84,7 @@ class ListOfMyPatients extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => BookingPage(
-                              isPatient: !(thisAppUser.isTherapist),
+                              isPatient: !(currentAppUser.isTherapist),
                             ),
                           ),
                         );
