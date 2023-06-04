@@ -30,8 +30,8 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
     const TimeOfDay(hour: 12, minute: 0),
     const TimeOfDay(hour: 13, minute: 30),
     const TimeOfDay(hour: 15, minute: 0),
-    //  const TimeOfDay(hour: 16, minute: 30),
-    //  const TimeOfDay(hour: 18, minute: 0),
+    const TimeOfDay(hour: 16, minute: 30),
+    const TimeOfDay(hour: 18, minute: 0),
   ];
 
   @override
@@ -58,8 +58,6 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
 
             const SizedBox(height:12),
 
-
-
             const SizedBox(height: 20),
 
             const SizedBox(height: 10),
@@ -73,8 +71,8 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
                   onClicked: () {
                     showDatePicker(
                       context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime.now(),
+                      initialDate: DateTime.now().add(const Duration(days: 1)),
+                      firstDate: DateTime.now().add(const Duration(days: 1)),
                       lastDate: DateTime.now().add(const Duration(days: 14)),
                     ).then((value) {
                       setState(() {
@@ -104,7 +102,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
                 itemCount: _availableTimes.length,
                 itemBuilder: (context, index) {
                   final time = _availableTimes[index];
-                  return Column(
+                   return Column(
                     children: [
                       const Divider(),
                       Center(

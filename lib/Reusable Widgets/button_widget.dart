@@ -32,20 +32,22 @@ class ButtonWidget extends StatelessWidget {
 
     child:
     childWidget != null ?
-    SizedBox(
-      width: 200,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+    Expanded(
+      child: SizedBox(
+        width: 200,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
 
-          childWidget! ,
-          const SizedBox(width: 10),
+            childWidget! ,
+            const SizedBox(width: 10),
 
-          Text(
-            text,
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+            Text(
+              text,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     )
         :
