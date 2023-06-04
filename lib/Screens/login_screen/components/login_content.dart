@@ -42,7 +42,7 @@ class _LoginContentState extends State<LoginContent>
 
   bool userLoggedIn = false;
 
-  Future<AppUser?> loginUser() {
+  Future<AppUser?> loginUser(bool isTherapist) {
     return FirebaseAuthMethods().loginWithEmailAndPassword(
       emailController.text,
       passwordController.text,
@@ -51,8 +51,8 @@ class _LoginContentState extends State<LoginContent>
       () {
         setState(() {
           userLoggedIn = true;
+          isTherapist? currentAppUser.isTherapist = true : currentAppUser.isTherapist = false;
           Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
-
         });
       },
 
@@ -74,7 +74,6 @@ class _LoginContentState extends State<LoginContent>
           () {
         setState(() {
           userLoggedIn = true;
-          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
 
         });
       },
@@ -103,7 +102,8 @@ class _LoginContentState extends State<LoginContent>
           child: TextField(
             controller: controller,
             style: const TextStyle(color: Colors.black),
-            obscureText: isPasswordField,
+            obscureText: isPasswordField?_passwordVisible:false,
+
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -114,6 +114,18 @@ class _LoginContentState extends State<LoginContent>
               fillColor: mainWhite,
               hintText: hint,
               prefixIcon: Icon(iconData),
+              suffixIcon: isPasswordField?
+              IconButton(
+                icon: Icon(
+                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _passwordVisible = !_passwordVisible;
+                  });
+                },
+              ):null,
             ),
           ),
         ),
@@ -121,37 +133,7 @@ class _LoginContentState extends State<LoginContent>
     );
   }
 
-  Widget loginButton(
-    String title,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
-      child: ElevatedButton(
-        onPressed: () {
-          loginUser();
-          setState(() {
-            currentAppUser.isTherapist = false; //regular user, not a therapist
-          });
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-        },
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: const StadiumBorder(),
-          //  primary: kSecondaryColor,
-          elevation: 8,
-          shadowColor: Colors.black87,
-        ),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
+
 
   Widget orDivider() {
     return Padding(
@@ -262,15 +244,16 @@ class _LoginContentState extends State<LoginContent>
             setState(() {
               currentAppUser.isTherapist = false;
             });
-
+            userLoggedIn == true
+                ? Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ScreensWrapper()))
+                : showSnackBar(context, "invalid email or password!");
           }),
 
       BlueButton(
           text: "Therapist signup",
           onPressed: () {
-            setState(() {
               therapistRegistrationForm(context: context);
-            });
           }),
 
       orDivider(),
@@ -297,27 +280,28 @@ class _LoginContentState extends State<LoginContent>
           text: 'Login',
           onPressed: () {
             setState(() {
-              currentAppUser.isTherapist = false;
+             // currentAppUser.isTherapist = false;
             });
-            loginUser();
+            loginUser(false);
 
-            userLoggedIn == true
-                ? Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ScreensWrapper()))
-                : showSnackBar(context, "Incorrect email or password!");
+            // userLoggedIn == true
+            //     ? Navigator.of(context).push(
+            //         MaterialPageRoute(builder: (context) => ScreensWrapper()))
+            //     : showSnackBar(context, "Incorrect email or password!");
           }),
 
       BlueButton(
           text: 'Therapist login',
           onPressed: () {
-            loginUser();
             setState(() {
-              currentAppUser.isTherapist = true;
+             // currentAppUser.isTherapist = true;
             });
-            userLoggedIn == true
-                ? Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreensWrapper(passedIndex: 0,)))
-                : showSnackBar(context, "Incorrect email or password!");
+            loginUser(true);
+
+            // userLoggedIn == true
+            //     ? Navigator.of(context).push(
+            //     MaterialPageRoute(builder: (context) => ScreensWrapper()))
+            //     : showSnackBar(context, "Incorrect email or password!");
           }),
 
       forgotPassword(),
@@ -528,7 +512,7 @@ class _BlueButtonState extends State<BlueButton> {
         child: Text(
           widget.text,
           style:  TextStyle(
-            fontSize:  widget.text.length >= 10 ? 14 : 16,
+            fontSize:  widget.text.length >= 10 ? 11 : 16,
             fontWeight: FontWeight.bold,
           ),
         ),

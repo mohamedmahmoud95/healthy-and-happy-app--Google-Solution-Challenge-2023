@@ -7,6 +7,7 @@ import 'package:reviews_slider/reviews_slider.dart';
 
 import '../../Constants/project_colors.dart';
 import '../../Reusable Widgets/big_card_widget.dart';
+import '../calories_tracker/calories_tracker_screen.dart';
 import '../pedometer/pedometer.dart';
 import '../workouts_and_yoga_screen/workouts_and_yoga_tabbar_screen.dart';
 
@@ -60,7 +61,6 @@ class _HomeScreen extends State<HomeScreen> {
                   runSpacing: 12.0, // gap between lines
                   children: [
                     CardWidget(
-                        optionalNumber: 237,
                         text: "Pedometer",
                         image: 'assets/images/pedometer4.png',
                         onClicked: () {
@@ -97,8 +97,21 @@ class _HomeScreen extends State<HomeScreen> {
 
 
                     BigCardWidget(
+                        text: "\nAbout to eat?\n\n"
+                            "Picture to calc calories\n",
+                        image: 'assets/images/food.jpg',
+                        onClicked: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CaloriesTrackerScreen()),
+                          );
+                        }),
+
+
+                    BigCardWidget(
                         text: "\nPsychometer\n\n"
-                            " Depression, Anxiety\n and stress scale\n",
+                            "Depression, Anxiety\nand stress scale\n",
                         image: 'assets/images/test6.png',
                         onClicked: () {
                           Navigator.push(

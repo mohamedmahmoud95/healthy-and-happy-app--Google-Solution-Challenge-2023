@@ -43,15 +43,18 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('   health '),
+                    const Expanded(child: Text(' health ')),
                     Tab(icon: Image.asset('assets/icons/health_icon.png', color: mainPurple,scale: 1.5,),),
                   ],
                 ),
 
                 const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
                   children: [
-                    Text('   Videos '),
+                    Expanded(child:Text(' Videos ')),
                     Tab(icon: Icon(Icons.video_camera_back_outlined, color: mainPurple, size: 30,),),
                   ],
                 ),

@@ -29,13 +29,17 @@ class FirebaseAuthMethods {
     try {
       final authResult = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+
       _userFromFirebase(authResult.user) == null? currentAppUser = sampleAppUser1:
+      onLoginSuccess();
+
       currentAppUser = _userFromFirebase(authResult.user)!;
-      onLoginSuccess;
+
       return _userFromFirebase(authResult.user);
+
     } catch (e) {
       debugPrint(e.toString());
-      onLoginFailed;
+      onLoginFailed();
       return null;
     }
   }
@@ -52,13 +56,14 @@ class FirebaseAuthMethods {
         password: password,
       );
 
-      // Call the onLoginSuccess callback
-      onLoginSuccess();
+
 
       // Update the current user
 
       _userFromFirebase(authResult.user) == null? currentAppUser = sampleAppUser1:
       currentAppUser = _userFromFirebase(authResult.user)!;
+      // Call the onLoginSuccess callback
+      onLoginSuccess();
       return _userFromFirebase(authResult.user);
     } catch (e) {
       debugPrint(e.toString());

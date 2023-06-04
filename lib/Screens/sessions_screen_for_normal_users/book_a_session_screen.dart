@@ -61,6 +61,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
             const SizedBox(height: 20),
 
             const SizedBox(height: 10),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child:
@@ -106,14 +107,15 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
                     children: [
                       const Divider(),
                       Center(
-
                         child: ListTile(
+                          leading: const Icon(Icons.alarm, color: lavender,),
                           title: Text(time.format(context),
                             style: const TextStyle(fontSize: 18,  color: Colors.black),),
-                          trailing: _selectedTime == time ? const Icon(Icons.check) : null,
+                          trailing: _selectedTime == time ? const Icon(Icons.check, color: mainPurple,)  : null,
                           onTap: () {
                             setState(() {
                               _selectedTime = time;
+
                             });
                           },
                         ),

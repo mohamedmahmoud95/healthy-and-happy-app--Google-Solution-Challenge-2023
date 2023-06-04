@@ -199,7 +199,8 @@ class _EditProfilePicWidgetState extends State<EditProfilePicWidget> {
                       },
                     ),
                   ),
-                ))
+                ),
+            )
           ],
         ),
       ),
