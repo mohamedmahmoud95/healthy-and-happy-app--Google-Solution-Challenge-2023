@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../Models/appUser.dart';
+import '../../../Reusable Widgets/show_snackbar_widget.dart';
 import '../../../firebase_services/firebase_auth_methods.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
 import '../../screens_wrapper/screens_wrapper.dart';
@@ -34,10 +35,26 @@ class _LoginContentState extends State<LoginContent>
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void loginUser() {
-       FirebaseAuthMethods().loginWithEmailAndPassword(
-       emailController.text,
-       passwordController.text,
+  bool userLoggedIn = false;
+
+  Future<AppUser?> loginUser() {
+    return FirebaseAuthMethods().loginWithEmailAndPassword(
+      emailController.text,
+      passwordController.text,
+
+      // onLoginSuccess
+      () {
+        setState(() {
+          userLoggedIn = true;
+        });
+      },
+
+     // onLoginFailed
+      () {
+        setState(() {
+          userLoggedIn = false;
+        });
+      },
     );
   }
 
@@ -47,7 +64,9 @@ class _LoginContentState extends State<LoginContent>
       passwordController.text,
     );
   }
-  Widget inputField(String hint, IconData iconData, bool isPasswordField, TextEditingController controller) {
+
+  Widget inputField(String hint, IconData iconData, bool isPasswordField,
+      TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -61,7 +80,6 @@ class _LoginContentState extends State<LoginContent>
             controller: controller,
             style: const TextStyle(color: Colors.black),
             obscureText: isPasswordField,
-
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -71,19 +89,17 @@ class _LoginContentState extends State<LoginContent>
               filled: true,
               fillColor: mainWhite,
               hintText: hint,
-
               prefixIcon: Icon(iconData),
-
             ),
-
           ),
         ),
       ),
     );
   }
 
-  Widget loginButton(String title, ) {
-
+  Widget loginButton(
+    String title,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
@@ -92,7 +108,8 @@ class _LoginContentState extends State<LoginContent>
           setState(() {
             thisAppUser.isTherapist = false; //regular user, not a therapist
           });
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -102,36 +119,6 @@ class _LoginContentState extends State<LoginContent>
           shadowColor: Colors.black87,
         ),
         child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget therapistLoginButton(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
-      child: ElevatedButton(
-        onPressed: () {
-          loginUser();
-          setState(() {
-            thisAppUser.isTherapist = true;
-          });
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-        },
-        style: ElevatedButton.styleFrom(
-
-          padding: const EdgeInsets.symmetric(vertical: 14,),
-          shape: const StadiumBorder(),
-          //  primary: kSecondaryColor,
-          elevation: 8,
-          shadowColor: Colors.black87,
-        ),
-        child:  Text(
           title,
           style: const TextStyle(
             fontSize: 18,
@@ -217,44 +204,83 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      CustomInputField(hint: 'Name', iconData:      Ionicons.person_outline,      isPasswordField: false, controller: nameController,),
-      CustomInputField(hint: 'Email', iconData:     Ionicons.mail_outline,        isPasswordField: false, controller: emailController,),
-      CustomInputField(hint: 'Password', iconData:  Ionicons.lock_closed_outline, isPasswordField: true,  controller: passwordController,),
+      CustomInputField(
+        hint: 'Name',
+        iconData: Ionicons.person_outline,
+        isPasswordField: false,
+        controller: nameController,
+      ),
+      CustomInputField(
+        hint: 'Email',
+        iconData: Ionicons.mail_outline,
+        isPasswordField: false,
+        controller: emailController,
+      ),
+      CustomInputField(
+        hint: 'Password',
+        iconData: Ionicons.lock_closed_outline,
+        isPasswordField: true,
+        controller: passwordController,
+      ),
 
-      BlueButton(text: 'Sign Up', onPressed: (){
-        registerNewUser();
-        setState(() {
-          thisAppUser.isTherapist = false;
-        });
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-      }),
+      BlueButton(
+          text: 'Sign Up',
+          onPressed: () {
+            registerNewUser();
+            setState(() {
+              thisAppUser.isTherapist = false;
+            });
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ScreensWrapper()));
+          }),
       // loginButton('Sign Up'),
       orDivider(),
       logos(),
     ];
 
+
+
     loginContent = [
-      CustomInputField(hint: 'Email', iconData:     Ionicons.mail_outline,        isPasswordField: false, controller: emailController,),
-      CustomInputField(hint: 'Password', iconData:  Ionicons.lock_closed_outline, isPasswordField: true,  controller: passwordController,),
-      //loginButton('Log In'),
-      BlueButton(text: 'Login', onPressed: (){
-        loginUser();
-        setState(() {
-          thisAppUser.isTherapist = false;
-        });
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-      }),
+      CustomInputField(
+        hint: 'Email',
+        iconData: Ionicons.mail_outline,
+        isPasswordField: false,
+        controller: emailController,
+      ),
+      CustomInputField(
+        hint: 'Password',
+        iconData: Ionicons.lock_closed_outline,
+        isPasswordField: true,
+        controller: passwordController,
+      ),
 
+      BlueButton(
+          text: 'Login',
+          onPressed: () {
+            setState(() {
+              thisAppUser.isTherapist = false;
+            });
+            loginUser();
 
-      BlueButton(text: 'Therapist login', onPressed: (){
-        loginUser();
-        setState(() {
-          thisAppUser.isTherapist = true;
-        });
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-      }),
+            userLoggedIn == true
+                ? Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ScreensWrapper()))
+                : showSnackBar(context, "Incorrect email or password!");
+          }),
 
-      // therapistLoginButton('Therapist login'),
+      BlueButton(
+          text: 'Therapist login',
+          onPressed: () {
+            loginUser();
+            setState(() {
+              thisAppUser.isTherapist = true;
+            });
+            userLoggedIn == true
+                ? Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ScreensWrapper()))
+                : showSnackBar(context, "Incorrect email or password!");
+          }),
+
       forgotPassword(),
     ];
 
@@ -326,14 +352,19 @@ class _LoginContentState extends State<LoginContent>
   }
 }
 
-
 class CustomInputField extends StatefulWidget {
   final String hint;
   final IconData iconData;
   final bool isPasswordField;
   TextEditingController controller;
 
-  CustomInputField({Key? key, required this.hint, required this.iconData, required this.isPasswordField, required this.controller}) : super(key: key);
+  CustomInputField(
+      {Key? key,
+      required this.hint,
+      required this.iconData,
+      required this.isPasswordField,
+      required this.controller})
+      : super(key: key);
 
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
@@ -355,7 +386,6 @@ class _CustomInputFieldState extends State<CustomInputField> {
             controller: widget.controller,
             style: const TextStyle(color: Colors.black),
             obscureText: widget.isPasswordField,
-
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -365,11 +395,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
               filled: true,
               fillColor: mainWhite,
               hintText: widget.hint,
-
               prefixIcon: Icon(widget.iconData),
-
             ),
-
           ),
         ),
       ),
@@ -377,12 +404,11 @@ class _CustomInputFieldState extends State<CustomInputField> {
   }
 }
 
-
-
 class BlueButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
-  const BlueButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+  const BlueButton({Key? key, required this.text, required this.onPressed})
+      : super(key: key);
 
   @override
   State<BlueButton> createState() => _BlueButtonState();
@@ -391,25 +417,24 @@ class BlueButton extends StatefulWidget {
 class _BlueButtonState extends State<BlueButton> {
   @override
   Widget build(BuildContext context) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
-        child: ElevatedButton(
-          onPressed: widget.onPressed,
-
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
-            shape: const StadiumBorder(),
-            elevation: 8,
-            shadowColor: Colors.black87,
-          ),
-          child: Text(
-            widget.text,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+      child: ElevatedButton(
+        onPressed: widget.onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: const StadiumBorder(),
+          elevation: 8,
+          shadowColor: Colors.black87,
+        ),
+        child: Text(
+          widget.text,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
           ),
         ),
-      );
+      ),
+    );
   }
 }

@@ -20,15 +20,15 @@ class FirebaseAuthMethods {
   }
 
   Future<AppUser?> loginWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, VoidCallback onLoginSuccess, VoidCallback onLoginFailed) async {
     try {
       final authResult = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      onLoginSuccess();
       return _userFromFirebase(authResult.user);
     } catch (e) {
-
         debugPrint(e.toString());
-
+        onLoginFailed();
       return null;
     }
   }
@@ -36,4 +36,6 @@ class FirebaseAuthMethods {
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
   }
+
+
 }
