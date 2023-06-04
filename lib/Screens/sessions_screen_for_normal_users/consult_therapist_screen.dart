@@ -4,6 +4,8 @@ import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_normal_users/therapists_list_screen.dart';
 
+import '../../screens/sessions_screen_for_therapists/tabs/tab/scheduleTab.dart';
+
 
 
 class ConsultTherapistScreen extends StatefulWidget {
@@ -37,15 +39,16 @@ class _ConsultTherapistScreenState extends State<ConsultTherapistScreen> {
 
                         Image.asset('assets/images/online_session.png',scale: 1.5,),
 
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 30),
 
                         const Align(
                           alignment: Alignment.center,
                           child: Text(
 
-                            "       You take, We help \n\n"
+                            "You take, We help \n\n"
                                 "Talk to your therapist online, \n\n"
                                 "privately, anytime, anywhere!",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
 
                               color: mainPurple,
@@ -55,16 +58,15 @@ class _ConsultTherapistScreenState extends State<ConsultTherapistScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 12),
 
 
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 30),
 
                         Center(
                           child: ButtonWidget(text: 'My calendar',
                             onClicked: () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  TherapistListScreen()),
+                              MaterialPageRoute(builder: (context) =>  ScheduleTab()),
                             ),
                           ),
                         ),
