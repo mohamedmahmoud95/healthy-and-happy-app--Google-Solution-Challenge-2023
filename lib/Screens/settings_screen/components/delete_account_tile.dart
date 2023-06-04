@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
+import 'package:mental_health_app/firebase_services/firebase_auth_methods.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../Reusable Widgets/button_widget.dart';
@@ -202,6 +204,7 @@ class _DeleteAccountTileState extends State<DeleteAccountTile> {
                                           text: "Submit and delete",
                                           onClicked: () {
                                             //back-end code for deleting user's account here
+                                            FirebaseAuthMethods().deleteAccount('${thisAppUser.email}', '12345678');
                                             debugPrint(
                                                 "final delete my account pressed :(");
                                           })
