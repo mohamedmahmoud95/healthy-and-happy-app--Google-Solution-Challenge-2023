@@ -7,11 +7,13 @@ class ButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
   final Color? backgroundColor;
+  final Widget? childWidget;
   const ButtonWidget({
     Key? key,
     required this.text,
     required this.onClicked,
-    this.backgroundColor
+    this.backgroundColor,
+    this.childWidget,
   }) : super(key: key);
 
   @override
@@ -28,9 +30,29 @@ class ButtonWidget extends StatelessWidget {
 
     onPressed: onClicked,
 
-    child: Text(
+    child:
+    childWidget != null ?
+    SizedBox(
+      width: 200,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+          childWidget! ,
+          const SizedBox(width: 10),
+
+          Text(
+            text,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    )
+        :
+    Text(
       text,
       style: const TextStyle(fontSize: 16),
     ),
+
   );
 }

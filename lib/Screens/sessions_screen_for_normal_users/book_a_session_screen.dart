@@ -7,6 +7,7 @@ import '../../Constants/project_colors.dart';
 import '../../Models/appointment.dart';
 import '../../Models/therapist.dart';
 import '../../Reusable Widgets/button_widget.dart';
+import '../../Reusable Widgets/therapist_card.dart';
 import 'confirm_booking_screen.dart';
 
 class SessionBookingScreen extends StatefulWidget {
@@ -35,6 +36,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: mainWhite,
       appBar: AppBar(
@@ -42,7 +44,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
           backgroundColor: mainWhite,
           elevation: 0,
           title: const Text('Book an Appointment',
-              style: TextStyle(color: Colors.black))
+              style: TextStyle(color: mainPurple, fontSize: 20))
       ),
 
       body: SafeArea(
@@ -51,7 +53,9 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
           children: [
 
             const SizedBox(height:12),
-            Image.network('https://img.freepik.com/free-vector/woman-crying-therapy-session_74855-17143.jpg'),
+          //  Image.network('https://img.freepik.com/free-vector/woman-crying-therapy-session_74855-17143.jpg'),
+            TherapistCard(therapist: widget.therapist),
+
             const SizedBox(height:12),
 
 
@@ -65,6 +69,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
               Center(
                 child: ButtonWidget(
                   text:  _selectedDate == null ? 'Click to select a date' : _selectedDate.toString().substring(0, 10),
+                  childWidget: const Icon(Icons.calendar_month_rounded,),
                   onClicked: () {
                     showDatePicker(
                       context: context,
