@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'Constants/project_colors.dart';
-import 'Screens/home_screen/home_screen.dart';
-import 'Screens/menu_screen/menu_screen.dart';
 import 'screens/login_screen/login_screen.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Add this line
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -29,4 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
