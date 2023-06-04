@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/Models/appUser.dart';
 import 'package:mental_health_app/Screens/news_feed_screen/news_feed_screen.dart';
+import 'package:mental_health_app/firebase_services/firebase_auth_methods.dart';
 import '../../Constants/project_colors.dart';
 
 import '../about_us_screen/about_us_screen.dart';
@@ -280,6 +281,7 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
               style: TextStyle(color: mainPurple, fontSize: 20),
             ),
             onTap: () {
+              FirebaseAuthMethods().logout();
               Navigator.popUntil(
                   context,
                   ModalRoute.withName(Navigator

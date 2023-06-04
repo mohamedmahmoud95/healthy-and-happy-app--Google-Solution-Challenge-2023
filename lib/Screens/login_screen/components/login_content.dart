@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../Models/appUser.dart';
+import '../../../firebase_services/firebase_auth_methods.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
 import '../../screens_wrapper/screens_wrapper.dart';
 import '../animations/change_screen_animation.dart';
@@ -27,7 +30,24 @@ class _LoginContentState extends State<LoginContent>
   late final List<Widget> loginContent;
   bool _passwordVisible = false;
 
-  Widget inputField(String hint, IconData iconData, bool isPasswordField) {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void loginUser() {
+       FirebaseAuthMethods().loginWithEmailAndPassword(
+       emailController.text,
+       passwordController.text,
+    );
+  }
+
+  void registerNewUser() {
+    FirebaseAuthMethods().registerWithEmailAndPassword(
+      emailController.text,
+      passwordController.text,
+    );
+  }
+  Widget inputField(String hint, IconData iconData, bool isPasswordField, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -38,6 +58,7 @@ class _LoginContentState extends State<LoginContent>
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: TextField(
+            controller: controller,
             style: const TextStyle(color: Colors.black),
             obscureText: isPasswordField,
 
@@ -61,16 +82,18 @@ class _LoginContentState extends State<LoginContent>
     );
   }
 
-  Widget loginButton(String title) {
+  Widget loginButton(String title, ) {
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
+          loginUser();
           setState(() {
             thisAppUser.isTherapist = false; //regular user, not a therapist
           });
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
-          },
+        },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: const StadiumBorder(),
@@ -94,6 +117,7 @@ class _LoginContentState extends State<LoginContent>
       padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
+          loginUser();
           setState(() {
             thisAppUser.isTherapist = true;
           });
@@ -193,19 +217,44 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Name', Ionicons.person_outline, false),
-      inputField('Email', Ionicons.mail_outline, false),
-      inputField('Password', Ionicons.lock_closed_outline, true),
-      loginButton('Sign Up'),
+      CustomInputField(hint: 'Name', iconData:      Ionicons.person_outline,      isPasswordField: false, controller: nameController,),
+      CustomInputField(hint: 'Email', iconData:     Ionicons.mail_outline,        isPasswordField: false, controller: emailController,),
+      CustomInputField(hint: 'Password', iconData:  Ionicons.lock_closed_outline, isPasswordField: true,  controller: passwordController,),
+
+      BlueButton(text: 'Sign Up', onPressed: (){
+        registerNewUser();
+        setState(() {
+          thisAppUser.isTherapist = false;
+        });
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+      }),
+      // loginButton('Sign Up'),
       orDivider(),
       logos(),
     ];
 
     loginContent = [
-      inputField('Email', Ionicons.mail_outline, false),
-      inputField('Password', Ionicons.lock_closed_outline, true),
-      loginButton('Log In'),
-      therapistLoginButton('Therapist login'),
+      CustomInputField(hint: 'Email', iconData:     Ionicons.mail_outline,        isPasswordField: false, controller: emailController,),
+      CustomInputField(hint: 'Password', iconData:  Ionicons.lock_closed_outline, isPasswordField: true,  controller: passwordController,),
+      //loginButton('Log In'),
+      BlueButton(text: 'Login', onPressed: (){
+        loginUser();
+        setState(() {
+          thisAppUser.isTherapist = false;
+        });
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+      }),
+
+
+      BlueButton(text: 'Therapist login', onPressed: (){
+        loginUser();
+        setState(() {
+          thisAppUser.isTherapist = true;
+        });
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
+      }),
+
+      // therapistLoginButton('Therapist login'),
       forgotPassword(),
     ];
 
@@ -274,5 +323,93 @@ class _LoginContentState extends State<LoginContent>
         ),
       ],
     );
+  }
+}
+
+
+class CustomInputField extends StatefulWidget {
+  final String hint;
+  final IconData iconData;
+  final bool isPasswordField;
+  TextEditingController controller;
+
+  CustomInputField({Key? key, required this.hint, required this.iconData, required this.isPasswordField, required this.controller}) : super(key: key);
+
+  @override
+  State<CustomInputField> createState() => _CustomInputFieldState();
+}
+
+class _CustomInputFieldState extends State<CustomInputField> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
+      child: SizedBox(
+        height: 50,
+        child: Material(
+          elevation: 8,
+          shadowColor: Colors.black87,
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(30),
+          child: TextField(
+            controller: widget.controller,
+            style: const TextStyle(color: Colors.black),
+            obscureText: widget.isPasswordField,
+
+            textAlignVertical: TextAlignVertical.bottom,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: mainWhite,
+              hintText: widget.hint,
+
+              prefixIcon: Icon(widget.iconData),
+
+            ),
+
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class BlueButton extends StatefulWidget {
+  final String text;
+  final VoidCallback onPressed;
+  const BlueButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+
+  @override
+  State<BlueButton> createState() => _BlueButtonState();
+}
+
+class _BlueButtonState extends State<BlueButton> {
+  @override
+  Widget build(BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+        child: ElevatedButton(
+          onPressed: widget.onPressed,
+
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            shape: const StadiumBorder(),
+            elevation: 8,
+            shadowColor: Colors.black87,
+          ),
+          child: Text(
+            widget.text,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
   }
 }
