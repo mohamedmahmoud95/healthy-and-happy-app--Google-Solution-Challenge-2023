@@ -118,7 +118,13 @@ class _ScreensWrapperState extends State<ScreensWrapper> {
   }
 
   Widget drawerWidget() {
-    return Drawer(
+
+      if (thisAppUser == null) {
+        // Handle the case when thisAppUser is null, e.g., show a loading indicator
+        return CircularProgressIndicator();
+      }
+
+      return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[

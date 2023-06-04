@@ -67,6 +67,9 @@ dependencies:
   flutter_zoom_drawer: ^3.0.4+1
   firebase_core: ^2.13.1
   firebase_auth: ^4.6.2
+  health: ^4.6.0
+  device_info_plus: ^8.2.2
+  syncfusion_flutter_charts: ^21.2.8
 
 
 dev_dependencies:
@@ -206,6 +209,7 @@ flutter:
     - assets/icons/workout.png
     - assets/images/success.json
     - assets/images/mark.jpeg
+    - assets/images/steps.png
 
 
 

@@ -7,6 +7,7 @@ import 'package:reviews_slider/reviews_slider.dart';
 
 import '../../Constants/project_colors.dart';
 import '../../Reusable Widgets/big_card_widget.dart';
+import '../pedometer/pedometer.dart';
 import '../workouts_and_yoga_screen/workouts_and_yoga_tabbar_screen.dart';
 
 
@@ -62,7 +63,15 @@ class _HomeScreen extends State<HomeScreen> {
                         optionalNumber: 237,
                         text: "Pedometer",
                         image: 'assets/images/pedometer4.png',
-                        onClicked: () {}),
+                        onClicked: () {
+                          Navigator.push(
+                            context,
+                            // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
+                            MaterialPageRoute(
+                                builder: (context) =>  const PedometerScreen()),
+                          );
+
+                        }),
 
                     CardWidget(
                         text: "Workout",
@@ -70,7 +79,6 @@ class _HomeScreen extends State<HomeScreen> {
                         onClicked: () {
                           Navigator.push(
                             context,
-                            // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
                             MaterialPageRoute(
                                 builder: (context) =>  const WorkoutAndYogaScreen()),
                           );
@@ -95,12 +103,10 @@ class _HomeScreen extends State<HomeScreen> {
                         onClicked: () {
                           Navigator.push(
                             context,
-                            // MaterialPageRoute(builder: (context) => PsychologicalTestsScreen()),);
                             MaterialPageRoute(
                                 builder: (context) => DepressionTest()),
                           );
                         }),
-                    //  QuestionCard(question:sampleQuestion1, selectedAnswer: 1,),
                   ],
                 ),
                 const SizedBox(
@@ -113,4 +119,5 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 }
+
 
