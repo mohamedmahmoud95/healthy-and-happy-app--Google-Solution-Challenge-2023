@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../Models/appUser.dart';
+import '../../../Reusable Widgets/show_popup_dialog.dart';
 import '../../../Reusable Widgets/show_snackbar_widget.dart';
 import '../../../firebase_services/firebase_auth_methods.dart';
 import '../../../screens/login_screen/animations/helper_functions.dart';
@@ -185,16 +186,20 @@ class _LoginContentState extends State<LoginContent>
   }
 
   Widget forgotPassword() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 110),
+    return Center(
       child: TextButton(
-        onPressed: () {},
-        child: const Text(
-          'Forgot Password?',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+        onPressed: () {
+         resetPasswordPopUpDialog(context: context);
+        },
+        child: const Center(
+          child: Text(
+            'Forgot Password?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

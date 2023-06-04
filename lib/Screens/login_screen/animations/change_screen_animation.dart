@@ -115,7 +115,7 @@ class ChangeScreenAnimation {
       ...loginControllers,
     ]) {
       controller.forward();
-      await Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 50));
     }
 
     bottomTextController.reverse();
