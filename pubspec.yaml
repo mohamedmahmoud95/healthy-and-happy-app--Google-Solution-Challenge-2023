@@ -65,6 +65,8 @@ dependencies:
   table_calendar: ^3.0.9
   flutter_settings_screens: ^0.3.1
   flutter_zoom_drawer: ^3.0.4+1
+  firebase_core: ^2.13.1
+  firebase_auth: ^4.6.2
 
 
 dev_dependencies:

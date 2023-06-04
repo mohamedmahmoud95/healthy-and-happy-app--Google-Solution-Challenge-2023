@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1068981377080",
+    "project_id": "healthy-and-happy-b85cc",
+    "storage_bucket": "healthy-and-happy-b85cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068981377080:android:074aa63ec4ecf34a342ecd",
+        "android_client_info": {
+          "package_name": "com.example.mentalHealthApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068981377080-s0j8k5ip8f78f04csqujnb340tjrmik9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mentalHealthApp",
+            "certificate_hash": "84f206b161faab5a39fecca559ade414a24bc104"
+          }
+        },
+        {
+          "client_id": "1068981377080-krqgqe9scj245j08fllj9rsrif8e4o51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4AEptuIJXm0BsQ1Bo8f8-CZANzVd9q3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068981377080-disv6pstn5mvc3eeta3h9sh3djdukee7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068981377080-6d25io00r7utvat63tdk7k5987jujaa4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mentalHealthApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068981377080:android:582f49b311e9ccd3342ecd",
+        "android_client_info": {
+          "package_name": "com.example.mental_health_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068981377080-krqgqe9scj245j08fllj9rsrif8e4o51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4AEptuIJXm0BsQ1Bo8f8-CZANzVd9q3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068981377080-disv6pstn5mvc3eeta3h9sh3djdukee7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068981377080-6d25io00r7utvat63tdk7k5987jujaa4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mentalHealthApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
