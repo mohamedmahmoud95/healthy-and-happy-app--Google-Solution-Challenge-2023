@@ -2,6 +2,7 @@
 // Define the booking confirmation page
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Models/appUser.dart';
 
 import '../../Constants/project_colors.dart';
 import '../../Models/appointment.dart';
@@ -41,9 +42,9 @@ class ConfirmBookingScreen extends StatelessWidget {
             ),
             const SizedBox(height: 75),
 
-            Text(
+            const Text(
               'Session info',
-              style: const TextStyle(fontSize: 18, color: Colors.black),
+              style: TextStyle(fontSize: 18, color: Colors.black),
             ),
 
             const SizedBox(height: 20),
@@ -61,6 +62,9 @@ class ConfirmBookingScreen extends StatelessWidget {
             const SizedBox(height: 75),
             ButtonWidget(text: 'Confirm', onClicked: ()
             {
+              listOfSampleAppointments.add(
+                appointment
+              );
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) =>  ScreensWrapper()),
@@ -72,7 +76,6 @@ class ConfirmBookingScreen extends StatelessWidget {
 
             TextButton(
               onPressed: () {
-
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>  ScreensWrapper()),

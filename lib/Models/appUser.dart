@@ -1,37 +1,35 @@
 import 'package:mental_health_app/Models/appointment.dart';
 
 class AppUser {
-  String? id;
-  String? email;
-  String? password;
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  String? profilePicUrl;
-  String? about;
-  String? lastActive;
-  List<String>? idsOfAnotherUsersChattedWith = [];
-  List<String>? likedPostsIds = [];
-  List<String>? friendsUsersIds = [];
-  bool isTherapist;
-  List<String>? bookedAppointmentsIDs = [];
+  String id = 'id';
+  String email = 'example@gmail.com';
+  String password = '12345678';
+  String firstName = 'first name';
+  String lastName = 'last name';
+  String phoneNumber = '01234567890';
+  String profilePicUrl = 'assets/images/profile_pic.png';
+  String about = 'About';
+ // List<String>? idsOfAnotherUsersChattedWith = [];
+ // List<String>? likedPostsIds = [];
+ // List<String>? friendsUsersIds = [];
+  bool isTherapist = false;
+  List<String> bookedAppointmentsIDs = [];
 
   AppUser({
-    this.id,
-    this.email,
-    this.password,
-    this.firstName,
-    this.lastName,
-    this.phoneNumber,
-    this.profilePicUrl,
-    this.about,
-    this.lastActive,
-    this.idsOfAnotherUsersChattedWith,
-    this.friendsUsersIds,
-    this.likedPostsIds,
+    required this.id,
+    required this.email,
+    required this.password,
+    required this.firstName,
+    required this.lastName,
+    required this.phoneNumber,
+    required this.profilePicUrl,
+    required this.about,
+    // this.idsOfAnotherUsersChattedWith,
+    // this.friendsUsersIds,
+    // this.likedPostsIds,
     this.isTherapist =
         false, //false by default, unless the opposite is explicitly declared
-    this.bookedAppointmentsIDs,
+    required this.bookedAppointmentsIDs,
   });
 }
 
@@ -41,10 +39,10 @@ AppUser sampleAppUser1 = AppUser(
     email: "m.raslan97@gmail.com",
     phoneNumber: "+201001412578",
     about: "حد علوضعه جدًا",
-    lastActive: "3 min ago",
     password: '12345678',
     profilePicUrl: "assets/images/Mohamed_Mahmoud.png",
     bookedAppointmentsIDs: ['sampleAppointment1', 'sampleAppointment2', 'sampleAppointment5'],
+    id: '',
 
 );
 
@@ -55,8 +53,9 @@ AppUser sampleAppUser2 = AppUser(
   phoneNumber: "+20123456789",
   profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
-  lastActive: "1 hr ago",
   bookedAppointmentsIDs: [],
+  id: 'id',
+  password: '12345678',
 
 );
 AppUser sampleAppUser3 = AppUser(
@@ -66,8 +65,9 @@ AppUser sampleAppUser3 = AppUser(
   phoneNumber: "+20123456789",
   profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
-  lastActive: "3 hr ago",
   bookedAppointmentsIDs: [],
+  id: 'id',
+  password: '12345678',
 
 );
 AppUser sampleAppUser4 = AppUser(
@@ -77,22 +77,23 @@ AppUser sampleAppUser4 = AppUser(
   phoneNumber: "+20123456789",
   profilePicUrl: 'assets/images/profile_pic.png',
   about: "..",
-  lastActive: "1 day ago",
   bookedAppointmentsIDs: [],
+  id: 'id',
+  password: '12345678',
 
 );
 
-AppUser thisAppUser =
+AppUser currentAppUser =
 AppUser(
   firstName: "Mohamed",
   lastName: "Mahmoud",
   email: "m.raslan97@gmail.com",
   phoneNumber: "+201001412578",
   about: "حد علوضعه جدًا",
-  lastActive: "3 min ago",
-  password: '12345678',
   profilePicUrl: "assets/images/Mohamed_Mahmoud.png",
   bookedAppointmentsIDs: ['sampleAppointment1', 'sampleAppointment2', 'sampleAppointment5'],
+  id: 'id',
+  password: '12345678',
 
 );
  //   sampleAppUser1; // a test appUser to use as the current appUser (the one using the app from his phone)

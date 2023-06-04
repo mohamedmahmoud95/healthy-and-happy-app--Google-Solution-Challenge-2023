@@ -32,7 +32,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
       return schedule.status == selectedStatus;
     }).toList();
 
-    final bool isTherapist = thisAppUser.isTherapist;
+    final bool isTherapist = currentAppUser.isTherapist;
     
     void cancelSchedule(int index) {
       setState(() {

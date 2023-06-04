@@ -43,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: 10),
               Center(
                   child: Text(
-                '${thisAppUser.firstName} ${thisAppUser.lastName}',
+                '${currentAppUser.firstName} ${currentAppUser.lastName}',
                 style: const TextStyle(color: mainPurple, fontSize: 20),
               )),
               const SizedBox(height: 20),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:mental_health_app/Reusable%20Widgets/button_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Constants/project_colors.dart';
 import '../../../Models/appUser.dart';
@@ -13,6 +14,7 @@ import '../../screens_wrapper/screens_wrapper.dart';
 import '../animations/change_screen_animation.dart';
 import 'bottom_text.dart';
 import 'top_text.dart';
+
 
 enum Screens {
   createAccount,
@@ -28,6 +30,8 @@ class LoginContent extends StatefulWidget {
 
 class _LoginContentState extends State<LoginContent>
     with TickerProviderStateMixin {
+
+
   late final List<Widget> createAccountContent;
   late final List<Widget> loginContent;
   bool _passwordVisible = false;
@@ -42,11 +46,13 @@ class _LoginContentState extends State<LoginContent>
     return FirebaseAuthMethods().loginWithEmailAndPassword(
       emailController.text,
       passwordController.text,
-
       // onLoginSuccess
+
       () {
         setState(() {
           userLoggedIn = true;
+          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
         });
       },
 
@@ -63,7 +69,24 @@ class _LoginContentState extends State<LoginContent>
     FirebaseAuthMethods().registerWithEmailAndPassword(
       emailController.text,
       passwordController.text,
+      // onLoginSuccess
+
+          () {
+        setState(() {
+          userLoggedIn = true;
+          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
+        });
+      },
+
+      // onLoginFailed
+          () {
+        setState(() {
+          userLoggedIn = false;
+        });
+      },
     );
+
   }
 
   Widget inputField(String hint, IconData iconData, bool isPasswordField,
@@ -107,7 +130,7 @@ class _LoginContentState extends State<LoginContent>
         onPressed: () {
           loginUser();
           setState(() {
-            thisAppUser.isTherapist = false; //regular user, not a therapist
+            currentAppUser.isTherapist = false; //regular user, not a therapist
           });
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
@@ -206,8 +229,12 @@ class _LoginContentState extends State<LoginContent>
     );
   }
 
+
+
+
   @override
   void initState() {
+
     createAccountContent = [
       CustomInputField(
         hint: 'Name',
@@ -233,12 +260,19 @@ class _LoginContentState extends State<LoginContent>
           onPressed: () {
             registerNewUser();
             setState(() {
-              thisAppUser.isTherapist = false;
+              currentAppUser.isTherapist = false;
             });
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
           }),
-      // loginButton('Sign Up'),
+
+      BlueButton(
+          text: "Therapist signup",
+          onPressed: () {
+            setState(() {
+              therapistRegistrationForm(context: context);
+            });
+          }),
+
       orDivider(),
       logos(),
     ];
@@ -263,7 +297,7 @@ class _LoginContentState extends State<LoginContent>
           text: 'Login',
           onPressed: () {
             setState(() {
-              thisAppUser.isTherapist = false;
+              currentAppUser.isTherapist = false;
             });
             loginUser();
 
@@ -278,11 +312,11 @@ class _LoginContentState extends State<LoginContent>
           onPressed: () {
             loginUser();
             setState(() {
-              thisAppUser.isTherapist = true;
+              currentAppUser.isTherapist = true;
             });
             userLoggedIn == true
                 ? Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreensWrapper()))
+                MaterialPageRoute(builder: (context) => ScreensWrapper(passedIndex: 0,)))
                 : showSnackBar(context, "Incorrect email or password!");
           }),
 
@@ -317,6 +351,65 @@ class _LoginContentState extends State<LoginContent>
     ChangeScreenAnimation.dispose();
 
     super.dispose();
+  }
+
+  Future<void> _launchUrl() async {
+    const String url = 'https://docs.google.com/forms/d/e/1FAIpQLSfUX_gEorivdZU2rCmWQYOLNeaRf05tIZzw-429BomUtir_ng/viewform?usp=pp_url';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      debugPrint('Could not launch $url');
+      throw Exception('Could not launch $url');
+    }
+  }
+
+
+  void therapistRegistrationForm({
+    required BuildContext context,
+  }) {
+    showDialog(
+
+      context: context,
+      barrierDismissible: true,
+      builder: (context) =>
+          AlertDialog(
+
+            title: const Text("Therapist registration",
+              style: TextStyle(color: mainPurple, fontSize: 20),),
+            backgroundColor: mainWhite,
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            content: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text("You need to fill out a registration form to register as a therapist, please click the button below to register as a therapist",
+                  style: TextStyle(color: mainPurple, fontSize: 16),),
+
+              ],
+            ),
+            actions: <Widget>[
+
+              TextButton(
+                onPressed: () {
+                  _launchUrl();
+                },
+
+                child: const Text(
+                    "Register", style: TextStyle(color: mainBlue,)),
+              ),
+
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                    "Cancel", style: TextStyle(color: Colors.red,)),
+              )
+            ],
+          ),
+    );
   }
 
   @override
@@ -434,8 +527,8 @@ class _BlueButtonState extends State<BlueButton> {
         ),
         child: Text(
           widget.text,
-          style: const TextStyle(
-            fontSize: 16,
+          style:  TextStyle(
+            fontSize:  widget.text.length >= 10 ? 14 : 16,
             fontWeight: FontWeight.bold,
           ),
         ),
