@@ -204,7 +204,7 @@ class _DeleteAccountTileState extends State<DeleteAccountTile> {
                                           text: "Submit and delete",
                                           onClicked: () {
                                             //back-end code for deleting user's account here
-                                            FirebaseAuthMethods().deleteAccount('${thisAppUser.email}', '12345678');
+                                            FirebaseAuthMethods().deleteAccount('${currentAppUser.email}', '12345678');
                                             debugPrint(
                                                 "final delete my account pressed :(");
                                           })

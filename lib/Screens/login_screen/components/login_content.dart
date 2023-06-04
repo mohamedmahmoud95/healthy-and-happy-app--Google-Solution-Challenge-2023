@@ -16,8 +16,6 @@ import 'bottom_text.dart';
 import 'top_text.dart';
 
 
-
-
 enum Screens {
   createAccount,
   welcomeBack,
@@ -48,11 +46,13 @@ class _LoginContentState extends State<LoginContent>
     return FirebaseAuthMethods().loginWithEmailAndPassword(
       emailController.text,
       passwordController.text,
-
       // onLoginSuccess
+
       () {
         setState(() {
           userLoggedIn = true;
+          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
         });
       },
 
@@ -69,7 +69,24 @@ class _LoginContentState extends State<LoginContent>
     FirebaseAuthMethods().registerWithEmailAndPassword(
       emailController.text,
       passwordController.text,
+      // onLoginSuccess
+
+          () {
+        setState(() {
+          userLoggedIn = true;
+          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
+        });
+      },
+
+      // onLoginFailed
+          () {
+        setState(() {
+          userLoggedIn = false;
+        });
+      },
     );
+
   }
 
   Widget inputField(String hint, IconData iconData, bool isPasswordField,
@@ -113,7 +130,7 @@ class _LoginContentState extends State<LoginContent>
         onPressed: () {
           loginUser();
           setState(() {
-            thisAppUser.isTherapist = false; //regular user, not a therapist
+            currentAppUser.isTherapist = false; //regular user, not a therapist
           });
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => ScreensWrapper()));
@@ -243,10 +260,9 @@ class _LoginContentState extends State<LoginContent>
           onPressed: () {
             registerNewUser();
             setState(() {
-              thisAppUser.isTherapist = false;
+              currentAppUser.isTherapist = false;
             });
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreensWrapper()));
+
           }),
 
       BlueButton(
@@ -281,7 +297,7 @@ class _LoginContentState extends State<LoginContent>
           text: 'Login',
           onPressed: () {
             setState(() {
-              thisAppUser.isTherapist = false;
+              currentAppUser.isTherapist = false;
             });
             loginUser();
 
@@ -296,7 +312,7 @@ class _LoginContentState extends State<LoginContent>
           onPressed: () {
             loginUser();
             setState(() {
-              thisAppUser.isTherapist = true;
+              currentAppUser.isTherapist = true;
             });
             userLoggedIn == true
                 ? Navigator.of(context).push(
@@ -368,7 +384,7 @@ class _LoginContentState extends State<LoginContent>
             content: const Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text("Please click the button below to register as a therapist",
+                Text("You need to fill out a registration form to register as a therapist, please click the button below to register as a therapist",
                   style: TextStyle(color: mainPurple, fontSize: 16),),
 
               ],

@@ -110,7 +110,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: mainWhite,
-        floatingActionButton: thisAppUser.isTherapist?addNewPostButton(): null,
+        floatingActionButton: currentAppUser.isTherapist?addNewPostButton(): null,
         floatingActionButtonLocation: _floatingActionButtonLocation,
         body: SingleChildScrollView(
             child: Column(

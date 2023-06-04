@@ -16,6 +16,6 @@ class _TherapistsScreenState extends State<TherapistsScreen> {
   @override
   Widget build(BuildContext context) {
     return
-     thisAppUser.isTherapist? const TherapistDashboardScreen(): ConsultTherapistScreen();
+     currentAppUser.isTherapist? const TherapistDashboardScreen(): ConsultTherapistScreen();
   }
 }
