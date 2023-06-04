@@ -12,7 +12,8 @@ class FirebaseAuthMethods {
     try {
       final authResult = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      thisAppUser = _userFromFirebase(authResult.user)!;
+      // _userFromFirebase(authResult.user) == null? thisAppUser = sampleAppUser1:
+      // thisAppUser = _userFromFirebase(authResult.user)!;
       return _userFromFirebase(authResult.user);
     } catch (e) {
       debugPrint(e.toString());
@@ -20,17 +21,34 @@ class FirebaseAuthMethods {
     }
   }
 
-  Future<AppUser?> loginWithEmailAndPassword(String email, String password,
-      VoidCallback onLoginSuccess, VoidCallback onLoginFailed) async {
+  Future<AppUser?> loginWithEmailAndPassword(
+      String email,
+      String password,
+      VoidCallback onLoginSuccess,
+      VoidCallback onLoginFailed,
+      ) async {
     try {
-      final authResult = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final authResult = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Call the onLoginSuccess callback
       onLoginSuccess();
-      thisAppUser = _userFromFirebase(authResult.user)!;
+
+      // Update the current user
+
+      // _userFromFirebase(authResult.user) == null? thisAppUser = sampleAppUser1:
+      // thisAppUser = _userFromFirebase(authResult.user)!;
+      // Return the user object
       return _userFromFirebase(authResult.user);
     } catch (e) {
       debugPrint(e.toString());
+
+      // Call the onLoginFailed callback
       onLoginFailed();
+
+      // Return null to indicate login failure
       return null;
     }
   }
@@ -42,18 +60,6 @@ class FirebaseAuthMethods {
   Future<void> resetPassword(String email) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
   }
-
-  //
-  // Future<void> deleteAccount(String email) async {
-  //   try {
-  //     await FirebaseAuth.instance.currentUser?.delete();
-  //   }
-  //   catch (e) {
-  //     debugPrint(e.toString());
-  //     FirebaseAuth.instance.currentUser?.delete();
-  //     return;
-  //   }
-  // }
 
 
   Future<void> deleteAccount(String email, String password) async {

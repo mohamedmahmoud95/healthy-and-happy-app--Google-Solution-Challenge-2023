@@ -53,7 +53,7 @@ class _SessionBookingScreenState extends State<SessionBookingScreen> {
           children: [
 
             const SizedBox(height:12),
-          //  Image.network('https://img.freepik.com/free-vector/woman-crying-therapy-session_74855-17143.jpg'),
+
             TherapistCard(therapist: widget.therapist),
 
             const SizedBox(height:12),

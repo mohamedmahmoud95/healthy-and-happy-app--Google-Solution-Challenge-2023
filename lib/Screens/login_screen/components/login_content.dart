@@ -282,7 +282,7 @@ class _LoginContentState extends State<LoginContent>
             });
             userLoggedIn == true
                 ? Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreensWrapper()))
+                MaterialPageRoute(builder: (context) => ScreensWrapper(passedIndex: 0,)))
                 : showSnackBar(context, "Incorrect email or password!");
           }),
 
