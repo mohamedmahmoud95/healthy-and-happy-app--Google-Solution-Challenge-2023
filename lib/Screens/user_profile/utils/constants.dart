@@ -10,12 +10,12 @@ const double valueSize = 20;
 const double valueInfoSize = 15;
 const double contentFontSize = 20;
 
-const double coverHeight = 280;
+const double coverHeight = 320;
 const double profileHeight = 144;
 const top = coverHeight - profileHeight / 2;
 
 const bottom = profileHeight / 2;
-const padding = profileHeight / 4;
+const padding = profileHeight / 6;
 const double containerHeight = 110;
 const double dividerHeight = 25;
 const double vertical = 4;
@@ -27,4 +27,4 @@ const following = 5834;
 const String profile =
     "https://cdn.yemek.com/uploads/2018/04/dr-nowzaradan-kimdir2.jpg";
 const String firstImage =
-    "https://thumbs.dreamstime.com/b/medical-concept-blue-background-doctor-s-desk-instruments-copy-space-133143854.jpg";
+    "https://img.freepik.com/free-vector/mental-health-concept-illustration_114360-2038.jpg";

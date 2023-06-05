@@ -28,10 +28,14 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: mainWhite,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: mainWhite,
+        elevation: 0,
+        scrolledUnderElevation: 20,
+        title: Text(widget.doctorName, style: const TextStyle(color: mainPurple, fontSize: 20),),
         leading: InkWell(
           child: const Icon(
             Icons.arrow_back,
+            color: mainPurple,
             size: 30,
           ),
           onTap: () {

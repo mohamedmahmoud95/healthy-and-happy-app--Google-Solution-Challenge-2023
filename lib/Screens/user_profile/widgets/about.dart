@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/Constants/project_colors.dart';
 import 'package:mental_health_app/Screens/sessions_screen_for_therapists/page/widget/BookingPage.dart';
 
 import '../../../Reusable Widgets/button_widget.dart';
@@ -8,37 +9,11 @@ import '../utils/constants.dart';
 Widget buildContent(BuildContext context, String doctorName, String about,bool isPatient) {
   return Column(
     children: [
-      SizedBox(height: 8),
-      Text(
-        doctorName,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: textColor,
-          fontSize: titleFontSize,
-        ),
-      ),
-      SizedBox(height: 8),
-      if(isPatient)
-        Text(
-          'Doctor',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: subTextColor,
-            fontSize: subtitleFontSize,
-          ),
-        )
-      else
-        Text(
-          'Patient',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: subTextColor,
-            fontSize: subtitleFontSize,
-          ),
-        ),
-      SizedBox(height: 16),
+
+
+      const SizedBox(height: 16),
       buildAbout(about),
-      SizedBox(height: 32),
+      const SizedBox(height: 32),
       if(isPatient)
         Center(
           child: ButtonWidget(
@@ -47,7 +22,7 @@ Widget buildContent(BuildContext context, String doctorName, String about,bool i
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BookingPage(
+                  builder: (context) => const BookingPage(
                     isPatient: true,
                   ),
                 ),
@@ -56,7 +31,7 @@ Widget buildContent(BuildContext context, String doctorName, String about,bool i
           ),
         ),
 
-      SizedBox(height: 16),
+      const SizedBox(height: 16),
     ],
   );
 }
@@ -64,23 +39,31 @@ Widget buildContent(BuildContext context, String doctorName, String about,bool i
 
 Widget buildAbout(String about) {
   return Container(
-    margin: EdgeInsets.only(left: padding, right: padding),
+    margin: const EdgeInsets.only(left: padding, right: padding),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children:[
-        SizedBox(height: 8),
-        Text('About',
+        const SizedBox(height: 8),
+        const Text('About',
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: textColor,
+                fontWeight: FontWeight.w600,
+                color: mainPurple,
                 fontSize: titleFontSize)),
-        SizedBox(height: 8),
-        Text(
-            about,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: subTextColor,
-                fontSize: subtitleFontSize)),
+        const SizedBox(height: 8),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+                about,
+                style: const TextStyle(
+
+
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: subtitleFontSize,
+                )),
+          ),
+        ),
       ],
     ),
   );

@@ -26,7 +26,7 @@ class DetailBody extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Text(
+          const Text(
             'About Doctor',
             style: TextStyle(
   color: mainPurple,
@@ -47,7 +47,7 @@ class DetailBody extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          Text(
+          const Text(
             'Location',
             style: TextStyle(
               color: mainPurple,
