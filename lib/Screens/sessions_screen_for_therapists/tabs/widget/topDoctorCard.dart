@@ -10,6 +10,7 @@ class TopDoctorCard extends StatelessWidget {
   VoidCallback onTap;
 
   TopDoctorCard({
+    super.key,
     required this.img,
     required this.doctorName,
     required this.doctorTitle,

@@ -19,7 +19,7 @@ class SliverDoctorDetail extends StatelessWidget {
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               background: Image(
-                image: NetworkImage('https://media.istockphoto.com/vectors/hospital-building-flat-style-on-blue-sky-vector-id973278536'),
+                image: NetworkImage('https://img.freepik.com/free-vector/mental-health-concept-illustration_114360-2038.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

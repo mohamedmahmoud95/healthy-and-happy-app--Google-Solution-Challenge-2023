@@ -134,7 +134,7 @@ class ListOfMyPatients extends StatelessWidget {
                     },
                   )
               else
-                for (int i = 0; i < listOfSampleAppUsers.length; i++)
+                for (int i = 1; i < listOfSampleAppUsers.length; i++)
                   TopDoctorCard(
                     img: listOfSampleAppUsers[i].profilePicUrl,
                     doctorName: '${listOfSampleAppUsers[i].firstName} ${listOfSampleAppUsers[i].lastName}',
@@ -144,8 +144,8 @@ class ListOfMyPatients extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProfilePage(
-                            doctorName: listOfSampleAppUsers[i].firstName!,
-                            doctorImage: listOfSampleAppUsers[i].profilePicUrl!,
+                            doctorName: listOfSampleAppUsers[i].firstName,
+                            doctorImage: listOfSampleAppUsers[i].profilePicUrl,
                             doctorAbout: patients[i]['about'],
                             isPatient: isPatient,
                           ),
