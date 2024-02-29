@@ -44,5 +44,34 @@ password: 12345678
 
 and you can easily register a new "normal" user account from the sign-up screen
 
+![1](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/34e0a567-3bf7-4a41-9fb4-958cc362b545)
+
+
+
+![2](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/230d5f9c-a135-48a7-b119-3feca205f69d)
+
+
+
+![3](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/014aceb7-2234-4a78-8d16-b6dc0b33a364)
+
+
+
+![4](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/aa40f4db-c7db-4a9c-be6e-c25ae20a8542)
+
+
+
+![5](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/e6626b77-3161-4167-81f3-369ed89c2994)
+
+
+
+![6](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/15f7cba2-1d59-4d3e-afd9-e8c581292fc7)
+
+
+
+![7](https://github.com/mohamedmahmoud95/healthy-and-happy-app/assets/46673407/a9717558-2e56-409c-8d05-d98f140a6b54)
+
+
+
+
 
 
